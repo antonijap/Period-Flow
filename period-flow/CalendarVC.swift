@@ -15,31 +15,31 @@ class CalendarVC: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    
+    // MARK: - Properties
+    
+    var dataProvider: CalendarDataProvider?
 
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarView.dataSource = self
-        calendarView.delegate = self
+        setupDataProvider()
+        setupCalendar()
+    }
+    
+    // MARK: - Methods
+    
+    func setupDataProvider() {
+        dataProvider = CalendarDataProvider(calendarView: calendarView)
+        calendarView.delegate = dataProvider
+        calendarView.dataSource = dataProvider
+    }
+    
+    func setupCalendar() {
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         calendarView.registerCellViewXib(fileName: "CellView")
     }
 }
 
-    // MARK: - Extensions
-
-extension CalendarVC: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate  {
-    // Setting up manditory protocol method
-    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, calendar: NSCalendar) {
-        let firstDate = "1/1/2016".toDate(DateFormat.Custom("dd/MM/YYYY"))
-        let secondDate = NSDate()
-        let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
-        return (startDate: firstDate!, endDate: secondDate, calendar: aCalendar)
-    }
-    
-    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
-        (cell as! CellView).setupCellBeforeDisplay(cellState, date: date)
-    }
-}

@@ -6,15 +6,18 @@
 //  Copyright © 2016 Antonija Pek. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import RealmSwift
 
-class User {
+class User: Object {
     
     // MARK: - Properties
-    var periods: [Period]
+    
+    dynamic var periods: List<Period>
     
     // MARK: - Initializers
-    init() {
-        self.periods = [Period]()
-    }
+    
+//    init() {
+//        self.periods = [Period]()
+//    }
 }
