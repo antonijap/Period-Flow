@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import JTAppleCalendarView
+import JTAppleCalendar
+import SwiftDate
 
 class CalendarDataProvider: NSObject {
     
