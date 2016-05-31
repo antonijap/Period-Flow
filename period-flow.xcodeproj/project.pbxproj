@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5794E344E73C1445D7FFE549 /* Pods_period_flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */; };
 		6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */; };
-		6870C4811CFDE56C00ACFFF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* ViewController.swift */; };
+		6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */; };
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
 		6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
+		6870C4971CFDE5A900ACFFF2 /* Bariol_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */; };
+		6870C4981CFDE5A900ACFFF2 /* Bariol_Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */; };
+		6870C4991CFDE5A900ACFFF2 /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D6D5374F1EBD4D18A2DA307 /* Pods-period-flow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.release.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.release.xcconfig"; sourceTree = "<group>"; };
 		6870C47B1CFDE56B00ACFFF2 /* period-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "period-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6870C4801CFDE56C00ACFFF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		6870C4831CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.otf; sourceTree = "<group>"; };
+		6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Light.otf; sourceTree = "<group>"; };
+		6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
+		9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.debug.xcconfig"; sourceTree = "<group>"; };
+		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5794E344E73C1445D7FFE549 /* Pods_period_flow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,8 @@
 			children = (
 				6870C47D1CFDE56C00ACFFF2 /* period-flow */,
 				6870C47C1CFDE56B00ACFFF2 /* Products */,
+				6E98FF3ED6AB2A869C30D15D /* Pods */,
+				7C0C03C3B572AE21A9832D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +67,66 @@
 		6870C47D1CFDE56C00ACFFF2 /* period-flow */ = {
 			isa = PBXGroup;
 			children = (
-				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
-				6870C4801CFDE56C00ACFFF2 /* ViewController.swift */,
-				6870C4821CFDE56C00ACFFF2 /* Main.storyboard */,
-				6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */,
-				6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */,
-				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
+				6870C4931CFDE58B00ACFFF2 /* Resources */,
+				6870C4921CFDE58500ACFFF2 /* Controller */,
+				6870C4911CFDE58100ACFFF2 /* VIew */,
+				6870C4901CFDE57C00ACFFF2 /* Model */,
 			);
 			path = "period-flow";
+			sourceTree = "<group>";
+		};
+		6870C4901CFDE57C00ACFFF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6870C4911CFDE58100ACFFF2 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */,
+				6870C4821CFDE56C00ACFFF2 /* Main.storyboard */,
+			);
+			name = VIew;
+			sourceTree = "<group>";
+		};
+		6870C4921CFDE58500ACFFF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6870C4931CFDE58B00ACFFF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
+				6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */,
+				6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */,
+				6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */,
+				6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */,
+				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6E98FF3ED6AB2A869C30D15D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */,
+				3D6D5374F1EBD4D18A2DA307 /* Pods-period-flow.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7C0C03C3B572AE21A9832D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */;
 			buildPhases = (
+				8A725F0440AD038002034BFD /* 📦 Check Pods Manifest.lock */,
 				6870C4771CFDE56B00ACFFF2 /* Sources */,
 				6870C4781CFDE56B00ACFFF2 /* Frameworks */,
 				6870C4791CFDE56B00ACFFF2 /* Resources */,
+				C5DD8FF4FF55B71D46D4C9D8 /* 📦 Embed Pods Frameworks */,
+				E0DA73E96A0973889CF6CE5B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,19 +191,70 @@
 			buildActionMask = 2147483647;
 			files = (
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
+				6870C4981CFDE5A900ACFFF2 /* Bariol_Light.otf in Resources */,
 				6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */,
+				6870C4991CFDE5A900ACFFF2 /* Bariol_Regular.otf in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
+				6870C4971CFDE5A900ACFFF2 /* Bariol_Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A725F0440AD038002034BFD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5DD8FF4FF55B71D46D4C9D8 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-period-flow/Pods-period-flow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0DA73E96A0973889CF6CE5B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-period-flow/Pods-period-flow-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6870C4771CFDE56B00ACFFF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6870C4811CFDE56C00ACFFF2 /* ViewController.swift in Sources */,
+				6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */,
 				6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,23 +368,29 @@
 		};
 		6870C48E1CFDE56C00ACFFF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "period-flow/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.antonijapek.period-flow";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		6870C48F1CFDE56C00ACFFF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D6D5374F1EBD4D18A2DA307 /* Pods-period-flow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "period-flow/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.antonijapek.period-flow";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -288,6 +413,7 @@
 				6870C48F1CFDE56C00ACFFF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
