@@ -13,11 +13,5 @@ class User: Object {
     
     // MARK: - Properties
     
-    dynamic var periods: List<Period>
-    
-    // MARK: - Initializers
-    
-//    init() {
-//        self.periods = [Period]()
-//    }
+    var periods: List<Period> = List<Period>()
 }

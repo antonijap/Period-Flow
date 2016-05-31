@@ -13,11 +13,5 @@ class Period: Object {
     
     // MARK: - Properties
     
-    dynamic var periodDates: [NSDate]
-    
-    // MARK: - Initializers
-    
-//    init(dates: [NSDate]) {
-//        self.periodDates = dates
-//    }
+    dynamic var periodDates: [NSDate] = [NSDate]()
 }
