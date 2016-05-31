@@ -4,6 +4,18 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Bariol_Bold.otf">
+            <string>Bariol-Bold</string>
+            <string>Bariol-Bold</string>
+        </mutableArray>
+        <mutableArray key="Bariol_Regular.otf">
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--CalendarVC-->
         <scene sceneID="tne-QT-ifu">
@@ -16,12 +28,122 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
+                                <rect key="frame" x="20" y="38" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="F0Z-HD-5D7"/>
+                                    <constraint firstAttribute="height" constant="21" id="I1h-uU-IpQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="21"/>
+                                <color key="textColor" red="0.49019607843137253" green="0.58823529411764708" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-Yj-kQQ" userLabel="googleAds">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.92846554487179478" green="0.92846554487179478" blue="0.92846554487179478" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hUX-We-DBb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView">
+                                <rect key="frame" x="0.0" y="119" width="375" height="375"/>
+                                <color key="backgroundColor" red="0.98373397435897425" green="0.98373397435897425" blue="0.98373397435897425" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="lW9-3w-xNn"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVERAGE CYCLE DAYS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVH-rO-syK" userLabel="label">
+                                <rect key="frame" x="220" y="571" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="gog-e8-Oy8"/>
+                                    <constraint firstAttribute="width" constant="100" id="rZQ-bh-OXK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="12"/>
+                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS UNTIL NEXT PERIOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHa-cA-Xvf" userLabel="label">
+                                <rect key="frame" x="55" y="571" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="8DV-XJ-3TD"/>
+                                    <constraint firstAttribute="width" constant="100" id="LH7-7d-gSh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="12"/>
+                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-fu-251" userLabel="daysUntilNewxPeriod">
+                                <rect key="frame" x="41" y="511" width="128" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="5dw-ii-3ZV"/>
+                                    <constraint firstAttribute="height" constant="62" id="OON-su-Q4p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="65"/>
+                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU7-gk-Gmd" userLabel="cycleDays">
+                                <rect key="frame" x="206" y="508" width="128" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="bG0-kZ-Sct"/>
+                                    <constraint firstAttribute="height" constant="62" id="be3-KQ-hMV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="65"/>
+                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-RV-G0r" userLabel="menuButton">
+                                <rect key="frame" x="336" y="38" width="19" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="a8l-gu-UgS"/>
+                                    <constraint firstAttribute="height" constant="22" id="oi4-I1-ckb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Menu Icon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZo-eX-ETZ" userLabel="monthName">
+                                <rect key="frame" x="20" y="61" width="293" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="293" id="FR4-ec-6Ba"/>
+                                    <constraint firstAttribute="height" constant="46" id="qaV-NM-Tmj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="46"/>
+                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" id="9t1-AG-Vtj"/>
+                            <constraint firstItem="cVH-rO-syK" firstAttribute="top" secondItem="qU7-gk-Gmd" secondAttribute="bottom" constant="1" id="BNh-uk-amP"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D2U-p8-sL0"/>
+                            <constraint firstAttribute="trailing" secondItem="zYk-Yj-kQQ" secondAttribute="trailing" id="Dgw-ej-Lmo"/>
+                            <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="GVt-kL-Gzr"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PaF-h2-l0o"/>
+                            <constraint firstAttribute="trailing" secondItem="vWC-RV-G0r" secondAttribute="trailing" constant="20" id="Rqz-xz-6Zr"/>
+                            <constraint firstItem="OHa-cA-Xvf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="55" id="VfU-OI-F8X"/>
+                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="top" secondItem="0Nd-xl-GqP" secondAttribute="bottom" constant="2" id="Yup-pl-VfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="cVH-rO-syK" secondAttribute="trailing" constant="55" id="aRN-Jn-n5V"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="12" id="aTc-3F-SBk"/>
+                            <constraint firstAttribute="trailing" secondItem="qU7-gk-Gmd" secondAttribute="trailing" constant="41" id="bx9-q8-eBL"/>
+                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="fMX-vA-CpE"/>
+                            <constraint firstItem="MWg-fu-251" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="41" id="mIh-WT-2kv"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="OHa-cA-Xvf" secondAttribute="bottom" constant="19" id="pry-8F-il9"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="MWg-fu-251" secondAttribute="bottom" constant="54" id="uMg-q3-h95"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="cVH-rO-syK" secondAttribute="bottom" constant="19" id="vkI-Or-taE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zYk-Yj-kQQ" secondAttribute="bottom" id="w7v-Dn-dee"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="wDW-pa-hOY"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z1u-5q-bkA"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="339.5" y="429.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Menu Icon" width="17" height="10"/>
+    </resources>
 </document>
