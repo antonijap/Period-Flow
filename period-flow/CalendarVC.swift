@@ -15,11 +15,13 @@ class CalendarVC: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var monthNameLabel: UILabel!
     
     // MARK: - Properties
     
     var dataProvider: CalendarDataProvider?
-
+    let today = NSDate.today()
     
     // MARK: - View Life Cycle
     
@@ -27,6 +29,11 @@ class CalendarVC: UIViewController {
         super.viewDidLoad()
         setupDataProvider()
         setupCalendar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupLabels()
     }
     
     // MARK: - Methods
@@ -38,8 +45,21 @@ class CalendarVC: UIViewController {
     }
     
     func setupCalendar() {
-        calendarView.cellInset = CGPoint(x: 0, y: 0)
         calendarView.registerCellViewXib(fileName: "CellView")
+        calendarView.cellInset = CGPoint(x: 2, y: 2)
+        calendarView.allowsMultipleSelection = true
+        calendarView.firstDayOfWeek = .Sunday
+        calendarView.scrollEnabled = true
+    }
+    
+    func setupLabels() {
+        calendarView.scrollToDate(today)
+        if let dataProvider = dataProvider {
+            yearLabel.text = dataProvider.year
+            monthNameLabel.text = dataProvider.monthName
+            print("\(dataProvider.monthName)")
+            print("\(dataProvider.year)")
+        }
     }
 }
 

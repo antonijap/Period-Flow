@@ -7,22 +7,30 @@
 //
 
 import JTAppleCalendar
+import SwiftDate
 
 class CellView: JTAppleDayCellView {
     
     // MARK: - IBOutlets
     
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet weak var selectedDay: UIView!
+    @IBOutlet weak var selectedDay: SelectionView!
+    
+    // MARK: - Properties
+    
+    let today = NSDate.today()
     
     // MARK: - Methods
     
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
-        // Setup Cell text
         dateLabel.text =  cellState.text
-        
-        // Setup text color
         configureTextColor(cellState)
+        
+        if date == today {
+            dateLabel.textColor = Color.red
+        } else {
+            dateLabel.textColor = Color.grey
+        }
     }
     
     func configureTextColor(cellState: CellState) {
@@ -34,12 +42,22 @@ class CellView: JTAppleDayCellView {
     }
     
     func cellSelectionChanged(cellState: CellState) {
-        
-        if cellState.isSelected {
+        if cellState.isSelected == true {
             selectedDay.hidden = true
+            dateLabel.textColor = Color.grey
         } else {
             selectedDay.hidden = false
             dateLabel.textColor = Color.white
+        }
+        
+        if cellState.isSelected {
+            if selectedDay.hidden {
+                selectedDay.hidden = false
+                dateLabel.textColor = Color.white
+            }
+        } else {
+            selectedDay.hidden = true
+            dateLabel.textColor = Color.grey
         }
     }
 }

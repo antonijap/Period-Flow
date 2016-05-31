@@ -11,6 +11,7 @@
 		685B92A81CFDF313003452CE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92A71CFDF313003452CE /* Color.swift */; };
 		685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685B92AA1CFDF9CC003452CE /* CellView.xib */; };
 		685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92AC1CFDFAC2003452CE /* CellView.swift */; };
+		685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92AE1CFE1317003452CE /* SelectionView.swift */; };
 		6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */; };
 		6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */; };
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		685B92A71CFDF313003452CE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		685B92AA1CFDF9CC003452CE /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		685B92AC1CFDFAC2003452CE /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		685B92AE1CFE1317003452CE /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		6870C47B1CFDE56B00ACFFF2 /* period-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "period-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */,
 				6870C4821CFDE56C00ACFFF2 /* Main.storyboard */,
+				685B92AE1CFE1317003452CE /* SelectionView.swift */,
 			);
 			name = VIew;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
+				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

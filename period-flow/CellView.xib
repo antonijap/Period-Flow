@@ -13,15 +13,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CellView" customModule="period_flow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="215" height="189"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-2m-9FL" userLabel="selectedDay">
-                    <rect key="frame" x="0.0" y="0.0" width="215" height="189"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-2m-9FL" userLabel="selectedDay" customClass="SelectionView" customModule="period_flow" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x63-94-BiS">
-                    <rect key="frame" x="60" y="71" width="94" height="47"/>
+                    <rect key="frame" x="28" y="52" width="94" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="h2Q-Mx-Il0"/>
                         <constraint firstAttribute="width" constant="94" id="xni-ui-X4t"/>
@@ -33,19 +33,31 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="oAd-2m-9FL" secondAttribute="trailing" id="07s-rZ-alb"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="E20-8u-FUt"/>
+                <constraint firstAttribute="bottom" secondItem="oAd-2m-9FL" secondAttribute="bottom" id="LyR-lF-y9F"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="OPO-ZK-au6"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PqZ-g1-9NK"/>
                 <constraint firstItem="x63-94-BiS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UTx-VF-ChN"/>
                 <constraint firstItem="x63-94-BiS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yc8-j0-zKC"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aQC-wf-Td9"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="guE-Lw-GCM"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQM-k2-Uda"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="OPO-ZK-au6"/>
+                    <exclude reference="PqZ-g1-9NK"/>
+                    <exclude reference="aQC-wf-Td9"/>
+                    <exclude reference="guE-Lw-GCM"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="dateLabel" destination="x63-94-BiS" id="xAa-aw-Evy"/>
                 <outlet property="selectedDay" destination="oAd-2m-9FL" id="Gkl-Z4-SPg"/>
             </connections>
-            <point key="canvasLocation" x="268.5" y="261.5"/>
+            <point key="canvasLocation" x="566.5" y="477.5"/>
         </view>
     </objects>
 </document>
