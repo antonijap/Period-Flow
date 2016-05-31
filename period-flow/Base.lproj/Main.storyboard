@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="40" id="hUX-We-DBb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="0.0" y="119" width="375" height="375"/>
                                 <color key="backgroundColor" red="0.98373397435897425" green="0.98373397435897425" blue="0.98373397435897425" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -137,6 +137,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="calendarView" destination="Mpl-TT-1Rd" id="b4r-NI-wof"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
