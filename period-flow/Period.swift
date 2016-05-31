@@ -6,15 +6,18 @@
 //  Copyright © 2016 Antonija Pek. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import RealmSwift
 
-class Period {
+class Period: Object {
     
     // MARK: - Properties
-    var periodDates: [NSDate]
+    
+    dynamic var periodDates: [NSDate]
     
     // MARK: - Initializers
-    init(dates: [NSDate]) {
-        self.periodDates = dates
-    }
+    
+//    init(dates: [NSDate]) {
+//        self.periodDates = dates
+//    }
 }

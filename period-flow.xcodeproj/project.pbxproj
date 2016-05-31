@@ -21,6 +21,7 @@
 		6870C4991CFDE5A900ACFFF2 /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */; };
 		B04D625F1CFDFB3A001584C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D625E1CFDFB3A001584C4 /* User.swift */; };
 		B04D62621CFDFC43001584C4 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62611CFDFC43001584C4 /* Period.swift */; };
+		B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.debug.xcconfig"; sourceTree = "<group>"; };
 		B04D625E1CFDFB3A001584C4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B04D62611CFDFC43001584C4 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataProvider.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 		6870C47D1CFDE56C00ACFFF2 /* period-flow */ = {
 			isa = PBXGroup;
 			children = (
+				B04D62631CFE07F1001584C4 /* DataProviders */,
 				685B92A91CFDF9B9003452CE /* Calendar */,
 				6870C4931CFDE58B00ACFFF2 /* Resources */,
 				6870C4921CFDE58500ACFFF2 /* Controller */,
@@ -150,6 +153,14 @@
 				D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B04D62631CFE07F1001584C4 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */,
+			);
+			name = DataProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,19 +289,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */,
-
 				B04D62621CFDFC43001584C4 /* Period.swift in Sources */,
 				B04D625F1CFDFB3A001584C4 /* User.swift in Sources */,
-
 				6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */,
 				6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
+				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXSourcesBuildPhase section
+/* End PBXSourcesBuildPhase section */
+
 /* Begin PBXVariantGroup section */
 		6870C4821CFDE56C00ACFFF2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
