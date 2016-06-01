@@ -13,7 +13,7 @@
 		685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92AC1CFDFAC2003452CE /* CellView.swift */; };
 		685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92AE1CFE1317003452CE /* SelectionView.swift */; };
 		6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */; };
-		6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */; };
+		6870C4811CFDE56C00ACFFF2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */; };
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
 		6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
@@ -34,7 +34,7 @@
 		685B92AE1CFE1317003452CE /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		6870C47B1CFDE56B00ACFFF2 /* period-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "period-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6870C4831CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
-				6870C4801CFDE56C00ACFFF2 /* CalendarVC.swift */,
+				6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -307,7 +307,7 @@
 				685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */,
 				B04D62621CFDFC43001584C4 /* Period.swift in Sources */,
 				B04D625F1CFDFB3A001584C4 /* User.swift in Sources */,
-				6870C4811CFDE56C00ACFFF2 /* CalendarVC.swift in Sources */,
+				6870C4811CFDE56C00ACFFF2 /* CalendarViewController.swift in Sources */,
 				6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
-class CalendarVC: UIViewController {
+class CalendarViewController: UIViewController {
     
     // MARK: - IBOutlets
     
