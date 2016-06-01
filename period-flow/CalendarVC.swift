@@ -21,6 +21,7 @@ class CalendarVC: UIViewController {
     // MARK: - Properties
     
     var dataProvider: CalendarDataProvider?
+    var viewManager: CalendarViewManager?
     let today = NSDate.today()
     
     // MARK: - View Life Cycle
@@ -28,6 +29,7 @@ class CalendarVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataProvider()
+        setupViewManager()
         setupCalendar()
     }
     
@@ -40,8 +42,12 @@ class CalendarVC: UIViewController {
     
     func setupDataProvider() {
         dataProvider = CalendarDataProvider(calendarView: calendarView)
-        calendarView.delegate = dataProvider
         calendarView.dataSource = dataProvider
+    }
+    
+    func setupViewManager() {
+        viewManager = CalendarViewManager(calendarView: calendarView)
+        calendarView.delegate = viewManager
     }
     
     func setupCalendar() {
@@ -54,11 +60,11 @@ class CalendarVC: UIViewController {
     
     func setupLabels() {
         calendarView.scrollToDate(today)
-        if let dataProvider = dataProvider {
-            yearLabel.text = dataProvider.year
-            monthNameLabel.text = dataProvider.monthName
-            print("\(dataProvider.monthName)")
-            print("\(dataProvider.year)")
+        if let viewManager = viewManager {
+            yearLabel.text = viewManager.year
+            monthNameLabel.text = viewManager.monthName
+            print("\(viewManager.monthName)")
+            print("\(viewManager.year)")
         }
     }
 }
