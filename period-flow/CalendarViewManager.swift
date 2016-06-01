@@ -10,13 +10,18 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
+protocol CalendarViewManagerDelegate {
+    var calendarView: JTAppleCalendarView! {get set}
+    var yearLabel: UILabel! {get set}
+    var monthNameLabel: UILabel! {get set}
+}
+
 class CalendarViewManager: NSObject {
     
     // MARK: - Properties
     
     var calendarView: JTAppleCalendarView!
-    var monthName: String!
-    var year: String!
+    var delegate: CalendarViewManagerDelegate?
     
     // MARK: - Initializers
     
@@ -39,30 +44,34 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             cell.userInteractionEnabled = false
         }
         
-        print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
+        //print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
     }
     
     // User deselects a date
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
         cell.cellSelectionChanged(cellState)
+        print("Cell deselected")
     }
     
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
         cell.cellSelectionChanged(cellState)
+        print("Cell selected")
     }
+    
+    // FIXME: - We never call this method
     
     // User scrolls to another month
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWith date: NSDate?, endingWithDate: NSDate?) {
-        if let _ = date, _ = endingWithDate {
-            if let date = date {
-                let monthName = date.monthName
-                let year = String(date.year)
-                self.monthName = monthName
-                self.year = String(year)
-            }
+        
+        print("The user scrolled")
+        print(date)
+        print(endingWithDate)
+        if let date = date {
+            delegate?.monthNameLabel.text = date.monthName
+            delegate?.yearLabel.text = String(date.year)
         }
     }
 }
