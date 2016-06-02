@@ -187,12 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */;
 			buildPhases = (
-				8A725F0440AD038002034BFD /* 📦 Check Pods Manifest.lock */,
+				8A725F0440AD038002034BFD /* [CP] Check Pods Manifest.lock */,
 				6870C4771CFDE56B00ACFFF2 /* Sources */,
 				6870C4781CFDE56B00ACFFF2 /* Frameworks */,
 				6870C4791CFDE56B00ACFFF2 /* Resources */,
-				C5DD8FF4FF55B71D46D4C9D8 /* 📦 Embed Pods Frameworks */,
-				E0DA73E96A0973889CF6CE5B /* 📦 Copy Pods Resources */,
+				C5DD8FF4FF55B71D46D4C9D8 /* [CP] Embed Pods Frameworks */,
+				E0DA73E96A0973889CF6CE5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,14 +254,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8A725F0440AD038002034BFD /* 📦 Check Pods Manifest.lock */ = {
+		8A725F0440AD038002034BFD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,14 +269,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C5DD8FF4FF55B71D46D4C9D8 /* 📦 Embed Pods Frameworks */ = {
+		C5DD8FF4FF55B71D46D4C9D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,14 +284,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-period-flow/Pods-period-flow-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0DA73E96A0973889CF6CE5B /* 📦 Copy Pods Resources */ = {
+		E0DA73E96A0973889CF6CE5B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
