@@ -10,7 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
-class CalendarVC: UIViewController {
+class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     // MARK: - IBOutlets
     
@@ -21,27 +21,42 @@ class CalendarVC: UIViewController {
     // MARK: - Properties
     
     var dataProvider: CalendarDataProvider?
+    var viewManager: CalendarViewManager?
+    
     let today = NSDate.today()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupDataProvider()
+        setupViewManager()
         setupCalendar()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setupLabels()
+        calendarView.scrollToDate(today)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Methods
     
     func setupDataProvider() {
         dataProvider = CalendarDataProvider(calendarView: calendarView)
-        calendarView.delegate = dataProvider
         calendarView.dataSource = dataProvider
+    }
+    
+    func setupViewManager() {
+        viewManager = CalendarViewManager(calendarView: calendarView)
+        calendarView.delegate = viewManager
+        viewManager?.delegate = self
     }
     
     func setupCalendar() {
@@ -51,15 +66,6 @@ class CalendarVC: UIViewController {
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
     }
-    
-    func setupLabels() {
-        calendarView.scrollToDate(today)
-        if let dataProvider = dataProvider {
-            yearLabel.text = dataProvider.year
-            monthNameLabel.text = dataProvider.monthName
-            print("\(dataProvider.monthName)")
-            print("\(dataProvider.year)")
-        }
-    }
 }
+
 

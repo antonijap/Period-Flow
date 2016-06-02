@@ -13,5 +13,5 @@ class User: Object {
     
     // MARK: - Properties
     
-    var periods: List<Period> = List<Period>()
+    static var periods: List<Period> = List<Period>()
 }
