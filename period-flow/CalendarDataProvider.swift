@@ -15,9 +15,6 @@ class CalendarDataProvider: NSObject {
     // MARK: - Properties
     
     var calendarView: JTAppleCalendarView!
-    var monthName: String!
-    var year: String!
-    let today = NSDate.today()
     
     // MARK: - Initializers
     
@@ -27,7 +24,7 @@ class CalendarDataProvider: NSObject {
     }
 }
 
-extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate  {
+extension CalendarDataProvider: JTAppleCalendarViewDataSource {
     
     // This method is required. You provide a startDate, endDate, and a calendar configured to your liking.
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, calendar: NSCalendar) {
@@ -37,6 +34,7 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarVi
         
         return (startDate: firstDate, endDate: secondDate, calendar: aCalendar)
     }
+
     
     // Rendering all dates
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
@@ -52,24 +50,5 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarVi
         }
         
 //        print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
-    }
-    
-    // User deselects a date
-    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState, date: date)
-    }
-    
-    // User selects a date
-    func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState, date: date)
-    }
-    
-    // User scrolls to another month
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
-        self.monthName = startDate.monthName
-        self.year = String(startDate.year)
-        print(self.monthName)
     }
 }
