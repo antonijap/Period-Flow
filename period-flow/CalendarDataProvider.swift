@@ -34,4 +34,21 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource {
         
         return (startDate: firstDate, endDate: secondDate, calendar: aCalendar)
     }
+
+    
+    // Rendering all dates
+    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
+        let cell = (cell as! CellView)
+        cell.setupCellBeforeDisplay(cellState, date: date)
+        
+        
+        // If date belongs to previous or future month, user can't select it until she scrolls to the appropriate month
+        if cellState.dateBelongsTo == .ThisMonth {
+            cell.userInteractionEnabled = true
+        } else {
+            cell.userInteractionEnabled = false
+        }
+        
+//        print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
+    }
 }

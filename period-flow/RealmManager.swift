@@ -46,4 +46,14 @@ class RealmManager {
             print(error.debugDescription)
         }
     }
+    
+    // Update Period dates
+    
+    func updatePeriodDates(date: NSDate) {
+        do {
+            
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+    }
 }

@@ -29,14 +29,21 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupDataProvider()
         setupViewManager()
         setupCalendar()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         calendarView.scrollToDate(today)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Methods
@@ -58,7 +65,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
-        
     }
 }
+
 

@@ -50,28 +50,19 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     // User deselects a date
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState)
+        cell.cellSelectionChanged(cellState, date: date)
         print("Cell deselected")
     }
     
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState)
+        cell.cellSelectionChanged(cellState, date: date)
         print("Cell selected")
     }
     
-    // FIXME: - We never call this method
-    
-    // User scrolls to another month
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWith date: NSDate?, endingWithDate: NSDate?) {
-        
-        print("The user scrolled")
-        print(date)
-        print(endingWithDate)
-        if let date = date {
-            delegate?.monthNameLabel.text = date.monthName
-            delegate?.yearLabel.text = String(date.year)
-        }
+    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
+        delegate?.monthNameLabel.text = startDate.monthName
+        delegate?.yearLabel.text = String(startDate.year)
     }
 }
