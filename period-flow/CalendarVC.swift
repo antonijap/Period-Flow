@@ -27,13 +27,20 @@ class CalendarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDataProvider()
         setupCalendar()
+        setupDataProvider()
+        setupLabels()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setupLabels()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     // MARK: - Methods
@@ -55,10 +62,9 @@ class CalendarVC: UIViewController {
     func setupLabels() {
         calendarView.scrollToDate(today)
         if let dataProvider = dataProvider {
+            print("I'm in CalendarVC. Month label is \(dataProvider.monthName)")
             yearLabel.text = dataProvider.year
             monthNameLabel.text = dataProvider.monthName
-            print("\(dataProvider.monthName)")
-            print("\(dataProvider.year)")
         }
     }
 }

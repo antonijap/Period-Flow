@@ -43,6 +43,8 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarVi
         let cell = (cell as! CellView)
         cell.setupCellBeforeDisplay(cellState, date: date)
         
+        
+        // If date belongs to previous or future month, user can't select it until she scrolls to the appropriate month
         if cellState.dateBelongsTo == .ThisMonth {
             cell.userInteractionEnabled = true
         } else {
@@ -65,15 +67,9 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarVi
     }
     
     // User scrolls to another month
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWith date: NSDate?, endingWithDate: NSDate?) {
-        print("In didScrollToDateSegmentStartingWith")
-        if let _ = date, _ = endingWithDate {
-            if let date = date {
-                let monthName = date.monthName
-                let year = String(date.year)
-                self.monthName = monthName
-                self.year = String(year)
-            }
-        }
+    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
+        self.monthName = startDate.monthName
+        self.year = String(startDate.year)
+        print(self.monthName)
     }
 }
