@@ -17,6 +17,7 @@ class CalendarDataProvider: NSObject {
     var calendarView: JTAppleCalendarView!
     var monthName: String!
     var year: String!
+    let today = NSDate.today()
     
     // MARK: - Initializers
     
@@ -48,23 +49,24 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource, JTAppleCalendarVi
             cell.userInteractionEnabled = false
         }
         
-        print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
+//        print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
     }
     
     // User deselects a date
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState)
+        cell.cellSelectionChanged(cellState, date: date)
     }
     
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState)
+        cell.cellSelectionChanged(cellState, date: date)
     }
     
     // User scrolls to another month
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWith date: NSDate?, endingWithDate: NSDate?) {
+        print("In didScrollToDateSegmentStartingWith")
         if let _ = date, _ = endingWithDate {
             if let date = date {
                 let monthName = date.monthName
