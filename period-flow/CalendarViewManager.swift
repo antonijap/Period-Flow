@@ -53,7 +53,10 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         cell.cellSelectionChanged(cellState, date: date)
         print("Cell selected")
         
-        RealmManager.sharedInstance.createPeriodObject(date)
+        //RealmManager.sharedInstance.createPeriodObject(date)
+        //let endDate = RealmManager.sharedInstance.getPeriodForClosestEnd(date)
+        //let startDate = RealmManager.sharedInstance.getPeriodForClosestStart(date)
+        //print("The start date is \(startDate), the end date is \(endDate)")
     }
     
     // User deselects a date

@@ -34,6 +34,8 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupViewManager()
         setupCalendar()
         
+        print(RealmManager.sharedInstance.realm.objects(Period))
+        
     }
     
     override func viewWillAppear(animated: Bool) {

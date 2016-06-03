@@ -10,6 +10,9 @@ import Foundation
 import RealmSwift
 
 class Period: Object {
+    
+    // MARK: - Properties
+    
     var startDate: NSDate?
     var endDate: NSDate?
     

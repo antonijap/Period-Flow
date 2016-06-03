@@ -37,4 +37,44 @@ class RealmManager {
             print(error.debugDescription)
         }
     }
+    
+    func queryAllPeriods() -> Results<Period> {
+        return realm.objects(Period)
+    }
+    
+    func getPeriodForClosestStart(date: NSDate) -> Period {
+        
+        var daysBetween = 0
+        var resultingPeriod = Period()
+        
+        for period in queryAllPeriods() {
+//            let value = abs(daysBetweenDate(period.startDate!, endDate: date))
+//            if value > daysBetween {
+//                daysBetween = value
+//                resultingPeriod = period
+//            }
+        }
+        return resultingPeriod
+    }
+    
+    func getPeriodForClosestEnd(date: NSDate) -> Period {
+        
+        var daysBetween = 0
+        var resultingPeriod = Period()
+        
+        for period in queryAllPeriods() {
+//            let value = abs(daysBetweenDate(period.endDate, endDate: date))
+//            if value > daysBetween {
+//                daysBetween = value
+//                resultingPeriod = period
+//            }
+        }
+        return resultingPeriod
+    }
+    
+    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        return components.day
+    }
 }
