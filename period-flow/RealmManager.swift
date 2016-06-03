@@ -42,39 +42,52 @@ class RealmManager {
         return realm.objects(Period)
     }
     
+    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        return components.day
+    }
+    
     func getPeriodForClosestStart(date: NSDate) -> Period {
         
-        var daysBetween = 0
+        var daysBetween: Int?
         var resultingPeriod = Period()
         
         for period in queryAllPeriods() {
-//            let value = abs(daysBetweenDate(period.startDate!, endDate: date))
-//            if value > daysBetween {
-//                daysBetween = value
-//                resultingPeriod = period
-//            }
+            let value = abs(daysBetweenDate(date, endDate: period.startDate!))
+            if value < daysBetween || daysBetween == nil {
+                daysBetween = value
+                resultingPeriod = period
+            }
         }
         return resultingPeriod
     }
     
     func getPeriodForClosestEnd(date: NSDate) -> Period {
         
-        var daysBetween = 0
+        var daysBetween: Int?
         var resultingPeriod = Period()
         
         for period in queryAllPeriods() {
-//            let value = abs(daysBetweenDate(period.endDate, endDate: date))
-//            if value > daysBetween {
-//                daysBetween = value
-//                resultingPeriod = period
-//            }
+            let value = abs(daysBetweenDate(date, endDate: period.endDate!))
+            print(value)
+            if value < daysBetween || daysBetween == nil {
+                daysBetween = value
+                resultingPeriod = period
+            }
         }
         return resultingPeriod
     }
     
-    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
-        return components.day
+    func getClosestPeriodObject(date: NSDate) -> Period {
+        let closestStartPeriod = getPeriodForClosestStart(date)
+        let closestEndPeriod = getPeriodForClosestEnd(date)
+        
+        let daysBetweenEndPeriod = abs(daysBetweenDate(closestEndPeriod.endDate!, endDate: date))
+        let daysBetweenStartPeriod = abs(daysBetweenDate(closestStartPeriod.startDate!, endDate: date))
+        
+        return daysBetweenStartPeriod > daysBetweenEndPeriod ? closestEndPeriod : closestStartPeriod
     }
+    
+
 }
