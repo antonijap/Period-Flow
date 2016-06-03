@@ -13,5 +13,6 @@ class Period: Object {
     
     // MARK: - Properties
     
-    dynamic var periodDates = [NSDate]()
+    dynamic var startDate: NSDate? = nil
+    dynamic var endDate: NSDate? = nil
 }
