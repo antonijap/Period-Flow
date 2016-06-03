@@ -33,6 +33,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
+        print(RealmManager.sharedInstance.realm.objects(Period))
         
     }
     

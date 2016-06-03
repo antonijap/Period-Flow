@@ -23,9 +23,11 @@ class RealmManager {
     // MARK: - Methods
     
     // Create new period object from date
-    func createPeriodObject(startDate: NSDate) {
+    
+    func createPeriodObject(date: NSDate) {
         let period = Period()
-        period.periodDates = [startDate]
+        period.startDate = date
+        period.endDate = date
         
         do {
             try realm.write {
@@ -36,24 +38,97 @@ class RealmManager {
         }
     }
     
-    // Delete period object
-    func deletePeriodObject(period: Period) {
-        do {
-            try realm.write {
-                realm.delete(period)
+    func queryAllPeriods() -> Results<Period>? {
+        return realm.objects(Period)
+    }
+    
+    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        return components.day
+    }
+    
+    func getPeriodForClosestStart(date: NSDate) -> Period? {
+        
+        var daysBetween: Int?
+        var resultingPeriod: Period?
+        if let periods = queryAllPeriods() {
+            for period in periods {
+                let value = abs(daysBetweenDate(date, endDate: period.startDate!))
+                if value < daysBetween || daysBetween == nil {
+                    daysBetween = value
+                    resultingPeriod = period
+                }
             }
-        } catch let error as NSError {
-            print(error.debugDescription)
+        }
+        return resultingPeriod
+    }
+    
+    func getPeriodForClosestEnd(date: NSDate) -> Period? {
+        
+        var daysBetween: Int?
+        var resultingPeriod: Period?
+        if let periods = queryAllPeriods() {
+            for period in periods {
+                let value = abs(daysBetweenDate(date, endDate: period.endDate!))
+                if value < daysBetween || daysBetween == nil {
+                    daysBetween = value
+                    resultingPeriod = period
+                }
+            }
+        }
+        return resultingPeriod
+    }
+    
+    func getClosestPeriodObject(date: NSDate) -> Period? {
+        guard let closestStartPeriod = getPeriodForClosestStart(date), let closestEndPeriod = getPeriodForClosestEnd(date) else {
+            return nil
+        }
+        
+        let daysBetweenEndPeriod = abs(daysBetweenDate(closestEndPeriod.endDate!, endDate: date))
+        let daysBetweenStartPeriod = abs(daysBetweenDate(closestStartPeriod.startDate!, endDate: date))
+        
+        return daysBetweenStartPeriod > daysBetweenEndPeriod ? closestEndPeriod : closestStartPeriod
+    }
+    
+    func updateOrBeginNewObject(date: NSDate) {
+        if let period = getClosestPeriodObject(date) {
+            let days = daysBetweenDate(period.endDate!, endDate: date)
+            if days > 3 {
+                createPeriodObject(date)
+            } else {
+                updatePeriodObject(period, date: date)
+            }
+        } else {
+            createPeriodObject(date)
         }
     }
     
-    // Update Period dates
-    
-    func updatePeriodDates(date: NSDate) {
-        do {
-            
-        } catch let error as NSError {
-            print(error.debugDescription)
+    func updatePeriodObject(period: Period, date: NSDate) {
+        switch date.compare(period.startDate!) {
+            case .OrderedAscending:
+                do {
+                    try realm.write {
+                        period.startDate = date
+                    }
+                } catch let error as NSError {
+                    print(error.debugDescription)
+                }
+            case .OrderedDescending: break
+            case .OrderedSame: break
+        }
+        
+        switch date.compare(period.endDate!) {
+            case .OrderedAscending: break
+            case .OrderedDescending:
+                do {
+                    try realm.write {
+                        period.endDate = date
+                    }
+                } catch let error as NSError {
+                    print(error.debugDescription)
+            }
+            case .OrderedSame: break
         }
     }
 }

@@ -47,18 +47,22 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         //print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
     }
     
-    // User deselects a date
-    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
-        cell.cellSelectionChanged(cellState, date: date)
-        print("Cell deselected")
-    }
-    
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = (cell as! CellView)
         cell.cellSelectionChanged(cellState, date: date)
         print("Cell selected")
+        
+        RealmManager.sharedInstance.updateOrBeginNewObject(date)
+    }
+    
+    // User deselects a date
+    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+        let cell = (cell as! CellView)
+        cell.cellSelectionChanged(cellState, date: date)
+        print("Cell deselected")
+        
+        
     }
     
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
