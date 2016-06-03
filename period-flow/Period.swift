@@ -2,17 +2,21 @@
 //  Period.swift
 //  period-flow
 //
-//  Created by Steven on 5/31/16.
+//  Created by Steven on 6/2/16.
 //  Copyright © 2016 Antonija Pek. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 class Period: Object {
+    var startDate: NSDate?
+    var endDate: NSDate?
     
-    // MARK: - Properties
+// Specify properties to ignore (Realm won't persist these)
     
-    dynamic var startDate: NSDate? = nil
-    dynamic var endDate: NSDate? = nil
+//  override static func ignoredProperties() -> [String] {
+//    return []
+//  }
+    
 }

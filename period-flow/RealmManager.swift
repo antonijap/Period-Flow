@@ -23,5 +23,18 @@ class RealmManager {
     // MARK: - Methods
     
     // Create new period object from date
-
+    
+    func createPeriodObject(date: NSDate) {
+        let period = Period()
+        period.startDate = date
+        period.endDate = date
+        
+        do {
+            try realm.write {
+                realm.add(period)
+            }
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+    }
 }
