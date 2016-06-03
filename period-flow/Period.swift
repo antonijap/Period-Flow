@@ -13,8 +13,8 @@ class Period: Object {
     
     // MARK: - Properties
     
-    var startDate: NSDate?
-    var endDate: NSDate?
+    dynamic var startDate: NSDate?
+    dynamic var endDate: NSDate?
     
 // Specify properties to ignore (Realm won't persist these)
     
