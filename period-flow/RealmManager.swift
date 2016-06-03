@@ -79,7 +79,7 @@ class RealmManager {
         }
         return resultingPeriod
     }
-    
+
     func getClosestPeriodObject(date: NSDate) -> Period? {
         guard let closestStartPeriod = getPeriodForClosestStart(date), let closestEndPeriod = getPeriodForClosestEnd(date) else {
             return nil

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,6 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPH-81-pOJ" userLabel="today" customClass="SelectionView" customModule="period_flow" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    <color key="backgroundColor" red="0.94509803921568625" green="0.96862745098039216" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-2m-9FL" userLabel="selectedDay" customClass="SelectionView" customModule="period_flow" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,14 +38,18 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oAd-2m-9FL" secondAttribute="trailing" id="07s-rZ-alb"/>
+                <constraint firstAttribute="bottom" secondItem="wPH-81-pOJ" secondAttribute="bottom" id="7Mg-fk-yBj"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BdB-gJ-ZpK"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="E20-8u-FUt"/>
                 <constraint firstAttribute="bottom" secondItem="oAd-2m-9FL" secondAttribute="bottom" id="LyR-lF-y9F"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="OPO-ZK-au6"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PqZ-g1-9NK"/>
                 <constraint firstItem="x63-94-BiS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UTx-VF-ChN"/>
+                <constraint firstAttribute="trailing" secondItem="wPH-81-pOJ" secondAttribute="trailing" id="Xju-yX-r0i"/>
                 <constraint firstItem="x63-94-BiS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yc8-j0-zKC"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aQC-wf-Td9"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="guE-Lw-GCM"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oUj-gj-m2e"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQM-k2-Uda"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -54,8 +62,9 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="dateLabel" destination="x63-94-BiS" id="xAa-aw-Evy"/>
-                <outlet property="selectedDay" destination="oAd-2m-9FL" id="Gkl-Z4-SPg"/>
+                <outlet property="dateLabel" destination="x63-94-BiS" id="vD7-Ik-b98"/>
+                <outlet property="selectedDayView" destination="oAd-2m-9FL" id="uPS-rr-Jdc"/>
+                <outlet property="todayView" destination="wPH-81-pOJ" id="cBH-tK-2gA"/>
             </connections>
             <point key="canvasLocation" x="566.5" y="477.5"/>
         </view>
