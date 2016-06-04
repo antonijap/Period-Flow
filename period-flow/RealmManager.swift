@@ -48,7 +48,9 @@ class RealmManager {
     
     func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        let start = calendar.startOfDayForDate(startDate)
+        let end = calendar.startOfDayForDate(endDate)
+        let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
         return components.day
     }
     
@@ -58,6 +60,7 @@ class RealmManager {
         
         var daysBetween: Int?
         var resultingPeriod: Period?
+        
         if let periods = queryAllPeriods() {
             for period in periods {
                 let value = abs(daysBetweenDate(date, endDate: period.startDate!))
@@ -106,7 +109,7 @@ class RealmManager {
     func updateOrBeginNewObject(date: NSDate) {
         if let period = getClosestPeriodObject(date) {
             let days = daysBetweenDate(period.endDate!, endDate: date)
-            if days > 3 {
+            if days > 9 {
                 createPeriodObject(date)
             } else {
                 updatePeriodObject(period, date: date)
