@@ -38,15 +38,21 @@ class RealmManager {
         }
     }
     
+    // Query all period objects in realm
+    
     func queryAllPeriods() -> Results<Period>? {
         return realm.objects(Period)
     }
+    
+    // Get days between two NSDates as Int
     
     func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
         return components.day
     }
+    
+    // Get period object with closest start date to date
     
     func getPeriodForClosestStart(date: NSDate) -> Period? {
         
@@ -64,6 +70,8 @@ class RealmManager {
         return resultingPeriod
     }
     
+    // Get period object with closest end date to date
+    
     func getPeriodForClosestEnd(date: NSDate) -> Period? {
         
         var daysBetween: Int?
@@ -79,6 +87,8 @@ class RealmManager {
         }
         return resultingPeriod
     }
+    
+    // Get closest period object
 
     func getClosestPeriodObject(date: NSDate) -> Period? {
         guard let closestStartPeriod = getPeriodForClosestStart(date), let closestEndPeriod = getPeriodForClosestEnd(date) else {
@@ -90,6 +100,8 @@ class RealmManager {
         
         return daysBetweenStartPeriod > daysBetweenEndPeriod ? closestEndPeriod : closestStartPeriod
     }
+    
+    // Determine whether or not to update object or create a new one
     
     func updateOrBeginNewObject(date: NSDate) {
         if let period = getClosestPeriodObject(date) {
@@ -103,6 +115,8 @@ class RealmManager {
             createPeriodObject(date)
         }
     }
+    
+    // Update period object
     
     func updatePeriodObject(period: Period, date: NSDate) {
         switch date.compare(period.startDate!) {
