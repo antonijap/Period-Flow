@@ -23,6 +23,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     var dataProvider: CalendarDataProvider?
     var viewManager: CalendarViewManager?
     let today = NSDate.today()
+    var selectedDates = [NSDate]()
     
     // MARK: - View Life Cycle
     
@@ -72,7 +73,8 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         print(periods)
         
         for period in periods {
-            calendarView.selectDates(period.assumedDates, triggerSelectionDelegate: false)
+            selectedDates = selectedDates + period.assumedDates
+            calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
         }
     }
 }
