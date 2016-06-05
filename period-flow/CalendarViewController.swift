@@ -73,6 +73,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         
         for period in periods {
             calendarView.selectDates(period.assumedDates, triggerSelectionDelegate: false)
+            print(period.assumedDates)
         }
     }
 }
