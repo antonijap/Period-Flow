@@ -30,7 +30,7 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource {
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, calendar: NSCalendar) {
         let firstDate = 1.years.ago
         let secondDate = 1.years.fromNow
-        let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
+        let aCalendar = NSCalendar.autoupdatingCurrentCalendar() // Properly configure your calendar to your time zone here
         
         return (startDate: firstDate, endDate: secondDate, calendar: aCalendar)
     }

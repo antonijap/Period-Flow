@@ -15,6 +15,7 @@ class Period: Object {
     
     dynamic var startDate: NSDate?
     dynamic var endDate: NSDate?
+    var assumedDates: [NSDate]?
     
 // Specify properties to ignore (Realm won't persist these)
     

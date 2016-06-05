@@ -22,7 +22,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     var dataProvider: CalendarDataProvider?
     var viewManager: CalendarViewManager?
-    
     let today = NSDate.today()
     
     // MARK: - View Life Cycle
@@ -33,7 +32,8 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        print(RealmManager.sharedInstance.realm.objects(Period))
+        displayAllDates() // This will be for selecting days in Calendar, first I need to get all days for selection
+        RealmManager.sharedInstance.assumeDaysBetween()
         
     }
     
@@ -66,6 +66,13 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
+    }
+    
+    // Get all dates from period and display them
+    func displayAllDates() {
+//        let selectedDatesInCalendar = [NSDate]()
+        let periods = RealmManager.sharedInstance.queryAllPeriods()!
+        print(periods)
     }
 }
 

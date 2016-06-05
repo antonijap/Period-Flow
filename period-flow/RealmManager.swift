@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftDate
 
 class RealmManager {
     
@@ -53,7 +54,7 @@ class RealmManager {
         let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
         return components.day
     }
-    
+
     // Get period object with closest start date to date
     
     func getPeriodForClosestStart(date: NSDate) -> Period? {
@@ -146,6 +147,35 @@ class RealmManager {
                     print(error.debugDescription)
             }
             case .OrderedSame: break
+        }
+    }
+    
+    // Assume period days between start and end date
+    
+    func assumeDaysBetween() {
+        let periods = queryAllPeriods()
+        
+        if let periods = periods {
+            for period in periods {
+                var assumedDates = [NSDate]()
+                let date = period.startDate!
+                let endDate = period.endDate!
+                
+                while date < endDate {
+                    let assumedDate = date + 1.days
+                    assumedDates.append(assumedDate)
+                }
+                
+                do {
+                    try realm.write {
+                        period.assumedDates = assumedDates
+                    }
+                } catch let error as NSError {
+                    print(error.debugDescription)
+                }
+                
+                print(assumedDates)
+            }
         }
     }
 }
