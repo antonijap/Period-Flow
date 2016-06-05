@@ -28,7 +28,7 @@ class Period: Object {
                 dates.append(startDate)
             } else {
                 var nextDate = startDate
-                
+                dates.append(startDate)
                 repeat {
                     nextDate = nextDate + 1.days
                     dates.append(nextDate)
