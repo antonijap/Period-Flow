@@ -33,8 +33,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupViewManager()
         setupCalendar()
         displayAllDates() // This will be for selecting days in Calendar, first I need to get all days for selection
-        RealmManager.sharedInstance.assumeDaysBetween()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,9 +68,12 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     // Get all dates from period and display them
     func displayAllDates() {
-//        let selectedDatesInCalendar = [NSDate]()
         let periods = RealmManager.sharedInstance.queryAllPeriods()!
         print(periods)
+        
+        for period in periods {
+            calendarView.selectDates(period.assumedDates, triggerSelectionDelegate: false)
+        }
     }
 }
 

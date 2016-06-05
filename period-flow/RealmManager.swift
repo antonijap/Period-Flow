@@ -149,33 +149,4 @@ class RealmManager {
             case .OrderedSame: break
         }
     }
-    
-    // Assume period days between start and end date
-    
-    func assumeDaysBetween() {
-        let periods = queryAllPeriods()
-        
-        if let periods = periods {
-            for period in periods {
-                var assumedDates = [NSDate]()
-                let date = period.startDate!
-                let endDate = period.endDate!
-                
-                while date < endDate {
-                    let assumedDate = date + 1.days
-                    assumedDates.append(assumedDate)
-                }
-                
-                do {
-                    try realm.write {
-                        period.assumedDates = assumedDates
-                    }
-                } catch let error as NSError {
-                    print(error.debugDescription)
-                }
-                
-                print(assumedDates)
-            }
-        }
-    }
 }
