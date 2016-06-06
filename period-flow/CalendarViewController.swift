@@ -33,7 +33,10 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        displayAllDates() // This will be for selecting days in Calendar, first I need to get all days for selection
+        if let viewManager = viewManager {
+            // This will be for selecting days in Calendar, first I need to get all days for selection
+            viewManager.displayAllDates()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,19 +68,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
-    }
-    
-    // Get all dates from period and display them
-    func displayAllDates() {
-        let periods = RealmManager.sharedInstance.queryAllPeriods()!
-        print(periods)
-        
-        for period in periods {
-            selectedDates = selectedDates + period.assumedDates
-            print("Assumed dates are: \(period.assumedDates)")
-        }
-        
-        calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
     }
 }
 

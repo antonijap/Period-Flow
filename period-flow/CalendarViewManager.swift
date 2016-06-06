@@ -70,4 +70,17 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         delegate?.monthNameLabel.text = startDate.monthName
         delegate?.yearLabel.text = String(startDate.year)
     }
+    
+    // Get all dates from period and display them
+    func displayAllDates() {
+        let periods = RealmManager.sharedInstance.queryAllPeriods()!
+        print(periods)
+        
+        for period in periods {
+            selectedDates = selectedDates + period.assumedDates
+            print("Assumed dates are: \(period.assumedDates)")
+        }
+        
+        calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
+    }
 }
