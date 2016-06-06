@@ -23,40 +23,30 @@ class RealmManager {
     
     // MARK: - Methods
     
-    // Create new period object from date
+    // MARK: Querying objects in Realm
     
-    func createPeriodObject(date: NSDate) {
-        let period = Period()
-        period.startDate = date
-        period.endDate = date
-        
-        do {
-            try realm.write {
-                realm.add(period)
-            }
-        } catch let error as NSError {
-            print(error.debugDescription)
-        }
-    }
-    
-    // Query all period objects in realm
-    
+    /// Query all period objects in realm database
     func queryAllPeriods() -> Results<Period>? {
         return realm.objects(Period)
     }
     
-    // Get days between two NSDates as Int
-    
-    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let start = calendar.startOfDayForDate(startDate)
-        let end = calendar.startOfDayForDate(endDate)
-        let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
-        return components.day
+    /// Get period object that contains specific date
+    func periodThatContains(date: NSDate) -> Period? {
+        
+        let results = queryAllPeriods()
+        guard let data = results else {
+            return nil
+        }
+        
+        for period in data {
+            if period.assumedDates.contains(date) {
+                return period
+            }
+        }
+        return nil
     }
     
-    // Get period object with closest start date to date
-    
+    /// Returns period object with closest start date to specified date
     func getPeriodForClosestStart(date: NSDate) -> Period? {
         
         var daysBetween: Int?
@@ -74,8 +64,19 @@ class RealmManager {
         return resultingPeriod
     }
     
-    // Get period object with closest end date to date
+    /// Gets period object closest to the specified date
+    func getClosestPeriodObject(date: NSDate) -> Period? {
+        guard let closestStartPeriod = getPeriodForClosestStart(date), let closestEndPeriod = getPeriodForClosestEnd(date) else {
+            return nil
+        }
+        
+        let daysBetweenEndPeriod = abs(daysBetweenDate(closestEndPeriod.endDate!, endDate: date))
+        let daysBetweenStartPeriod = abs(daysBetweenDate(closestStartPeriod.startDate!, endDate: date))
+        
+        return daysBetweenStartPeriod > daysBetweenEndPeriod ? closestEndPeriod : closestStartPeriod
+    }
     
+    /// Returns period object with closest end date to specified date
     func getPeriodForClosestEnd(date: NSDate) -> Period? {
         
         var daysBetween: Int?
@@ -92,67 +93,43 @@ class RealmManager {
         return resultingPeriod
     }
     
-    // Get closest period object
+    // MARK: Updating Objects in Realm
     
-    func getClosestPeriodObject(date: NSDate) -> Period? {
-        guard let closestStartPeriod = getPeriodForClosestStart(date), let closestEndPeriod = getPeriodForClosestEnd(date) else {
-            return nil
-        }
-        
-        let daysBetweenEndPeriod = abs(daysBetweenDate(closestEndPeriod.endDate!, endDate: date))
-        let daysBetweenStartPeriod = abs(daysBetweenDate(closestStartPeriod.startDate!, endDate: date))
-        
-        return daysBetweenStartPeriod > daysBetweenEndPeriod ? closestEndPeriod : closestStartPeriod
-    }
-    
-    // Determine whether or not to update object or create a new one
-    
-    func updateOrBeginNewObject(date: NSDate) {
-        if let period = getClosestPeriodObject(date) {
-            let days = daysBetweenDate(period.endDate!, endDate: date)
-            if days > 9 {
-                createPeriodObject(date)
-            } else {
-                updatePeriodObject(period, date: date)
+    /// Add period to Realm
+    func addPeriod(period: Period) {
+        do {
+            try realm.write {
+                realm.add(period)
             }
-        } else {
-            createPeriodObject(date)
+        } catch let error as NSError {
+            print(error.debugDescription)
         }
     }
     
-    // Update period object
-    
-    func updatePeriodObject(period: Period, date: NSDate) {
-        switch date.compare(period.startDate!) {
-        case .OrderedAscending:
-            do {
-                try realm.write {
-                    period.startDate = date
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
+    /// Update start date in realm
+    func updateStartDate(period: Period, date: NSDate) {
+        do {
+            try realm.write {
+                period.startDate = date
             }
-        case .OrderedDescending: break
-        case .OrderedSame: break
-        }
-        
-        switch date.compare(period.endDate!) {
-        case .OrderedAscending: break
-        case .OrderedDescending:
-            do {
-                try realm.write {
-                    period.endDate = date
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-        case .OrderedSame: break
+        } catch let error as NSError {
+            print(error.debugDescription)
         }
     }
     
-    // Delete period object
+    /// Update end date of period object in realm
+    func updateEndDate(period: Period, date: NSDate) {
+        do {
+            try realm.write {
+                period.endDate = date
+            }
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+    }
     
-    func deletePeriodObject(period: Period) {
+    /// Deletes period object from Realm
+    func deletePeriod(period: Period) {
         do {
             try realm.write {
                 realm.delete(period)
@@ -162,83 +139,84 @@ class RealmManager {
         }
     }
     
-    // Get period object that contains date
+    // MARK: Determining whether to update, create, or delete objects
     
-    func periodThatContains(date: NSDate) -> Period? {
-        
-        let results = queryAllPeriods()
-        guard let data = results else {
-            return nil
-        }
-        
-        for period in data {
-            if period.assumedDates.contains(date) {
-                return period
-            }
-        }
-        return nil
-    }
-    
-    // Update period object deselect
-    
-    func updatePeriodObjectDeselect(period: Period, date: NSDate) {
-        switch date.compare(period.startDate!) {
-        case .OrderedAscending:
-            do {
-                try realm.write {
-                    period.startDate = date
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-        case .OrderedDescending: break
-        case .OrderedSame:
-            do {
-                try realm.write{
-                    period.startDate = date + 1.days
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-        }
-        
-        switch date.compare(period.endDate!) {
-        case .OrderedAscending: break
-        case .OrderedDescending:
-            do {
-                try realm.write {
-                    period.endDate = date
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-        case .OrderedSame:
-            do {
-                try realm.write{
-                    period.endDate = date - 1.days
-                }
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-        }
-    }
-
-    
-    // Update or delete the period object
-    
+    /// Updates or deletes the period object based on date
     func updateOrDeleteObject(date: NSDate) {
-        
         guard let period = periodThatContains(date) else {
             return
         }
-        print(period)
-
         if period.startDate == period.endDate && date == period.startDate {
-            deletePeriodObject(period)
-            print("Object being deleted")
+            deletePeriod(period)
         } else {
             updatePeriodObjectDeselect(period, date: date)
-            print("Object being updated")
         }
+    }
+    
+    /// Determines whether to update object or to create new one
+    func updateOrBeginNewObject(date: NSDate) {
+        if let period = getClosestPeriodObject(date) {
+            let days = daysBetweenDate(period.endDate!, endDate: date)
+            if days > 9 {
+                createPeriod(date)
+            } else {
+                updatePeriodObjectSelect(period, date: date)
+            }
+        } else {
+            createPeriod(date)
+        }
+    }
+
+    // MARK: Determining how to update an object
+    
+    /// Determines whether it should update the start or end date of period object with new date when cell selected
+    func updatePeriodObjectSelect(period: Period, date: NSDate) {
+        switch date.compare(period.startDate!) {
+            case .OrderedAscending: updateStartDate(period, date: date)
+            case .OrderedDescending: break
+            case .OrderedSame: break
+        }
+        
+        switch date.compare(period.endDate!) {
+            case .OrderedAscending: break
+            case .OrderedDescending: updateEndDate(period, date: date)
+            case .OrderedSame: break
+        }
+    }
+    
+    /// Determines whether it should update the start or end date of period object with new date when cell is deselected
+    func updatePeriodObjectDeselect(period: Period, date: NSDate) {
+        switch date.compare(period.startDate!) {
+            case .OrderedAscending: updateStartDate(period, date: date)
+            case .OrderedDescending: break
+            case .OrderedSame: updateStartDate(period, date: date + 1.days)
+        }
+        
+        switch date.compare(period.endDate!) {
+            case .OrderedAscending: break
+            case .OrderedDescending: updateEndDate(period, date: date)
+            case .OrderedSame: updateEndDate(period, date: date - 1.days)
+        }
+    }
+    
+    // MARK: - Creating new period objects
+    
+    /// Creates new period object from date and add to Realm
+    func createPeriod(date: NSDate) {
+        let period = Period()
+        period.startDate = date
+        period.endDate = date
+        addPeriod(period)
+    }
+
+    // MARK: - Helper Methods
+    
+    /// Gets number of days between two NSDates as Int value
+    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let start = calendar.startOfDayForDate(startDate)
+        let end = calendar.startOfDayForDate(endDate)
+        let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
+        return components.day
     }
 }

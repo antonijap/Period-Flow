@@ -33,13 +33,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        if let viewManager = viewManager {
-            // This will be for selecting days in Calendar, first I need to get all days for selection
-            viewManager.displayAllDates()
-        }
-        let results = RealmManager.sharedInstance.queryAllPeriods()
-        print(results)
-        
+        viewManager?.displayAllDates()
     }
     
     override func viewWillAppear(animated: Bool) {
