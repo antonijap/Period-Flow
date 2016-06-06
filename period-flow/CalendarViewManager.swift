@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
+
 protocol CalendarViewManagerDelegate {
     var calendarView: JTAppleCalendarView! {get set}
     var yearLabel: UILabel! {get set}
@@ -55,7 +56,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         print("Cell selected")
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
-        //updateCalendarUI()
+        updateCalendarUI()
     }
     
     // User deselects a date
@@ -82,5 +83,19 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         }
         
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
+    }
+    
+    func updateCalendarUI() {
+        selectedDates = [] // Empty selected dates
+        
+        let periods = RealmManager.sharedInstance.queryAllPeriods()!
+        print(periods)
+        
+        for period in periods {
+            selectedDates = selectedDates + period.assumedDates // Populate them again with new updated values
+            print("Assumed dates are: \(period.assumedDates)")
+        }
+        //calendarView.selectDates(selectedDates, triggerSelectionDelegate: false) // Display Dates
+        calendarView.reloadData() // reload Calendar
     }
 }

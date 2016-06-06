@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthNameLabel: UILabel!
+
     
     // MARK: - Properties
     
@@ -33,16 +34,13 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        if let viewManager = viewManager {
-            // This will be for selecting days in Calendar, first I need to get all days for selection
-            viewManager.displayAllDates()
-        }
+        // This will be for selecting days in Calendar, first I need to get all days for selection
+        viewManager?.displayAllDates()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         calendarView.scrollToDate(today)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
