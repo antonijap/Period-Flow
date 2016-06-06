@@ -17,9 +17,6 @@
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
 		6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
-		6870C4971CFDE5A900ACFFF2 /* Bariol_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */; };
-		6870C4981CFDE5A900ACFFF2 /* Bariol_Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */; };
-		6870C4991CFDE5A900ACFFF2 /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */; };
 		B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */; };
 		B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */; };
 		B0B84CB91D01200800804FDE /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84CB81D01200800804FDE /* Period.swift */; };
@@ -39,9 +36,6 @@
 		6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.otf; sourceTree = "<group>"; };
-		6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Light.otf; sourceTree = "<group>"; };
-		6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.debug.xcconfig"; sourceTree = "<group>"; };
 		B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataProvider.swift; sourceTree = "<group>"; };
 		B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
@@ -136,9 +130,6 @@
 				685B92A71CFDF313003452CE /* Color.swift */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */,
-				6870C4941CFDE5A900ACFFF2 /* Bariol_Bold.otf */,
-				6870C4951CFDE5A900ACFFF2 /* Bariol_Light.otf */,
-				6870C4961CFDE5A900ACFFF2 /* Bariol_Regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -242,12 +233,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
-				6870C4981CFDE5A900ACFFF2 /* Bariol_Light.otf in Resources */,
 				6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */,
 				685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */,
-				6870C4991CFDE5A900ACFFF2 /* Bariol_Regular.otf in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
-				6870C4971CFDE5A900ACFFF2 /* Bariol_Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
