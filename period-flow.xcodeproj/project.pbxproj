@@ -17,6 +17,9 @@
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
 		6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
+		68E843101D05F45700224BC4 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430D1D05F45700224BC4 /* SF-UI-Text-Bold.otf */; };
+		68E843111D05F45700224BC4 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430E1D05F45700224BC4 /* SF-UI-Text-Light.otf */; };
+		68E843121D05F45700224BC4 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430F1D05F45700224BC4 /* SF-UI-Text-Regular.otf */; };
 		B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */; };
 		B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */; };
 		B0B84CB91D01200800804FDE /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84CB81D01200800804FDE /* Period.swift */; };
@@ -36,6 +39,9 @@
 		6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68E8430D1D05F45700224BC4 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
+		68E8430E1D05F45700224BC4 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
+		68E8430F1D05F45700224BC4 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.debug.xcconfig"; sourceTree = "<group>"; };
 		B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataProvider.swift; sourceTree = "<group>"; };
 		B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
@@ -127,11 +133,22 @@
 		6870C4931CFDE58B00ACFFF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				68E8430C1D05F41600224BC4 /* Fonts */,
 				685B92A71CFDF313003452CE /* Color.swift */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		68E8430C1D05F41600224BC4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				68E8430D1D05F45700224BC4 /* SF-UI-Text-Bold.otf */,
+				68E8430E1D05F45700224BC4 /* SF-UI-Text-Light.otf */,
+				68E8430F1D05F45700224BC4 /* SF-UI-Text-Regular.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		6E98FF3ED6AB2A869C30D15D /* Pods */ = {
@@ -232,9 +249,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E843101D05F45700224BC4 /* SF-UI-Text-Bold.otf in Resources */,
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
 				6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */,
 				685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */,
+				68E843111D05F45700224BC4 /* SF-UI-Text-Light.otf in Resources */,
+				68E843121D05F45700224BC4 /* SF-UI-Text-Regular.otf in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
