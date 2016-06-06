@@ -22,6 +22,7 @@ class CalendarViewManager: NSObject {
     
     var calendarView: JTAppleCalendarView!
     var delegate: CalendarViewManagerDelegate?
+    var selectedDates = [NSDate]()
     
     // MARK: - Initializers
     
@@ -54,6 +55,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         print("Cell selected")
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
+        //updateCalendarUI()
     }
     
     // User deselects a date
@@ -61,8 +63,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         let cell = (cell as! CellView)
         cell.cellSelectionChanged(cellState, date: date)
         print("Cell deselected")
-        
-        
+ 
     }
     
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
