@@ -45,32 +45,28 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         } else {
             cell.userInteractionEnabled = false
         }
-        
         //print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
     }
     
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        
         let cell = cell as! CellView
-        
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
-        updateCalendarUI()
+        updateUIForSelection()
     }
     
     // User deselects a date
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        
         let cell = cell as! CellView
-        
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateCalendarUI()
     }
     
+    // Set month name label and year label
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
         delegate?.monthNameLabel.text = startDate.monthName
         delegate?.yearLabel.text = String(startDate.year)
@@ -85,25 +81,39 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             selectedDates = selectedDates + period.assumedDates
             print("Assumed dates are: \(period.assumedDates)")
         }
-        
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
     }
     
-    func updateCalendarUI() {
-        selectedDates = [] // Empty selected dates
-        let alreadySelectedDates = calendarView.selectedDates
-        calendarView.selectDates(alreadySelectedDates, triggerSelectionDelegate: false)
-
-        let periods = RealmManager.sharedInstance.queryAllPeriods()!
-        print(periods)
-        
-        for period in periods {
-            selectedDates = selectedDates + period.assumedDates // Populate them again with new updated values
-            print("Assumed dates are: \(period.assumedDates)")
+    // Update UI when a date is selected
+    func updateUIForSelection() {
+        var datesToSelect = [NSDate]()
+        let queryResults = RealmManager.sharedInstance.queryAllPeriods()
+        if let periods = queryResults {
+            for period in periods {
+                datesToSelect += period.assumedDates.filter { date in
+                    calendarView.selectedDates.contains(date) != true
+                }
+            }
+            calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
+            calendarView.reloadData()
         }
         
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: true) // Display Dates
         calendarView.reloadData() // reload Calendar
         
     }
+    
+    // Update UI when a date is deselected
+    func updateUIForDeselection() {
+        var selectedDates = Set<NSDate>(calendarView.selectedDates)
+        let queryResults = RealmManager.sharedInstance.queryAllPeriods()
+        if let periods = queryResults {
+            for period in periods {
+                selectedDates.subtractInPlace(period.assumedDates)
+            }
+        }
+        calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
+        calendarView.reloadData()
+    }
+
 }
