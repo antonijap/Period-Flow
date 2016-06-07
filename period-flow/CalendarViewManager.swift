@@ -35,7 +35,7 @@ class CalendarViewManager: NSObject {
 
 extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
-    // Rendering all dates
+    // Rendering all dates, reloadCalendar() reloads .ThisMonth
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         let cell = (cell as! CellView)
         cell.setupCellBeforeDisplay(cellState, date: date)
@@ -87,7 +87,9 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     func updateCalendarUI() {
         selectedDates = [] // Empty selected dates
-        
+        let alreadySelectedDates = calendarView.selectedDates
+        calendarView.selectDates(alreadySelectedDates, triggerSelectionDelegate: false)
+
         let periods = RealmManager.sharedInstance.queryAllPeriods()!
         print(periods)
         
@@ -95,7 +97,9 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             selectedDates = selectedDates + period.assumedDates // Populate them again with new updated values
             print("Assumed dates are: \(period.assumedDates)")
         }
-        //calendarView.selectDates(selectedDates, triggerSelectionDelegate: false) // Display Dates
+        
+        calendarView.selectDates(selectedDates, triggerSelectionDelegate: false) // Display Dates
         calendarView.reloadData() // reload Calendar
+        
     }
 }
