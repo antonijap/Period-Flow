@@ -168,7 +168,7 @@ class RealmManager {
     }
     
     /// Determines whether to update start date or end date of deselected period
-    func updateStartOrEnd(start1: NSDate, end1: NSDate, start2: NSDate, end2: NSDate) -> Bool {
+    func updateStartDate(start1: NSDate, end1: NSDate, start2: NSDate, end2: NSDate) -> Bool {
         let value1 = abs(daysBetweenDate(start1, endDate: end1))
         let value2 = abs(daysBetweenDate(start2, endDate: end2))
         return value1 < value2
@@ -194,7 +194,7 @@ class RealmManager {
     
     /// Determines whether it should update the start or end date of period object with new date when cell is deselected
     func updatePeriodObjectDeselect(period: Period, date: NSDate) {
-        if updateStartOrEnd(period.startDate!, end1: date, start2: period.endDate!, end2: date) {
+        if updateStartDate(period.startDate!, end1: date, start2: period.endDate!, end2: date) {
                 switch date.compare(period.startDate!) {
                 case .OrderedAscending: break
                 case .OrderedDescending: updateStartDate(period, date: date + 1.days)
