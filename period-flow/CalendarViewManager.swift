@@ -68,7 +68,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
-        
+        updateCalendarUI()
     }
     
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
@@ -102,7 +102,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             print("Assumed dates are: \(period.assumedDates)")
         }
         
-        calendarView.selectDates(selectedDates, triggerSelectionDelegate: false) // Display Dates
+        calendarView.selectDates(selectedDates, triggerSelectionDelegate: true) // Display Dates
         calendarView.reloadData() // reload Calendar
         
     }
