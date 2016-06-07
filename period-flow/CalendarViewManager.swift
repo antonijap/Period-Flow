@@ -56,7 +56,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         print("Cell selected")
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
-        updateCalendarUI()
+//        updateCalendarUI()
     }
     
     // User deselects a date
