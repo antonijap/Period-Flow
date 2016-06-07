@@ -91,7 +91,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
         if let periods = queryResults {
             for period in periods {
-                datesToSelect = period.assumedDates.filter { date in
+                datesToSelect += period.assumedDates.filter { date in
                     calendarView.selectedDates.contains(date) != true
                 }
             }
