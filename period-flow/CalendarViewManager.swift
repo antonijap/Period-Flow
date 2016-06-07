@@ -37,7 +37,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     // Rendering all dates, reloadCalendar() reloads .ThisMonth
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
-        let cell = (cell as! CellView)
+        let cell = cell as! CellView
         cell.setupCellBeforeDisplay(cellState, date: date)
         
         if cellState.dateBelongsTo == .ThisMonth {
@@ -51,19 +51,22 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     // User selects a date
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
+        
+        let cell = cell as! CellView
+        
         cell.cellSelectionChanged(cellState, date: date)
-        print("Cell selected")
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
     }
     
     // User deselects a date
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
+        
+        let cell = cell as! CellView
+        
         cell.cellSelectionChanged(cellState, date: date)
-        print("Cell deselected")
- 
+        
+        RealmManager.sharedInstance.updateOrDeleteObject(date)
     }
     
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
@@ -73,8 +76,8 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     // Get all dates from period and display them
     func displayAllDates() {
+        
         let periods = RealmManager.sharedInstance.queryAllPeriods()!
-        print(periods)
         
         for period in periods {
             selectedDates = selectedDates + period.assumedDates
