@@ -57,6 +57,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
+        updateCalendarUI()
     }
     
     // User deselects a date
@@ -67,6 +68,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
+        
     }
     
     func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
