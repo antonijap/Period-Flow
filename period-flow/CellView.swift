@@ -16,6 +16,7 @@ class CellView: JTAppleDayCellView {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet weak var selectedDayView: SelectionView!
     @IBOutlet weak var todayView: SelectionView!
+    @IBOutlet weak var predictionDay: PredictionView!
     
     // MARK: - Properties
     
@@ -43,9 +44,13 @@ class CellView: JTAppleDayCellView {
         if cellState.isSelected  {
             selectedDayView.hidden = false
             dateLabel.textColor = Color.white
-        } else {
+        } else if cellState.isSelected == false {
             selectedDayView.hidden = true
             configureTextColor(cellState, date: date)
+        } else if cellState.dateBelongsTo == .PreviousMonthWithinBoundary && cellState.isSelected {
+            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.2).CGColor
+        } else if cellState.dateBelongsTo == .FollowingMonthWithinBoundary && cellState.isSelected {
+            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.2).CGColor
         }
     }
     
@@ -64,6 +69,15 @@ class CellView: JTAppleDayCellView {
         } else {
             selectedDayView.hidden = true
             dateLabel.textColor = Color.grey
+        }
+    }
+    
+    /// Display red border on a date that predict future period
+    func displayPrediction(isBleeding: Bool){
+        if isBleeding == true {
+            predictionDay.hidden = false
+        } else {
+            predictionDay.hidden = true
         }
     }
 }

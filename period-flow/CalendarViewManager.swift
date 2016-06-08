@@ -45,7 +45,18 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         } else {
             cell.userInteractionEnabled = false
         }
-        //print("Date: \(date.toString(DateFormat.Custom("dd.MM.YYYY."))!) and cellState is: \(cellState)")
+        
+        // Display future period
+        let periods = RealmManager.sharedInstance.queryAllPeriods()
+        if let periods = periods {
+            for period in periods {
+                if period.predictionDate == date {
+                    cell.displayPrediction(true)
+                } else {
+                    cell.displayPrediction(false)
+                }
+            }
+        }
     }
     
     // User selects a date
@@ -63,7 +74,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         cell.cellSelectionChanged(cellState, date: date)
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
-        updateCalendarUI()
+        updateUIForDeselection()
     }
     
     // Set month name label and year label
@@ -72,7 +83,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         delegate?.yearLabel.text = String(startDate.year)
     }
     
-    // Get all dates from period and display them
+    /// Get all dates from period and display them
     func displayAllDates() {
         
         let periods = RealmManager.sharedInstance.queryAllPeriods()!
@@ -84,7 +95,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
     }
     
-    // Update UI when a date is selected
+    /// Update UI when a date is selected
     func updateUIForSelection() {
         var datesToSelect = [NSDate]()
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
@@ -97,13 +108,9 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
             calendarView.reloadData()
         }
-        
-        calendarView.selectDates(selectedDates, triggerSelectionDelegate: true) // Display Dates
-        calendarView.reloadData() // reload Calendar
-        
     }
     
-    // Update UI when a date is deselected
+    /// Update UI when a date is deselected
     func updateUIForDeselection() {
         var selectedDates = Set<NSDate>(calendarView.selectedDates)
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
@@ -115,5 +122,4 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
         calendarView.reloadData()
     }
-
 }

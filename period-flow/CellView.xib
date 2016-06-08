@@ -23,6 +23,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uym-sD-4Yb" userLabel="predictionDay" customClass="PredictionView" customModule="period_flow" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x63-94-BiS">
                     <rect key="frame" x="28" y="52" width="94" height="47"/>
                     <constraints>
@@ -37,6 +40,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oAd-2m-9FL" secondAttribute="trailing" id="07s-rZ-alb"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1Re-y9-2nt"/>
                 <constraint firstAttribute="bottom" secondItem="wPH-81-pOJ" secondAttribute="bottom" id="7Mg-fk-yBj"/>
                 <constraint firstItem="wPH-81-pOJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BdB-gJ-ZpK"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="E20-8u-FUt"/>
@@ -48,8 +52,11 @@
                 <constraint firstItem="x63-94-BiS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yc8-j0-zKC"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aQC-wf-Td9"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="guE-Lw-GCM"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nf5-ax-ON8"/>
                 <constraint firstItem="wPH-81-pOJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oUj-gj-m2e"/>
                 <constraint firstItem="oAd-2m-9FL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQM-k2-Uda"/>
+                <constraint firstAttribute="bottom" secondItem="uym-sD-4Yb" secondAttribute="bottom" id="tNi-WL-NDC"/>
+                <constraint firstAttribute="trailing" secondItem="uym-sD-4Yb" secondAttribute="trailing" id="xce-Yh-5tb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -62,6 +69,7 @@
             </variation>
             <connections>
                 <outlet property="dateLabel" destination="x63-94-BiS" id="vD7-Ik-b98"/>
+                <outlet property="predictionDay" destination="uym-sD-4Yb" id="CnN-tw-d2D"/>
                 <outlet property="selectedDayView" destination="oAd-2m-9FL" id="uPS-rr-Jdc"/>
                 <outlet property="todayView" destination="wPH-81-pOJ" id="cBH-tK-2gA"/>
             </connections>

@@ -16,6 +16,7 @@ class Period: Object {
     
     dynamic var startDate: NSDate?
     dynamic var endDate: NSDate?
+    dynamic var cycleDays = 27
     
     // Populates an array of dates in between start and end date of object
     var assumedDates: [NSDate] {
@@ -36,6 +37,14 @@ class Period: Object {
             }
         }
         return dates
+    }
+    
+    var predictionDate: NSDate {
+        if let startDate = startDate {
+            let futureDate = startDate + cycleDays.days
+            return futureDate
+        }
+        return NSDate()
     }
     
 // Specify properties to ignore (Realm won't persist these)

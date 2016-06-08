@@ -17,6 +17,8 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthNameLabel: UILabel!
+    @IBOutlet weak var averageCycleDaysLabel: UILabel!
+    @IBOutlet weak var daysUntilNewxtPeriodLabel: UILabel!
 
     
     // MARK: - Properties
@@ -66,6 +68,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
+        
     }
 }
 

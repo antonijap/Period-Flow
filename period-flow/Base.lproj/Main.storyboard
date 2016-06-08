@@ -52,7 +52,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="150" width="375" height="353"/>
+                                <rect key="frame" x="4" y="150" width="367" height="353"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="353" id="lW9-3w-xNn"/>
                                 </constraints>
@@ -151,6 +151,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="4fe-Z2-n2b"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZo-eX-ETZ" userLabel="monthName">
                                 <rect key="frame" x="20" y="61" width="293" height="46"/>
@@ -165,9 +168,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" id="9t1-AG-Vtj"/>
+                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" constant="4" id="9t1-AG-Vtj"/>
                             <constraint firstItem="cVH-rO-syK" firstAttribute="top" secondItem="qU7-gk-Gmd" secondAttribute="bottom" constant="1" id="BNh-uk-amP"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D2U-p8-sL0"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="D2U-p8-sL0"/>
                             <constraint firstAttribute="trailing" secondItem="zYk-Yj-kQQ" secondAttribute="trailing" id="Dgw-ej-Lmo"/>
                             <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="GVt-kL-Gzr"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PaF-h2-l0o"/>
@@ -198,7 +201,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="averageCycleDaysLabel" destination="qU7-gk-Gmd" id="ase-ff-ksS"/>
                         <outlet property="calendarView" destination="Mpl-TT-1Rd" id="b4r-NI-wof"/>
+                        <outlet property="daysUntilNewxtPeriodLabel" destination="MWg-fu-251" id="x01-cC-gfP"/>
                         <outlet property="monthNameLabel" destination="KZo-eX-ETZ" id="M66-jp-hM4"/>
                         <outlet property="yearLabel" destination="0Nd-xl-GqP" id="FvF-5t-S8g"/>
                     </connections>
