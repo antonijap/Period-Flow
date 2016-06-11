@@ -26,7 +26,7 @@ class CellView: JTAppleDayCellView {
     
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
         dateLabel.text = cellState.text
-
+        predictionDay.hidden = true
         configureTextColor(cellState, date: date)
         configureBackgroundColor(cellState, date: date)
         configureTodayView(date)

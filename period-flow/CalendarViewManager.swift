@@ -66,7 +66,6 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateUIForDeselection()
-        
     }
     
     // Set month name label and year label
@@ -108,6 +107,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         if let periods = queryResults {
             for period in periods {
                 selectedDates.subtractInPlace(period.assumedDates)
+                
             }
         }
         calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
