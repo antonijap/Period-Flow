@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-UI-Text-Light.otf">
@@ -31,167 +32,205 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
                                 <rect key="frame" x="20" y="38" width="100" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="F0Z-HD-5D7"/>
-                                    <constraint firstAttribute="height" constant="21" id="I1h-uU-IpQ"/>
+                                    <constraint firstAttribute="width" constant="100" id="I5P-RH-bvN"/>
+                                    <constraint firstAttribute="height" constant="21" id="wQF-Vj-WQa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                 <color key="textColor" red="0.49019607843137253" green="0.58823529411764708" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-Yj-kQQ" userLabel="googleAds">
-                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                 <color key="backgroundColor" red="0.92846554487179478" green="0.92846554487179478" blue="0.92846554487179478" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hUX-We-DBb"/>
-                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="4" y="150" width="367" height="353"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="353" id="lW9-3w-xNn"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVERAGE CYCLE DAYS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVH-rO-syK" userLabel="label">
-                                <rect key="frame" x="220" y="571" width="100" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="gog-e8-Oy8"/>
-                                    <constraint firstAttribute="width" constant="100" id="rZQ-bh-OXK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
-                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS UNTIL NEXT PERIOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHa-cA-Xvf" userLabel="label">
-                                <rect key="frame" x="55" y="571" width="100" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="8DV-XJ-3TD"/>
-                                    <constraint firstAttribute="width" constant="100" id="LH7-7d-gSh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
-                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-fu-251" userLabel="daysUntilNewxPeriod">
-                                <rect key="frame" x="41" y="511" width="128" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="5dw-ii-3ZV"/>
-                                    <constraint firstAttribute="height" constant="62" id="OON-su-Q4p"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="65"/>
-                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU7-gk-Gmd" userLabel="cycleDays">
-                                <rect key="frame" x="206" y="508" width="128" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="bG0-kZ-Sct"/>
-                                    <constraint firstAttribute="height" constant="62" id="be3-KQ-hMV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="65"/>
-                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F4O-It-wUG">
+                                <rect key="frame" x="20" y="481" width="560" height="65"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1zE-vn-HiQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-fu-251" userLabel="daysUntilNewxPeriod">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="128" id="5dw-ii-3ZV"/>
+                                                    <constraint firstAttribute="height" constant="62" id="OON-su-Q4p"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="45"/>
+                                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="5dw-ii-3ZV"/>
+                                                        <exclude reference="OON-su-Q4p"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS UNTIL NEXT PERIOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OHa-cA-Xvf" userLabel="label">
+                                                <rect key="frame" x="0.0" y="54" width="275" height="11"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="37" id="8DV-XJ-3TD"/>
+                                                    <constraint firstAttribute="width" constant="100" id="LH7-7d-gSh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="9"/>
+                                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="8DV-XJ-3TD"/>
+                                                        <exclude reference="LH7-7d-gSh"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2i6-lg-e5a">
+                                        <rect key="frame" x="285" y="0.0" width="275" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qU7-gk-Gmd" userLabel="cycleDays">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="128" id="bG0-kZ-Sct"/>
+                                                    <constraint firstAttribute="height" constant="62" id="be3-KQ-hMV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="45"/>
+                                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="bG0-kZ-Sct"/>
+                                                        <exclude reference="be3-KQ-hMV"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVERAGE CYCLE DAYS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cVH-rO-syK" userLabel="label">
+                                                <rect key="frame" x="0.0" y="54" width="275" height="11"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="37" id="gog-e8-Oy8"/>
+                                                    <constraint firstAttribute="width" constant="100" id="rZQ-bh-OXK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="9"/>
+                                                <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="gog-e8-Oy8"/>
+                                                        <exclude reference="rZQ-bh-OXK"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-RV-G0r" userLabel="menuButton">
-                                <rect key="frame" x="336" y="38" width="19" height="22"/>
+                                <rect key="frame" x="561" y="38" width="19" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="19" id="a8l-gu-UgS"/>
-                                    <constraint firstAttribute="height" constant="22" id="oi4-I1-ckb"/>
+                                    <constraint firstAttribute="width" constant="19" id="eh3-qQ-2sM"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="Menu Icon"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-g0-3TN" userLabel="Day Labels">
-                                <rect key="frame" x="0.0" y="133" width="375" height="15"/>
+                                <rect key="frame" x="10" y="133" width="580" height="15"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBJ-vf-L5D">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607843137253" green="0.58823529411764708" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WI-jU-lf7">
-                                        <rect key="frame" x="54" y="0.0" width="53" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="83" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-6D-upd">
-                                        <rect key="frame" x="107" y="0.0" width="54" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="166" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwE-q1-rh5">
-                                        <rect key="frame" x="161" y="0.0" width="53" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="249" y="0.0" width="82" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnh-C5-eTf">
-                                        <rect key="frame" x="214" y="0.0" width="54" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="331" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prW-9v-NYO">
-                                        <rect key="frame" x="268" y="0.0" width="53" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="414" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1he-XB-wve">
-                                        <rect key="frame" x="321" y="0.0" width="54" height="15"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                                        <rect key="frame" x="497" y="0.0" width="83" height="15"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="4fe-Z2-n2b"/>
-                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZo-eX-ETZ" userLabel="monthName">
                                 <rect key="frame" x="20" y="61" width="293" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="293" id="FR4-ec-6Ba"/>
-                                    <constraint firstAttribute="height" constant="46" id="qaV-NM-Tmj"/>
+                                    <constraint firstAttribute="width" constant="293" id="5A9-XF-HPz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="40"/>
                                 <color key="textColor" red="0.49019607840000001" green="0.58823529409999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="10" y="150" width="580" height="323"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="353" id="cFh-eP-63g"/>
+                                    <constraint firstAttribute="height" constant="353" id="lW9-3w-xNn"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cFh-eP-63g"/>
+                                        <exclude reference="lW9-3w-xNn"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" constant="4" id="9t1-AG-Vtj"/>
-                            <constraint firstItem="cVH-rO-syK" firstAttribute="top" secondItem="qU7-gk-Gmd" secondAttribute="bottom" constant="1" id="BNh-uk-amP"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="D2U-p8-sL0"/>
-                            <constraint firstAttribute="trailing" secondItem="zYk-Yj-kQQ" secondAttribute="trailing" id="Dgw-ej-Lmo"/>
-                            <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="GVt-kL-Gzr"/>
-                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PaF-h2-l0o"/>
-                            <constraint firstAttribute="trailing" secondItem="vWC-RV-G0r" secondAttribute="trailing" constant="20" id="Rqz-xz-6Zr"/>
-                            <constraint firstItem="OHa-cA-Xvf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="55" id="VfU-OI-F8X"/>
-                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="top" secondItem="0Nd-xl-GqP" secondAttribute="bottom" constant="2" id="Yup-pl-VfQ"/>
-                            <constraint firstItem="l4K-g0-3TN" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="26" id="Zah-fr-JBN"/>
-                            <constraint firstAttribute="trailing" secondItem="cVH-rO-syK" secondAttribute="trailing" constant="55" id="aRN-Jn-n5V"/>
+                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="Mpl-TT-1Rd" secondAttribute="bottom" constant="8" symbolic="YES" id="0H7-VQ-Gf9"/>
+                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="leading" secondItem="F4O-It-wUG" secondAttribute="leading" id="0ZV-83-fQ8"/>
+                            <constraint firstItem="l4K-g0-3TN" firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" id="5DZ-KO-sge"/>
+                            <constraint firstItem="l4K-g0-3TN" firstAttribute="top" secondItem="vWC-RV-G0r" secondAttribute="bottom" constant="73" id="5J7-1B-ZBv"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="150" id="H2T-6b-a9v"/>
+                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="top" secondItem="0Nd-xl-GqP" secondAttribute="bottom" constant="2" id="KIG-L2-gxv"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="vWC-RV-G0r" secondAttribute="top" id="M68-7G-yt4"/>
+                            <constraint firstItem="F4O-It-wUG" firstAttribute="centerX" secondItem="zYk-Yj-kQQ" secondAttribute="centerX" id="N0u-eF-OMI"/>
+                            <constraint firstItem="l4K-g0-3TN" firstAttribute="leading" secondItem="Mpl-TT-1Rd" secondAttribute="leading" id="V5l-xm-0El"/>
+                            <constraint firstItem="l4K-g0-3TN" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="26" id="XvR-E0-ZHA"/>
+                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="481" id="a3B-m0-0W8"/>
                             <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="40" id="aTc-3F-SBk"/>
-                            <constraint firstItem="l4K-g0-3TN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bJY-4p-FAT"/>
-                            <constraint firstAttribute="trailing" secondItem="qU7-gk-Gmd" secondAttribute="trailing" constant="41" id="bx9-q8-eBL"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="2" id="cyO-8d-ZUR"/>
-                            <constraint firstItem="KZo-eX-ETZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="fMX-vA-CpE"/>
-                            <constraint firstAttribute="trailing" secondItem="l4K-g0-3TN" secondAttribute="trailing" id="iGg-vI-f39"/>
-                            <constraint firstItem="MWg-fu-251" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="41" id="mIh-WT-2kv"/>
-                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="OHa-cA-Xvf" secondAttribute="bottom" constant="19" id="pry-8F-il9"/>
-                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="MWg-fu-251" secondAttribute="bottom" constant="54" id="uMg-q3-h95"/>
-                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="cVH-rO-syK" secondAttribute="bottom" constant="19" id="vkI-Or-taE"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zYk-Yj-kQQ" secondAttribute="bottom" id="w7v-Dn-dee"/>
-                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="wDW-pa-hOY"/>
-                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z1u-5q-bkA"/>
+                            <constraint firstItem="vWC-RV-G0r" firstAttribute="trailing" secondItem="F4O-It-wUG" secondAttribute="trailing" id="bFR-ML-kW1"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="top" secondItem="F4O-It-wUG" secondAttribute="bottom" constant="14" id="fuM-NF-kSj"/>
+                            <constraint firstAttribute="trailing" secondItem="zYk-Yj-kQQ" secondAttribute="trailing" id="g5S-H2-npg"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="KZo-eX-ETZ" secondAttribute="leading" id="g8v-ro-Xhj"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="centerX" secondItem="F4O-It-wUG" secondAttribute="centerX" id="jFP-mG-5td"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jYT-9x-g1T"/>
+                            <constraint firstItem="l4K-g0-3TN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="oDr-Fr-hAY"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="2" id="rzg-AU-z18"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="sDK-Vi-WtV"/>
+                            <constraint firstItem="zYk-Yj-kQQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="sHd-v9-LwL"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="uHp-r1-xyc"/>
+                            <constraint firstItem="0Nd-xl-GqP" firstAttribute="centerY" secondItem="vWC-RV-G0r" secondAttribute="centerY" id="zJg-kB-thW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -199,7 +238,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="averageCycleDaysLabel" destination="qU7-gk-Gmd" id="ase-ff-ksS"/>
                         <outlet property="calendarView" destination="Mpl-TT-1Rd" id="b4r-NI-wof"/>

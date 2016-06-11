@@ -41,7 +41,7 @@ class CellView: JTAppleDayCellView {
     }
     
     func configureBackgroundColor(cellState: CellState, date: NSDate) {
-        if cellState.isSelected  {
+        if cellState.isSelected {
             selectedDayView.hidden = false
             dateLabel.textColor = Color.white
         } else if cellState.isSelected == false {

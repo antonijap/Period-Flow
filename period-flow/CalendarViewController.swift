@@ -68,7 +68,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
-        // Set averageCycleDaysLabel
         averageCycleDaysLabel.text = "\(period.cycleDays)"
         daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
     }

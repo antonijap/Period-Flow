@@ -124,6 +124,5 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
                 cell.displayPrediction(false, cellState: cellState)
             }
         }
-    }
-    
+    }    
 }
