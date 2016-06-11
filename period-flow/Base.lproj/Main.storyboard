@@ -203,7 +203,7 @@
                     <connections>
                         <outlet property="averageCycleDaysLabel" destination="qU7-gk-Gmd" id="ase-ff-ksS"/>
                         <outlet property="calendarView" destination="Mpl-TT-1Rd" id="b4r-NI-wof"/>
-                        <outlet property="daysUntilNewxtPeriodLabel" destination="MWg-fu-251" id="x01-cC-gfP"/>
+                        <outlet property="daysUntilNextPeriodLabel" destination="MWg-fu-251" id="GPK-Rc-zoU"/>
                         <outlet property="monthNameLabel" destination="KZo-eX-ETZ" id="M66-jp-hM4"/>
                         <outlet property="yearLabel" destination="0Nd-xl-GqP" id="FvF-5t-S8g"/>
                     </connections>

@@ -20,6 +20,7 @@ class RealmManager {
     // MARK: - Properties
     
     let realm = try! Realm()
+    var today = NSDate.today()
     
     // MARK: - Methods
     
@@ -230,5 +231,14 @@ class RealmManager {
         let end = calendar.startOfDayForDate(endDate)
         let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
         return components.day
+    }
+    
+    /// Calculates day until next period
+    func daysUntilNextPeriod() -> Int {
+        if let lastPeriod = queryAllPeriods()?.last {
+            let days = daysBetweenDate(lastPeriod.predictionDate, endDate: today)
+            return abs(days)
+        }
+        return Int()
     }
 }

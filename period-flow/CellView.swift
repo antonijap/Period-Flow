@@ -73,11 +73,17 @@ class CellView: JTAppleDayCellView {
     }
     
     /// Display red border on a date that predict future period
-    func displayPrediction(isBleeding: Bool){
-        if isBleeding {
+    func displayPrediction(isBleeding: Bool, cellState: CellState){
+        if isBleeding && cellState.dateBelongsTo == .ThisMonth {
             predictionDay.hidden = false
-        } else if isBleeding {
+        } else if isBleeding == false && cellState.dateBelongsTo == .ThisMonth {
             predictionDay.hidden = true
+        } else if isBleeding && cellState.dateBelongsTo == .PreviousMonthWithinBoundary {
+            predictionDay.hidden = false
+            predictionDay.layer.borderColor = Color.red.colorWithAlphaComponent(0.4).CGColor
+        } else if isBleeding && cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
+            predictionDay.hidden = false
+            predictionDay.layer.borderColor = Color.red.colorWithAlphaComponent(0.4).CGColor
         }
     }
 }

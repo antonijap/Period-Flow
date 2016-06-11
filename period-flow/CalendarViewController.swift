@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthNameLabel: UILabel!
     @IBOutlet weak var averageCycleDaysLabel: UILabel!
-    @IBOutlet weak var daysUntilNewxtPeriodLabel: UILabel!
+    @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
 
     
     // MARK: - Properties
@@ -27,6 +27,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     var viewManager: CalendarViewManager?
     let today = NSDate.today()
     var selectedDates = [NSDate]()
+    var period = Period()
     
     // MARK: - View Life Cycle
     
@@ -36,6 +37,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupViewManager()
         setupCalendar()
         viewManager?.displayAllDates()
+        print("Days until next period: \(RealmManager.sharedInstance.daysUntilNextPeriod())")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,7 +68,9 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
-        
+        // Set averageCycleDaysLabel
+        averageCycleDaysLabel.text = "\(period.cycleDays)"
+        daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
     }
 }
 

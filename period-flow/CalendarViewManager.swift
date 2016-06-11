@@ -47,7 +47,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         }
         
         // Circle prediction date, default 28 days
-        displayPredictionDate(cell, date: date)
+        displayPredictionDate(cell, date: date, cellState: cellState)
     }
     
     // User selects a date
@@ -115,13 +115,13 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     }
     
     /// Displays future period on a Calendar
-    func displayPredictionDate(cell: CellView, date: NSDate) {
+    func displayPredictionDate(cell: CellView, date: NSDate, cellState: CellState) {
         let period = RealmManager.sharedInstance.queryAllPeriods()?.last
         if let period = period {
             if period.predictionDate.isInSameDayAsDate(date) {
-                cell.displayPrediction(true)
+                cell.displayPrediction(true, cellState: cellState)
             } else {
-                cell.displayPrediction(false)
+                cell.displayPrediction(false, cellState: cellState)
             }
         }
     }
