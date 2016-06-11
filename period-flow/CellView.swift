@@ -74,9 +74,9 @@ class CellView: JTAppleDayCellView {
     
     /// Display red border on a date that predict future period
     func displayPrediction(isBleeding: Bool){
-        if isBleeding == true {
+        if isBleeding {
             predictionDay.hidden = false
-        } else {
+        } else if isBleeding {
             predictionDay.hidden = true
         }
     }

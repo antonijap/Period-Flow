@@ -46,17 +46,8 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             cell.userInteractionEnabled = false
         }
         
-        // Display future period
-        let periods = RealmManager.sharedInstance.queryAllPeriods()
-        if let periods = periods {
-            for period in periods {
-                if period.predictionDate == date {
-                    cell.displayPrediction(true)
-                } else {
-                    cell.displayPrediction(false)
-                }
-            }
-        }
+        // Circle prediction date, default 28 days
+        displayPredictionDate(cell, date: date)
     }
     
     // User selects a date
@@ -75,6 +66,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateUIForDeselection()
+        
     }
     
     // Set month name label and year label
@@ -85,7 +77,6 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     /// Get all dates from period and display them
     func displayAllDates() {
-        
         let periods = RealmManager.sharedInstance.queryAllPeriods()!
         
         for period in periods {
@@ -122,4 +113,17 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
         calendarView.reloadData()
     }
+    
+    /// Displays future period on a Calendar
+    func displayPredictionDate(cell: CellView, date: NSDate) {
+        let period = RealmManager.sharedInstance.queryAllPeriods()?.last
+        if let period = period {
+            if period.predictionDate.isInSameDayAsDate(date) {
+                cell.displayPrediction(true)
+            } else {
+                cell.displayPrediction(false)
+            }
+        }
+    }
+    
 }

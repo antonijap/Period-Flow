@@ -32,11 +32,9 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        // This will be for selecting days in Calendar, first I need to get all days for selection
         viewManager?.displayAllDates()
     }
     
