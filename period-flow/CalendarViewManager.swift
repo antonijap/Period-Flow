@@ -23,12 +23,14 @@ class CalendarViewManager: NSObject {
     
     var calendarView: JTAppleCalendarView!
     var delegate: CalendarViewManagerDelegate?
+    var controller: CalendarViewController!
     var selectedDates = [NSDate]()
     
     // MARK: - Initializers
     
-    init(calendarView: JTAppleCalendarView) {
+    init(calendarView: JTAppleCalendarView, controller: CalendarViewController) {
         self.calendarView = calendarView
+        self.controller = controller
     }
     
 }
@@ -57,6 +59,8 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
         updateUIForSelection()
+        
+        controller.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
     }
     
     // User deselects a date
@@ -66,6 +70,8 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateUIForDeselection()
+        
+        controller.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
     }
     
     // Set month name label and year label

@@ -57,7 +57,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     }
     
     func setupViewManager() {
-        viewManager = CalendarViewManager(calendarView: calendarView)
+        viewManager = CalendarViewManager(calendarView: calendarView, controller: self)
         calendarView.delegate = viewManager
         viewManager?.delegate = self
     }
