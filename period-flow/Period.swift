@@ -16,7 +16,6 @@ class Period: Object {
     
     dynamic var startDate: NSDate?
     dynamic var endDate: NSDate?
-    dynamic var cycleDays = 28
     
     // Populates an array of dates in between start and end date of object
     var assumedDates: [NSDate] {
@@ -41,6 +40,7 @@ class Period: Object {
     
     var predictionDate: NSDate {
         if let startDate = startDate {
+            let cycleDays = DefaultsManager.getCycleDays()
             let futureDate = startDate + (cycleDays.days - 1.days)
             return futureDate
         }

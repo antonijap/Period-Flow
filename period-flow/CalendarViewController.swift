@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 import ActionSheetPicker_3_0
+import GoogleMobileAds
 
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
@@ -20,6 +21,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var monthNameLabel: UILabel!
     @IBOutlet weak var averageCycleDaysLabel: UILabel!
     @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
 
     
     // MARK: - Properties
@@ -34,11 +36,11 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAdMob()
         setupDataProvider()
         setupViewManager()
         setupCalendar()
         viewManager?.displayAllDates()
-        print("Days until next period: \(RealmManager.sharedInstance.daysUntilNextPeriod())")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,6 +53,15 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     }
     
     // MARK: - Methods
+    
+    func setupAdMob() {
+        let request = GADRequest()
+        request.testDevices = ["146aa15fa0b9f3578848f4d159718dc2", kGADSimulatorID]
+        bannerView.adSize = kGADAdSizeSmartBannerPortrait
+        bannerView.adUnitID = "ca-app-pub-2949684951870263/9071981034"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(request)
+    }
     
     func setupDataProvider() {
         dataProvider = CalendarDataProvider(calendarView: calendarView)
@@ -69,7 +80,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.allowsMultipleSelection = true
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
-        averageCycleDaysLabel.text = "\(period.cycleDays)"
+        averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
         daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
     }
 
@@ -79,8 +90,9 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         var days = [Int]()
         days += 1...100
         
-        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: period.cycleDays - 1, doneBlock: { picker, int, object in
-                print("Picker \(picker), int: \(int), object: \(object)")
+        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: DefaultsManager.getCycleDays() - 1, doneBlock: { picker, int, object in
+                DefaultsManager.setCycleDays(object as! Int)
+                self.viewManager?.updateUIforCycleDays()
             }, cancelBlock: nil, origin: sender)
         picker.showActionSheetPicker()
     }

@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="47" id="h2Q-Mx-Il0"/>
                         <constraint firstAttribute="width" constant="94" id="xni-ui-X4t"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -73,7 +73,7 @@
                 <outlet property="selectedDayView" destination="oAd-2m-9FL" id="uPS-rr-Jdc"/>
                 <outlet property="todayView" destination="wPH-81-pOJ" id="cBH-tK-2gA"/>
             </connections>
-            <point key="canvasLocation" x="566.5" y="477.5"/>
+            <point key="canvasLocation" x="-133" y="234"/>
         </view>
     </objects>
 </document>

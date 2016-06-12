@@ -16,8 +16,10 @@
 		6870C47F1CFDE56C00ACFFF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */; };
 		6870C4811CFDE56C00ACFFF2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */; };
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
-		6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
+		687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687D2CC11D0DC825007C83DE /* DefaultsManager.swift */; };
+		687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */; };
+		687D2CC61D0DEC2F007C83DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC51D0DEC2F007C83DE /* Assets.xcassets */; };
 		68E843101D05F45700224BC4 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430D1D05F45700224BC4 /* SF-UI-Text-Bold.otf */; };
 		68E843111D05F45700224BC4 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430E1D05F45700224BC4 /* SF-UI-Text-Light.otf */; };
 		68E843121D05F45700224BC4 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68E8430F1D05F45700224BC4 /* SF-UI-Text-Regular.otf */; };
@@ -38,9 +40,11 @@
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6870C4831CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		687D2CC11D0DC825007C83DE /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		687D2CC51D0DEC2F007C83DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68E8430D1D05F45700224BC4 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
 		68E8430E1D05F45700224BC4 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
 		68E8430F1D05F45700224BC4 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -139,7 +143,8 @@
 				68E8430C1D05F41600224BC4 /* Fonts */,
 				685B92A71CFDF313003452CE /* Color.swift */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
-				6870C4851CFDE56C00ACFFF2 /* Assets.xcassets */,
+				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
+				687D2CC51D0DEC2F007C83DE /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			children = (
 				B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */,
 				B0B98B571CFE767700CDBE14 /* RealmManager.swift */,
+				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -253,11 +259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E843101D05F45700224BC4 /* SF-UI-Text-Bold.otf in Resources */,
+				687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */,
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
-				6870C4861CFDE56C00ACFFF2 /* Assets.xcassets in Resources */,
 				685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */,
 				68E843111D05F45700224BC4 /* SF-UI-Text-Light.otf in Resources */,
 				68E843121D05F45700224BC4 /* SF-UI-Text-Regular.otf in Resources */,
+				687D2CC61D0DEC2F007C83DE /* Assets.xcassets in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +377,7 @@
 				6822A6C81D08728300A21F23 /* PredictionView.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
+				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);

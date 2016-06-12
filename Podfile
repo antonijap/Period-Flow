@@ -12,4 +12,6 @@ target 'period-flow' do
   pod 'SwiftDate', '~> 3.0'
   pod 'JTAppleCalendar', '~> 3.0'
   pod 'ActionSheetPicker-3.0', '~> 2.1.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 end

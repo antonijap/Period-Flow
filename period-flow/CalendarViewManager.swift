@@ -15,6 +15,8 @@ protocol CalendarViewManagerDelegate {
     var calendarView: JTAppleCalendarView! {get set}
     var yearLabel: UILabel! {get set}
     var monthNameLabel: UILabel! {get set}
+    var averageCycleDaysLabel: UILabel! {get set}
+    var daysUntilNextPeriodLabel: UILabel! {get set}
 }
 
 class CalendarViewManager: NSObject {
@@ -25,6 +27,7 @@ class CalendarViewManager: NSObject {
     var delegate: CalendarViewManagerDelegate?
     var controller: CalendarViewController!
     var selectedDates = [NSDate]()
+    var period = Period()
     
     // MARK: - Initializers
     
@@ -130,5 +133,12 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
                 cell.displayPrediction(false, cellState: cellState)
             }
         }
-    }    
+    }
+    
+    /// Update cycleDays label
+    func updateUIforCycleDays() {
+        controller.averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
+        controller.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+        calendarView.reloadData()
+    }
 }
