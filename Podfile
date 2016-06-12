@@ -1,5 +1,5 @@
 project 'period-flow.xcodeproj'
-
+source 'https://github.com/CocoaPods/Specs.git'
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
@@ -11,4 +11,5 @@ target 'period-flow' do
   pod 'RealmSwift'
   pod 'SwiftDate', '~> 3.0'
   pod 'JTAppleCalendar', '~> 3.0'
+  pod 'ActionSheetPicker-3.0', '~> 2.1.0'
 end

@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Vgc-yI-cZu"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F4O-It-wUG">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F4O-It-wUG" userLabel="Info">
                                 <rect key="frame" x="20" y="485" width="560" height="65"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1zE-vn-HiQ">
@@ -140,6 +140,9 @@
                                     <constraint firstAttribute="width" constant="19" id="eh3-qQ-2sM"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="Menu Icon"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3H3-P7-iCP"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-g0-3TN" userLabel="Day Labels">
                                 <rect key="frame" x="10" y="124" width="580" height="12"/>
@@ -257,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="339.5" y="429.5"/>
+            <point key="canvasLocation" x="339" y="429"/>
         </scene>
     </scenes>
     <resources>

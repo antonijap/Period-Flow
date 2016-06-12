@@ -9,6 +9,7 @@
 import UIKit
 import JTAppleCalendar
 import SwiftDate
+import ActionSheetPicker_3_0
 
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
@@ -70,6 +71,18 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(period.cycleDays)"
         daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+    }
+
+    // MARK: - IBActions
+    
+    @IBAction func settingsButtonTapped(sender: AnyObject) {
+        var days = [Int]()
+        days += 1...100
+        
+        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: period.cycleDays - 1, doneBlock: { picker, int, object in
+                print("Picker \(picker), int: \(int), object: \(object)")
+            }, cancelBlock: nil, origin: sender)
+        picker.showActionSheetPicker()
     }
 }
 
