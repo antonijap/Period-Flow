@@ -27,11 +27,12 @@ class CellView: JTAppleDayCellView {
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
         dateLabel.text = cellState.text
         predictionDay.hidden = true
-        configureTextColor(cellState, date: date)
+        
         configureBackgroundColor(cellState, date: date)
         configureTodayView(date)
     }
     
+    /// .ThisMonth is grey, otherwise it's light grey
     func configureTextColor(cellState: CellState, date: NSDate) {
         if cellState.dateBelongsTo == .ThisMonth {
             dateLabel.textColor = Color.grey
@@ -44,13 +45,9 @@ class CellView: JTAppleDayCellView {
         if cellState.isSelected {
             selectedDayView.hidden = false
             dateLabel.textColor = Color.white
-        } else if cellState.isSelected == false {
+        } else {
             selectedDayView.hidden = true
             configureTextColor(cellState, date: date)
-        } else if cellState.dateBelongsTo == .PreviousMonthWithinBoundary && cellState.isSelected {
-            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.2).CGColor
-        } else if cellState.dateBelongsTo == .FollowingMonthWithinBoundary && cellState.isSelected {
-            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.2).CGColor
         }
     }
     
@@ -65,10 +62,20 @@ class CellView: JTAppleDayCellView {
     func cellSelectionChanged(cellState: CellState, date: NSDate) {
         if cellState.isSelected  {
             selectedDayView.hidden = false
+            
             dateLabel.textColor = Color.white
         } else {
             selectedDayView.hidden = true
             dateLabel.textColor = Color.grey
+        }
+    }
+    
+    func configureSelectedBackground(cellState: CellState) {
+        if cellState.dateBelongsTo == .ThisMonth {
+            selectedDayView.hidden = false
+        } else {
+            selectedDayView.hidden = false
+            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.4).CGColor
         }
     }
     

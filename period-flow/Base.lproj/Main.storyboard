@@ -5,21 +5,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SF-UI-Text-Light.otf">
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-            <string>SFUIText-Light</string>
-        </mutableArray>
-        <mutableArray key="SF-UI-Text-Regular.otf">
-            <string>SFUIText-Regular</string>
-            <string>SFUIText-Regular</string>
+        <mutableArray key="Raleway-Light.ttf">
+            <string>Raleway-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -35,16 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
-                                <rect key="frame" x="20" y="38" width="100" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="I5P-RH-bvN"/>
-                                    <constraint firstAttribute="height" constant="21" id="wQF-Vj-WQa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                                <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-Yj-kQQ" userLabel="googleAds" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                 <color key="backgroundColor" red="0.92846554487179478" green="0.92846554487179478" blue="0.92846554487179478" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +43,7 @@
                                                     <constraint firstAttribute="width" constant="128" id="5dw-ii-3ZV"/>
                                                     <constraint firstAttribute="height" constant="62" id="OON-su-Q4p"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -84,7 +61,7 @@
                                                 </constraints>
                                                 <string key="text">DAYS UNTIL 
 NEXT PERIOD</string>
-                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -105,7 +82,7 @@ NEXT PERIOD</string>
                                                     <constraint firstAttribute="width" constant="128" id="bG0-kZ-Sct"/>
                                                     <constraint firstAttribute="height" constant="62" id="be3-KQ-hMV"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -123,7 +100,7 @@ NEXT PERIOD</string>
                                                 </constraints>
                                                 <string key="text">AVERAGE CYCLE 
 DURATION</string>
-                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -152,63 +129,63 @@ DURATION</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-g0-3TN" userLabel="Day Labels">
-                                <rect key="frame" x="10" y="124" width="580" height="12"/>
+                                <rect key="frame" x="10" y="123" width="580" height="12"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBJ-vf-L5D">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WI-jU-lf7">
                                         <rect key="frame" x="83" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-6D-upd">
                                         <rect key="frame" x="166" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwE-q1-rh5">
                                         <rect key="frame" x="249" y="0.0" width="82" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnh-C5-eTf">
                                         <rect key="frame" x="331" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prW-9v-NYO">
                                         <rect key="frame" x="414" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1he-XB-wve">
                                         <rect key="frame" x="497" y="0.0" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZo-eX-ETZ" userLabel="monthName">
-                                <rect key="frame" x="20" y="61" width="293" height="48"/>
+                                <rect key="frame" x="20" y="61" width="293" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="293" id="5A9-XF-HPz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Raleway-Light" family="Raleway" pointSize="40"/>
                                 <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="10" y="141" width="580" height="326"/>
+                                <rect key="frame" x="10" y="140" width="580" height="327"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="353" id="cFh-eP-63g"/>
                                     <constraint firstAttribute="height" constant="353" id="lW9-3w-xNn"/>
@@ -220,6 +197,16 @@ DURATION</string>
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
+                                <rect key="frame" x="20" y="38" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="I5P-RH-bvN"/>
+                                    <constraint firstAttribute="height" constant="21" id="wQF-Vj-WQa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                <color key="textColor" red="0.53725490196078429" green="0.83137254901960778" blue="0.84705882352941175" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

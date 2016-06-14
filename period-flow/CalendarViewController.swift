@@ -22,7 +22,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var averageCycleDaysLabel: UILabel!
     @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
-
     
     // MARK: - Properties
     
