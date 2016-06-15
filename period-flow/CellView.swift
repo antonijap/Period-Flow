@@ -24,16 +24,17 @@ class CellView: JTAppleDayCellView {
     
     // MARK: - Methods
     
+    /// This is called whenever cell is render to the screen
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
         dateLabel.text = cellState.text
         predictionDay.hidden = true
-        
+        configureTextColor(cellState)
         configureBackgroundColor(cellState, date: date)
         configureTodayView(date)
     }
     
     /// .ThisMonth is grey, otherwise it's light grey
-    func configureTextColor(cellState: CellState, date: NSDate) {
+    func configureTextColor(cellState: CellState) {
         if cellState.dateBelongsTo == .ThisMonth {
             dateLabel.textColor = Color.grey
         } else {
@@ -41,13 +42,21 @@ class CellView: JTAppleDayCellView {
         }
     }
     
+    /// Configures background color based of enum cellState.dateBelongsTo
     func configureBackgroundColor(cellState: CellState, date: NSDate) {
         if cellState.isSelected {
             selectedDayView.hidden = false
             dateLabel.textColor = Color.white
+            if cellState.dateBelongsTo == .PreviousMonthWithinBoundary {
+                selectedDayView.layer.backgroundColor = Color.lightMint.CGColor
+            } else if cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
+                selectedDayView.layer.backgroundColor = Color.lightMint.CGColor
+            } else {
+                selectedDayView.layer.backgroundColor = Color.mint.CGColor
+            }
         } else {
             selectedDayView.hidden = true
-            configureTextColor(cellState, date: date)
+            configureTextColor(cellState)
         }
     }
     
@@ -62,20 +71,10 @@ class CellView: JTAppleDayCellView {
     func cellSelectionChanged(cellState: CellState, date: NSDate) {
         if cellState.isSelected  {
             selectedDayView.hidden = false
-            
             dateLabel.textColor = Color.white
         } else {
             selectedDayView.hidden = true
             dateLabel.textColor = Color.grey
-        }
-    }
-    
-    func configureSelectedBackground(cellState: CellState) {
-        if cellState.dateBelongsTo == .ThisMonth {
-            selectedDayView.hidden = false
-        } else {
-            selectedDayView.hidden = false
-            selectedDayView.layer.backgroundColor = Color.red.colorWithAlphaComponent(0.4).CGColor
         }
     }
     
@@ -87,10 +86,10 @@ class CellView: JTAppleDayCellView {
             predictionDay.hidden = true
         } else if isBleeding && cellState.dateBelongsTo == .PreviousMonthWithinBoundary {
             predictionDay.hidden = false
-            predictionDay.layer.borderColor = Color.red.colorWithAlphaComponent(0.4).CGColor
+            predictionDay.layer.borderColor = Color.lightMint.CGColor
         } else if isBleeding && cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
             predictionDay.hidden = false
-            predictionDay.layer.borderColor = Color.red.colorWithAlphaComponent(0.4).CGColor
+            predictionDay.layer.borderColor = Color.lightMint.CGColor
         }
     }
 }

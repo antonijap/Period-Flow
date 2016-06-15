@@ -44,7 +44,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         let cell = cell as! CellView
         cell.setupCellBeforeDisplay(cellState, date: date)
-        
+        print("Date \(date.toString(DateFormat.Custom("dd.MM."))!) -> \(cellState.dateBelongsTo) and \(cellState.isSelected)")
         if cellState.dateBelongsTo == .ThisMonth {
             cell.userInteractionEnabled = true
         } else {
