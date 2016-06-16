@@ -195,7 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */;
 			buildPhases = (
-				7CEA435D0AE745E59453E859 /* 📦 Check Pods Manifest.lock */,
+				7CEA435D0AE745E59453E859 /* [CP] Check Pods Manifest.lock */,
 				8A725F0440AD038002034BFD /* [CP] Check Pods Manifest.lock */,
 				6870C4771CFDE56B00ACFFF2 /* Sources */,
 				6870C4781CFDE56B00ACFFF2 /* Frameworks */,
@@ -265,14 +265,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7CEA435D0AE745E59453E859 /* 📦 Check Pods Manifest.lock */ = {
+		7CEA435D0AE745E59453E859 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,9 +493,9 @@
 				INFOPLIST_FILE = "period-flow/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.antonijapek.period-flow";
+				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -510,9 +510,9 @@
 				INFOPLIST_FILE = "period-flow/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.antonijapek.period-flow";
+				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
