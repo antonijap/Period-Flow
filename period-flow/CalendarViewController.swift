@@ -55,7 +55,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     func setupAdMob() {
         let request = GADRequest()
-        request.testDevices = ["146aa15fa0b9f3578848f4d159718dc2", kGADSimulatorID]
+        request.testDevices = ["2c7073a24ea8e6ba2a519bd8c2b5297e", kGADSimulatorID]
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.adUnitID = "ca-app-pub-2949684951870263/9071981034"
         bannerView.rootViewController = self
