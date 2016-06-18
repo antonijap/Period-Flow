@@ -34,7 +34,7 @@
 		685B92AA1CFDF9CC003452CE /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		685B92AC1CFDFAC2003452CE /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		685B92AE1CFE1317003452CE /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
-		6870C47B1CFDE56B00ACFFF2 /* period-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "period-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Period Flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6870C4831CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		6870C47C1CFDE56B00ACFFF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6870C47B1CFDE56B00ACFFF2 /* period-flow.app */,
+				6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,9 +191,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6870C47A1CFDE56B00ACFFF2 /* period-flow */ = {
+		6870C47A1CFDE56B00ACFFF2 /* Period Flow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */;
+			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "Period Flow" */;
 			buildPhases = (
 				7CEA435D0AE745E59453E859 /* [CP] Check Pods Manifest.lock */,
 				8A725F0440AD038002034BFD /* [CP] Check Pods Manifest.lock */,
@@ -209,9 +209,9 @@
 			);
 			dependencies = (
 			);
-			name = "period-flow";
+			name = "Period Flow";
 			productName = "period-flow";
-			productReference = 6870C47B1CFDE56B00ACFFF2 /* period-flow.app */;
+			productReference = 6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +230,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6870C4761CFDE56B00ACFFF2 /* Build configuration list for PBXProject "period-flow" */;
+			buildConfigurationList = 6870C4761CFDE56B00ACFFF2 /* Build configuration list for PBXProject "Period Flow" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -243,7 +243,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6870C47A1CFDE56B00ACFFF2 /* period-flow */,
+				6870C47A1CFDE56B00ACFFF2 /* Period Flow */,
 			);
 		};
 /* End PBXProject section */
@@ -494,8 +494,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "Period Flow";
+				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -511,8 +511,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "Period Flow";
+				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -520,7 +520,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6870C4761CFDE56B00ACFFF2 /* Build configuration list for PBXProject "period-flow" */ = {
+		6870C4761CFDE56B00ACFFF2 /* Build configuration list for PBXProject "Period Flow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6870C48B1CFDE56C00ACFFF2 /* Debug */,
@@ -529,7 +529,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */ = {
+		6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "Period Flow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6870C48E1CFDE56C00ACFFF2 /* Debug */,
