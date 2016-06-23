@@ -21,6 +21,7 @@
 		687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */; };
 		687D2CC61D0DEC2F007C83DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC51D0DEC2F007C83DE /* Assets.xcassets */; };
 		687D2CCC1D0DF03D007C83DE /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */; };
+		68FA6AAA1D1C4E2900E3F360 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FA6AA91D1C4E2900E3F360 /* MenuViewController.swift */; };
 		B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */; };
 		B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */; };
 		B0B84CB91D01200800804FDE /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84CB81D01200800804FDE /* Period.swift */; };
@@ -44,6 +45,7 @@
 		687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		687D2CC51D0DEC2F007C83DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		68FA6AA91D1C4E2900E3F360 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9920A621CE6AFC7C58444386 /* Pods-period-flow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.debug.xcconfig"; sourceTree = "<group>"; };
 		B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataProvider.swift; sourceTree = "<group>"; };
 		B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
 				6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */,
+				68FA6AA91D1C4E2900E3F360 /* MenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -191,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6870C47A1CFDE56B00ACFFF2 /* Period Flow */ = {
+		6870C47A1CFDE56B00ACFFF2 /* period-flow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "Period Flow" */;
+			buildConfigurationList = 6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */;
 			buildPhases = (
 				7CEA435D0AE745E59453E859 /* [CP] Check Pods Manifest.lock */,
 				8A725F0440AD038002034BFD /* [CP] Check Pods Manifest.lock */,
@@ -209,7 +212,7 @@
 			);
 			dependencies = (
 			);
-			name = "Period Flow";
+			name = "period-flow";
 			productName = "period-flow";
 			productReference = 6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */;
 			productType = "com.apple.product-type.application";
@@ -243,7 +246,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6870C47A1CFDE56B00ACFFF2 /* Period Flow */,
+				6870C47A1CFDE56B00ACFFF2 /* period-flow */,
 			);
 		};
 /* End PBXProject section */
@@ -369,6 +372,7 @@
 				B0B84CB91D01200800804FDE /* Period.swift in Sources */,
 				6822A6C81D08728300A21F23 /* PredictionView.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
+				68FA6AAA1D1C4E2900E3F360 /* MenuViewController.swift in Sources */,
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
@@ -529,7 +533,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "Period Flow" */ = {
+		6870C48D1CFDE56C00ACFFF2 /* Build configuration list for PBXNativeTarget "period-flow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6870C48E1CFDE56C00ACFFF2 /* Debug */,

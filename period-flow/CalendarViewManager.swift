@@ -10,7 +10,6 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
-
 protocol CalendarViewManagerDelegate {
     var calendarView: JTAppleCalendarView! {get set}
     var yearLabel: UILabel! {get set}
