@@ -89,14 +89,15 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         let days = RealmManager.sharedInstance.daysUntilNextPeriod()
         let predictionDate = period.predictionDate
         
-        if predictionDate > today {
-            daysUntilNextPeriodLabel.text = "\(days)"
-            counterLabel.text = "DAYS UNTIL \nNEXT PERIOD"
-            print("PREDICTION GREATER THAN TODAY")
-        } else {
-            daysUntilNextPeriodLabel.text = "\(days)"
+        if predictionDate.isAfter(.Day, ofDate: today) {
             counterLabel.text = "DAYS \nLATE"
-            print("PREDICTION LESSER THAN TODAY")
+            daysUntilNextPeriodLabel.text = "\(days)"
+        } else if predictionDate.isBefore(.Day, ofDate: today) {
+            counterLabel.text = "DAYS UNTIL \nNEXT PERIOD"
+            daysUntilNextPeriodLabel.text = "\(days)"
+        } else {
+            counterLabel.text = "PERIOD STARTS \nTODAY"
+            daysUntilNextPeriodLabel.text = "\(days)"
         }
     }
 

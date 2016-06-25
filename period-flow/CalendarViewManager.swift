@@ -60,8 +60,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
         updateUIForSelection()
-        
-        controller.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+        controller.configureCounter()
     }
     
     // User deselects a date
@@ -71,8 +70,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateUIForDeselection()
-        
-        controller.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+        controller.configureCounter()
     }
     
     // Set month name label and year label
@@ -105,8 +103,6 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
             calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
             calendarView.reloadData()
         }
-        
-        controller.configureCounter()
     }
     
     /// Update UI when a date is deselected
@@ -121,8 +117,6 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
         }
         calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
         calendarView.reloadData()
-        
-        controller.configureCounter()
     }
     
     /// Displays future period on a Calendar
