@@ -1,4 +1,4 @@
-project 'Period Flow.xcodeproj'
+project 'period-flow.xcodeproj'
 source 'https://github.com/CocoaPods/Specs.git'
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
