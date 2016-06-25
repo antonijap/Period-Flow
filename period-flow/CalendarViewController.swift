@@ -22,6 +22,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var averageCycleDaysLabel: UILabel!
     @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var counterLabel: UILabel!
     
     // MARK: - Properties
     
@@ -40,6 +41,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupViewManager()
         setupCalendar()
         viewManager?.displayAllDates()
+        configureCounter()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,7 +82,22 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.firstDayOfWeek = .Sunday
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
-        daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+    }
+    
+    /// Configure counter
+    func configureCounter() {
+        let days = RealmManager.sharedInstance.daysUntilNextPeriod()
+        let predictionDate = period.predictionDate
+        
+        if predictionDate > today {
+            daysUntilNextPeriodLabel.text = "\(days)"
+            counterLabel.text = "DAYS UNTIL \nNEXT PERIOD"
+            print("PREDICTION GREATER THAN TODAY")
+        } else {
+            daysUntilNextPeriodLabel.text = "\(days)"
+            counterLabel.text = "DAYS \nLATE"
+            print("PREDICTION LESSER THAN TODAY")
+        }
     }
 
     // MARK: - IBActions

@@ -13,7 +13,7 @@
         <!--Calendar View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="period_flow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Period_Flow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -249,6 +249,7 @@ DURATION</string>
                         <outlet property="averageCycleDaysLabel" destination="qU7-gk-Gmd" id="ase-ff-ksS"/>
                         <outlet property="bannerView" destination="zYk-Yj-kQQ" id="taq-3I-ov4"/>
                         <outlet property="calendarView" destination="Mpl-TT-1Rd" id="b4r-NI-wof"/>
+                        <outlet property="counterLabel" destination="OHa-cA-Xvf" id="35b-wk-Mzh"/>
                         <outlet property="daysUntilNextPeriodLabel" destination="MWg-fu-251" id="GPK-Rc-zoU"/>
                         <outlet property="monthNameLabel" destination="KZo-eX-ETZ" id="M66-jp-hM4"/>
                         <outlet property="yearLabel" destination="0Nd-xl-GqP" id="FvF-5t-S8g"/>
@@ -260,6 +261,6 @@ DURATION</string>
         </scene>
     </scenes>
     <resources>
-        <image name="cog" width="21" height="21"/>
+        <image name="cog" width="20" height="20"/>
     </resources>
 </document>
