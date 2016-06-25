@@ -99,6 +99,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
             counterLabel.text = "PERIOD STARTS \nTODAY"
             daysUntilNextPeriodLabel.text = "\(days)"
         }
+
     }
 
     // MARK: - IBActions
