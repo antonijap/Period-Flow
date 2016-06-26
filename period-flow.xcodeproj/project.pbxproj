@@ -26,6 +26,8 @@
 		B0B84CB91D01200800804FDE /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84CB81D01200800804FDE /* Period.swift */; };
 		B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B98B571CFE767700CDBE14 /* RealmManager.swift */; };
 		B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */; };
+		B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */; };
+		B0E1B8871D2059FE00E2A202 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		B0B84CB81D01200800804FDE /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		B0B98B571CFE767700CDBE14 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +125,7 @@
 			children = (
 				685B92AE1CFE1317003452CE /* SelectionView.swift */,
 				685B92AC1CFDFAC2003452CE /* CellView.swift */,
+				B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			children = (
 				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
 				6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */,
+				B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E1B8871D2059FE00E2A202 /* SettingsCell.swift in Sources */,
 				B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */,
 				685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */,
 				6870C4811CFDE56C00ACFFF2 /* CalendarViewController.swift in Sources */,
@@ -375,6 +382,7 @@
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
+				B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */,
 				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);
