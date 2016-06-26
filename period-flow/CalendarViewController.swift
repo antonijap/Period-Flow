@@ -83,25 +83,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
     
-    /// Configure counter
-    func configureCounter() {
-        let days = RealmManager.sharedInstance.daysUntilNextPeriod()
-        let predictionDate = period.predictionDate
-        
-        switch today.compare(predictionDate) {
-            case .OrderedAscending:
-                counterLabel.text = "DAYS UNTIL \nNEXT PERIOD"
-                daysUntilNextPeriodLabel.text = "\(days)"
-            case .OrderedDescending:
-                counterLabel.text = "DAYS \nLATE"
-                daysUntilNextPeriodLabel.text = "\(days)"
-            case .OrderedSame:
-                counterLabel.text = "PERIOD STARTS \nTODAY"
-                daysUntilNextPeriodLabel.text = "\(days)"
-        }
-
-    }
-    
     // MARK: - IBActions
     
     @IBAction func settingsButtonTapped(sender: AnyObject) {
