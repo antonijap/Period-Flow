@@ -34,7 +34,7 @@
 		685B92AA1CFDF9CC003452CE /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		685B92AC1CFDFAC2003452CE /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		685B92AE1CFE1317003452CE /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
-		6870C47B1CFDE56B00ACFFF2 /* period-flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "period-flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Period Flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6870C4831CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		6870C47C1CFDE56B00ACFFF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6870C47B1CFDE56B00ACFFF2 /* period-flow.app */,
+				6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				685B92AE1CFE1317003452CE /* SelectionView.swift */,
-				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 				685B92AC1CFDFAC2003452CE /* CellView.swift */,
 			);
 			name = View;
@@ -141,6 +140,7 @@
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
 				687D2CC51D0DEC2F007C83DE /* Assets.xcassets */,
+				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			);
 			name = "period-flow";
 			productName = "period-flow";
-			productReference = 6870C47B1CFDE56B00ACFFF2 /* period-flow.app */;
+			productReference = 6870C47B1CFDE56B00ACFFF2 /* Period Flow.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -495,8 +495,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
-				PRODUCT_NAME = "period-flow";
-				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
+				PRODUCT_NAME = "Period Flow";
+				PROVISIONING_PROFILE = "c2c36df3-e036-4937-aff0-91c70eaf4547";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -513,8 +513,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
-				PRODUCT_NAME = "period-flow";
-				PROVISIONING_PROFILE = "ec17fb17-6797-48b9-a1c2-fcfcfa782586";
+				PRODUCT_NAME = "Period Flow";
+				PROVISIONING_PROFILE = "c2c36df3-e036-4937-aff0-91c70eaf4547";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
