@@ -31,6 +31,14 @@ class RealmManager {
         return realm.objects(Period)
     }
     
+    /// Query last period object in realm
+    func queryLastPeriod() -> Period? {
+        guard let periods = queryAllPeriods() else {
+            return nil
+        }
+        return periods.last
+    }
+    
     /// Get period object that contains specific date
     func periodThatContains(date: NSDate) -> Period? {
         
@@ -233,12 +241,12 @@ class RealmManager {
         return components.day
     }
     
-    /// Calculates day until next period
-    func daysUntilNextPeriod() -> Int {
-        if let lastPeriod = queryAllPeriods()?.last {
-            let days = daysBetweenDate(lastPeriod.predictionDate, endDate: today)
-            return abs(days)
+    /// Calculates days until next period
+    func daysUntilNextPeriod() -> Int? {
+        guard let lastPeriod = queryLastPeriod(), let predictionDate = lastPeriod.predictionDate else {
+            return nil
         }
-        return Int()
+        let days = daysBetweenDate(predictionDate, endDate: today)
+        return abs(days)
     }
 }
