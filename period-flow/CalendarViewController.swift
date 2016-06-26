@@ -9,7 +9,6 @@
 import UIKit
 import JTAppleCalendar
 import SwiftDate
-import ActionSheetPicker_3_0
 import GoogleMobileAds
 
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
@@ -38,12 +37,12 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        setupPurchaseManager()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         calendarView.scrollToDate(NSDate.today())
+        viewManager?.updateUIforCycleDays()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -83,23 +82,10 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
     
-    func setupPurchaseManager() {
-        purchaseManager = PurchaseManager()
-        purchaseManager?.requestProducts()
-        purchaseManager?.getProductDetails()
-    }
-    
     // MARK: - IBActions
     
     @IBAction func settingsButtonTapped(sender: AnyObject) {
-//        var days = [Int]()
-//        days += 1...100
-//        
-//        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: DefaultsManager.getCycleDays() - 1, doneBlock: { picker, int, object in
-//            DefaultsManager.setCycleDays(object as! Int)
-//            self.viewManager?.updateUIforCycleDays()
-//            }, cancelBlock: nil, origin: sender)
-//        picker.showActionSheetPicker()
+    
     }
 }
 

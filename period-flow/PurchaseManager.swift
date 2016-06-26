@@ -31,6 +31,12 @@ class PurchaseManager: NSObject {
         }
     }
     
+    func createPayment(product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.defaultQueue().addPayment(payment)
+    }
+    
 }
 
 
@@ -42,7 +48,6 @@ extension PurchaseManager: SKProductsRequestDelegate {
         print(response.invalidProductIdentifiers)
         
         products = response.products
-        getProductDetails()
     }
 }
 
@@ -50,6 +55,15 @@ extension PurchaseManager: SKProductsRequestDelegate {
 
 extension PurchaseManager: SKPaymentTransactionObserver {
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for item in transactions {
+            switch item.transactionState {
+                case .Purchased: break
+                case .Failed: break
+                case .Restored: break
+                case .Purchasing: break
+                case .Deferred: break
+            }
+        }
         
     }
 }

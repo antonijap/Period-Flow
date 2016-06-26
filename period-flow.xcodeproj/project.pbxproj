@@ -28,6 +28,10 @@
 		B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */; };
 		B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */; };
 		B0E1B8871D2059FE00E2A202 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */; };
+		B0E1B8891D2066C200E2A202 /* ShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */; };
+		B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88B1D207ECF00E2A202 /* SettingsDataProvider.swift */; };
+		B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */; };
+		B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowContainer.swift; sourceTree = "<group>"; };
+		B0E1B88B1D207ECF00E2A202 /* SettingsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataProvider.swift; sourceTree = "<group>"; };
+		B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewManager.swift; sourceTree = "<group>"; };
+		B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,7 @@
 				6870C4901CFDE57C00ACFFF2 /* Model */,
 				6870C4911CFDE58100ACFFF2 /* View */,
 				6870C4921CFDE58500ACFFF2 /* Controller */,
+				B0E1B88A1D207E8200E2A202 /* Services */,
 				B04D62631CFE07F1001584C4 /* DataProviders */,
 				B04D62681CFE5A43001584C4 /* ViewManagers */,
 				685B92A91CFDF9B9003452CE /* Layouts */,
@@ -124,8 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				685B92AE1CFE1317003452CE /* SelectionView.swift */,
+				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 				685B92AC1CFDFAC2003452CE /* CellView.swift */,
 				B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */,
+				B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -136,6 +147,7 @@
 				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
 				6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */,
 				B0E1B8841D2059C100E2A202 /* SettingsViewController.swift */,
+				B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -148,7 +160,6 @@
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
 				687D2CC51D0DEC2F007C83DE /* Assets.xcassets */,
-				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -182,9 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */,
-				B0B98B571CFE767700CDBE14 /* RealmManager.swift */,
-				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
-				B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */,
+				B0E1B88B1D207ECF00E2A202 /* SettingsDataProvider.swift */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -193,8 +202,19 @@
 			isa = PBXGroup;
 			children = (
 				B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */,
+				B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */,
 			);
 			name = ViewManagers;
+			sourceTree = "<group>";
+		};
+		B0E1B88A1D207E8200E2A202 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0B98B571CFE767700CDBE14 /* RealmManager.swift */,
+				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
+				B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E1B8891D2066C200E2A202 /* ShadowContainer.swift in Sources */,
 				B0E1B8871D2059FE00E2A202 /* SettingsCell.swift in Sources */,
 				B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */,
 				685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */,
@@ -381,9 +402,12 @@
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
+				B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */,
+				B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 				B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */,
 				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
+				B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
