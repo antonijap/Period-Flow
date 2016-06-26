@@ -29,8 +29,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     var dataProvider: CalendarDataProvider?
     var viewManager: CalendarViewManager?
     let today = NSDate.today()
-    var selectedDates = [NSDate]()
-    var period = Period()
+    //var selectedDates = [NSDate]()
     
     // MARK: - View Life Cycle
     
@@ -40,8 +39,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
-        viewManager?.displayAllDates()
-        configureCounter()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,9 +67,11 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     }
     
     func setupViewManager() {
-        viewManager = CalendarViewManager(calendarView: calendarView, controller: self)
+        viewManager = CalendarViewManager(calendarView: calendarView)
         calendarView.delegate = viewManager
         viewManager?.delegate = self
+        viewManager?.displayAllDates()
+        viewManager?.configureCounter()
     }
     
     func setupCalendar() {
@@ -84,24 +83,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
     
-    /// Configure counter
-    func configureCounter() {
-        let days = RealmManager.sharedInstance.daysUntilNextPeriod()
-        let predictionDate = period.predictionDate
-        
-        switch today.compare(predictionDate) {
-            case .OrderedAscending:
-                counterLabel.text = "DAYS UNTIL \nNEXT PERIOD"
-                daysUntilNextPeriodLabel.text = "\(days)"
-            case .OrderedDescending:
-                counterLabel.text = "DAYS \nLATE"
-                daysUntilNextPeriodLabel.text = "\(days)"
-            case .OrderedSame:
-                counterLabel.text = "PERIOD STARTS \nTODAY"
-                daysUntilNextPeriodLabel.text = "\(days)"
-        }
-    }
-    
     // MARK: - IBActions
     
     @IBAction func settingsButtonTapped(sender: AnyObject) {
@@ -109,8 +90,8 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         days += 1...100
         
         let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: DefaultsManager.getCycleDays() - 1, doneBlock: { picker, int, object in
-                DefaultsManager.setCycleDays(object as! Int)
-                self.viewManager?.updateUIforCycleDays()
+            DefaultsManager.setCycleDays(object as! Int)
+            self.viewManager?.updateUIforCycleDays()
             }, cancelBlock: nil, origin: sender)
         picker.showActionSheetPicker()
     }

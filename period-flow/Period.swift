@@ -38,12 +38,14 @@ class Period: Object {
         return dates
     }
     
-    var predictionDate: NSDate {
-        if let startDate = startDate {
-            let cycleDays = DefaultsManager.getCycleDays()
-            let futureDate = startDate + (cycleDays.days - 1.days)
-            return futureDate
+    var predictionDate: NSDate? {
+        
+        guard let startDate = self.startDate else {
+            return nil
         }
-        return NSDate()
+        
+        let cycleDays = DefaultsManager.getCycleDays()
+        let futureDate = startDate + (cycleDays.days - 1.days)
+        return futureDate
     }
 }
