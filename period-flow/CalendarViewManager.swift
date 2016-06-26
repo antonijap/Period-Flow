@@ -116,10 +116,11 @@ class CalendarViewManager: NSObject {
             case today.isInToday():
                 delegate?.counterLabel.text = "PERIOD STARTS \nTODAY"
                 delegate?.daysUntilNextPeriodLabel.text = "\(days)"
-            default:
-                delegate?.counterLabel.text = "?"
-                delegate?.daysUntilNextPeriodLabel.text = "SELECT A DATE \nTO BEGIN"
+            default: break
             }
+        } else {
+            delegate?.counterLabel.text = "SELECT A DATE \nTO BEGIN"
+            delegate?.daysUntilNextPeriodLabel.text = "?"
         }
     }
 }
