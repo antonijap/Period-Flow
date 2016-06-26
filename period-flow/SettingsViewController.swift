@@ -9,30 +9,54 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
+    
+    var dataProvider: SettingsDataProvider?
+    var viewManager: SettingsViewManager?
+
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupDataProvider()
+        setupViewManager()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Methods
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func setupDataProvider() {
+        dataProvider = SettingsDataProvider(tableView: tableView)
+        tableView.dataSource = dataProvider
     }
-    */
+    
+    func setupViewManager() {
+        viewManager = SettingsViewManager(tableView: tableView)
+        tableView.delegate = viewManager
+        viewManager?.delegate = self
+    }
+
+    // MARK: - IBActions
+    
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+}
+
+extension SettingsViewController: SettingsViewManagerDelegate {
+    func showPurchaseController() {
+        performSegueWithIdentifier("ShowPurchase", sender: self)
+    }
 }
