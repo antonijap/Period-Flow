@@ -25,6 +25,7 @@
 		B04D626A1CFE5AA6001584C4 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */; };
 		B0B84CB91D01200800804FDE /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84CB81D01200800804FDE /* Period.swift */; };
 		B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B98B571CFE767700CDBE14 /* RealmManager.swift */; };
+		B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		B04D62691CFE5AA6001584C4 /* CalendarViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
 		B0B84CB81D01200800804FDE /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		B0B98B571CFE767700CDBE14 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				B04D62641CFE0804001584C4 /* CalendarDataProvider.swift */,
 				B0B98B571CFE767700CDBE14 /* RealmManager.swift */,
 				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
+				B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
+				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
