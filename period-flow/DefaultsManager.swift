@@ -26,8 +26,8 @@ class DefaultsManager {
     }
     
     /// Gets the number of days before to receive notifications from NSUserDefaults
-    class func getNotificationDays() -> Int? {
-        return NSUserDefaults.standardUserDefaults().valueForKey("notificationDays") as? Int
+    class func getNotificationDays() -> Int {
+        return NSUserDefaults.standardUserDefaults().valueForKey("notificationDays") as? Int ?? 1
     }
     
     /// Sets the number of periods to use for the analysis
@@ -36,8 +36,8 @@ class DefaultsManager {
     }
     
     /// Gets the number of periods to use for the analysis
-    class func getAnalysisNumber() -> Int? {
-        return NSUserDefaults.standardUserDefaults().valueForKey("analysisNumber") as? Int
+    class func getAnalysisNumber() -> Int {
+        return NSUserDefaults.standardUserDefaults().valueForKey("analysisNumber") as? Int ?? 1
     }
     
     /// Checks if PRO Pack in app purchase is unlocked

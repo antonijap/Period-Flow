@@ -53,7 +53,7 @@ class SettingsViewManager: NSObject {
         let title = "Days Before"
         let currentDuration = DefaultsManager.getCycleDays()
         let days = (1...currentDuration).map { $0 }
-        let notifDays = DefaultsManager.getNotificationDays() ?? 3
+        let notifDays = DefaultsManager.getNotificationDays()
         
         let picker = actionSheetFactory(title, rows: days, indexSelected: notifDays, sender: tableView) { (picker, int, object) in
             if let object = object as? Int {
@@ -66,9 +66,9 @@ class SettingsViewManager: NSObject {
     /// Displays the picker to set the number of periods to base the analysis on
     func displayAnalysisPicker() {
         let title = "Number of Periods"
-        let currentNumber = DefaultsManager.getAnalysisNumber() ?? 0
+        let currentNumber = DefaultsManager.getAnalysisNumber()
         let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
-        let rangeCap = totalPeriods > 0 ? totalPeriods! : 1
+        let rangeCap = totalPeriods > 0 ? totalPeriods! : currentNumber
         let range = (1...rangeCap).map { $0 }
         
         let picker = actionSheetFactory(title, rows: range, indexSelected: currentNumber, sender: tableView) { (picker, int, object) in

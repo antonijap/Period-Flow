@@ -32,4 +32,17 @@ class PurchaseViewController: UIViewController {
         purchaseManager?.requestProducts()
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func purchaseProPackPressed(sender: AnyObject) {
+        if let product = purchaseManager?.products.first where product.productIdentifier == "com.antonijapek.periodflow.propack" {
+            purchaseManager?.createPayment(product)
+        }
+
+    }
+    
+    @IBAction func restorePressed(sender: AnyObject) {
+        purchaseManager?.restoreTransactions()
+    }
+    
 }

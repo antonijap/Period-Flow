@@ -45,16 +45,24 @@ class SettingsCell: UITableViewCell {
     }
     
     func configurePurchasesRow() {
-        settingsLabel.text = purchased ? "PRO Pack Unlocked" : "PRO Pack Available for Purchase"
+        
+        settingsLabel.text = purchased ? "PRO Pack Unlocked" : "PRO Pack Available"
     }
 
     func configureNotificationsRow() {
-        settingsLabel.text = purchased ? "Unlocked" : "Unavailable - Unlock PRO Pack"
+        let notifDays = DefaultsManager.getNotificationDays()
+        let dayOrDays = notifDays == 1 ? "day" : "days"
+        let title = "\(notifDays) \(dayOrDays) before period begins"
+        
+        settingsLabel.text = purchased ? title : "Unlock PRO Pack"
         self.userInteractionEnabled = purchased
     }
     
     func configureAnalysisRow() {
-        settingsLabel.text = purchased ? "Unlocked" : "Unavailable - Unlock PRO Pack"
+        let number = DefaultsManager.getAnalysisNumber()
+        let title = number == 1 ? "Last period" : "Last \(number) period"
+        
+        settingsLabel.text = purchased ? title : "Unlock PRO Pack"
         self.userInteractionEnabled = purchased
     }
     

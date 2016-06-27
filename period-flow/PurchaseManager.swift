@@ -18,23 +18,33 @@ class PurchaseManager: NSObject {
     
     // MARK: - Methods
     
+    /// Requests available products for in app purchase
     func requestProducts() {
         let productRequest = SKProductsRequest(productIdentifiers: productIDs)
         productRequest.delegate = self
         productRequest.start()
     }
     
+    // FIXME: Incomplete
     func getProductDetails() {
         for product in products {
             print(product.price)
+            print(product.productIdentifier)
             print(product.localizedTitle)
         }
     }
     
+    /// Creates a payment for a in app purchase product
     func createPayment(product: SKProduct) {
         let payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         SKPaymentQueue.defaultQueue().addPayment(payment)
+    }
+    
+    
+    /// Restores previously completed transactions, required by Apple
+    func restoreTransactions() {
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
 }
@@ -43,10 +53,8 @@ class PurchaseManager: NSObject {
     // MARK: - Extension: SKProductsRequestDelegate
 
 extension PurchaseManager: SKProductsRequestDelegate {
+    
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        print(response.products)
-        print(response.invalidProductIdentifiers)
-        
         products = response.products
     }
 }
@@ -54,16 +62,22 @@ extension PurchaseManager: SKProductsRequestDelegate {
     // MARK: - Extension: SKPaymentTransactionObserver
 
 extension PurchaseManager: SKPaymentTransactionObserver {
+    
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for item in transactions {
-            switch item.transactionState {
-                case .Purchased: break
-                case .Failed: break
-                case .Restored: break
-                case .Purchasing: break
-                case .Deferred: break
+        for transaction in transactions {
+            switch transaction.transactionState {
+                case .Purchased:
+                    DefaultsManager.unlockProPack()
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                case .Failed:
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                case .Restored:
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                case .Purchasing:
+                    break
+                case .Deferred:
+                    break
             }
         }
-        
     }
 }

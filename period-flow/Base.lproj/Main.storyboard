@@ -276,18 +276,18 @@ DURATION</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="80" id="oop-7S-CO5" customClass="SettingsCell" customModule="Period_Flow" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="80" id="oop-7S-CO5" customClass="SettingsCell" customModule="Period_Flow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oop-7S-CO5" id="IBf-oF-kj1">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bez-it-Zeg" customClass="ShadowContainer" customModule="Period_Flow" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="568" height="47"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bez-it-Zeg" customClass="ShadowContainer" customModule="Period_Flow" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="568" height="48"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yun-zf-V5d">
-                                                            <rect key="frame" x="12" y="12" width="544" height="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yun-zf-V5d">
+                                                            <rect key="frame" x="12" y="12" width="544" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -313,7 +313,7 @@ DURATION</string>
                                             <outlet property="settingsLabel" destination="yun-zf-V5d" id="rXm-ef-EKa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnalysisCell" rowHeight="150" id="wF3-jZ-JKV" customClass="AnalysisCell" customModule="Period_Flow" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AnalysisCell" rowHeight="150" id="wF3-jZ-JKV" customClass="AnalysisCell" customModule="Period_Flow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="194" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wF3-jZ-JKV" id="toi-kq-NJP">
@@ -397,10 +397,10 @@ DURATION</string>
             </objects>
             <point key="canvasLocation" x="1844" y="429"/>
         </scene>
-        <!--View Controller-->
+        <!--Purchase View Controller-->
         <scene sceneID="lhD-Oq-3TC">
             <objects>
-                <viewController id="vFh-pj-6dh" sceneMemberID="viewController">
+                <viewController id="vFh-pj-6dh" customClass="PurchaseViewController" customModule="Period_Flow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yzg-3L-gEt"/>
                         <viewControllerLayoutGuide type="bottom" id="qYI-jU-H4U"/>
@@ -419,12 +419,31 @@ DURATION</string>
                                 <state key="normal" title="Purchase PRO Pack">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="purchaseProPackPressed:" destination="vFh-pj-6dh" eventType="touchUpInside" id="Iip-CQ-Uge"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYl-Bd-M0f">
+                                <rect key="frame" x="219" y="445" width="163" height="30"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.43529411759999997" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="163" id="QXV-0i-fBk"/>
+                                    <constraint firstAttribute="height" constant="30" id="qjn-eL-7cY"/>
+                                </constraints>
+                                <state key="normal" title="Restore Purchases">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="restorePressed:" destination="vFh-pj-6dh" eventType="touchUpInside" id="vLv-4y-obJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bYl-Bd-M0f" firstAttribute="top" secondItem="ybO-v3-I2K" secondAttribute="bottom" constant="29" id="CPz-LM-FEf"/>
                             <constraint firstItem="qYI-jU-H4U" firstAttribute="top" secondItem="ybO-v3-I2K" secondAttribute="bottom" constant="184" id="TMq-ce-Dgv"/>
                             <constraint firstItem="ybO-v3-I2K" firstAttribute="centerX" secondItem="Opc-DV-B7e" secondAttribute="centerX" id="XcK-hb-t2w"/>
+                            <constraint firstItem="bYl-Bd-M0f" firstAttribute="centerX" secondItem="Opc-DV-B7e" secondAttribute="centerX" id="feO-wc-0Rr"/>
                         </constraints>
                     </view>
                 </viewController>

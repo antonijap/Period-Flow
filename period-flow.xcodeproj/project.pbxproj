@@ -33,6 +33,7 @@
 		B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */; };
 		B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */; };
 		B0E1B8921D20A2E100E2A202 /* AnalysisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */; };
+		B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8931D20C49D00E2A202 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewManager.swift; sourceTree = "<group>"; };
 		B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisCell.swift; sourceTree = "<group>"; };
+		B0E1B8931D20C49D00E2A202 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				68E8430C1D05F41600224BC4 /* Fonts */,
+				B0E1B8931D20C49D00E2A202 /* Constants.swift */,
 				685B92A71CFDF313003452CE /* Color.swift */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
@@ -409,6 +412,7 @@
 				B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 				B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */,
+				B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */,
 				B0E1B8921D20A2E100E2A202 /* AnalysisCell.swift in Sources */,
 				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
 				B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */,
