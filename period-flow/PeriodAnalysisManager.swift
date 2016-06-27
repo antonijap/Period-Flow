@@ -34,18 +34,6 @@ class PeriodAnalysisManager {
         return Double(totalDays) / Double(DefaultsManager.getAnalysisNumber())
     }
     
-//    class func performAnalysis(operation: (Slice<Results<Period>>, Double) -> Double) -> Double? {
-//        guard let periods = RealmManager.sharedInstance.queryAllPeriods() where periods.count > 0 else {
-//            return nil
-//        }
-//        let durationBasis = DefaultsManager.getAnalysisNumber()
-//        let endIndex = periods.endIndex.predecessor()
-//        let startIndex = calculateStartIndex(periods, durationBasis: durationBasis)
-//        
-//        return operation(periods[startIndex...endIndex], Double(durationBasis))
-//        
-//    }
-    
     // MARK: - Helper Methods
     
     /// Gets number of days between two NSDates as Int value

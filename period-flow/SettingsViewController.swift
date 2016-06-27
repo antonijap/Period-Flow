@@ -47,6 +47,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        configureAnalysisView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +86,15 @@ class SettingsViewController: UIViewController {
         
         let notifDays = DefaultsManager.getNotificationDays()
         notificationsLabel.text = notifDays == 1 ? "1 day before period starts" : "\(notifDays) days before period starts"
+    }
+    
+    func configureAnalysisView() {
+        if let avgPeriodDuration = PeriodAnalysisManager.getAveragePeriodDuration() {
+            avgPeriodNumberLabel.text = "\(avgPeriodDuration)"
+        }
+        if let avgCycleDuration = PeriodAnalysisManager.getAverageCycleDuration() {
+            avgCycleNumberLabel.text = "\(avgCycleDuration)"
+        }
     }
     
     /// Factory method to create an ActionSheetStringPicker with nil cancel block and trailing completion
@@ -136,6 +146,7 @@ class SettingsViewController: UIViewController {
         let picker = actionSheetFactory(title, rows: range, indexSelected: 0, sender: analysisView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setAnalysisNumber(object)
+                self.configureAnalysisView()
                 self.analysisBasisLabel.text = object == 1 ? "Last Period" : "Last \(object) periods"
             }
         }
