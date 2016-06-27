@@ -9,12 +9,21 @@
 import UIKit
 
 class AnalysisCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var avgPeriodDuration: UILabel!
+    @IBOutlet weak var avgCycleDuration: UILabel!
+    
+    // MARK: - Methods
+    
+    func configureCell() {
+        if let avgPeriod = PeriodAnalysisManager.performAnalysis(PeriodAnalysisManager.averagePeriodDuration) {
+            avgPeriodDuration.text = "\(avgPeriod)"
+        }
+        
+        if let avgCycle = PeriodAnalysisManager.performAnalysis(PeriodAnalysisManager.getAverageCycleDuration) {
+            avgCycleDuration.text = "\(avgCycle)"
+        }
     }
 }

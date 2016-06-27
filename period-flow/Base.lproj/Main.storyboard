@@ -368,6 +368,10 @@ DURATION</string>
                                                 <constraint firstItem="B9L-ru-1iI" firstAttribute="top" secondItem="toi-kq-NJP" secondAttribute="topMargin" constant="8" id="ioM-wI-hkn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avgCycleDuration" destination="k1F-gh-lTx" id="K0K-jI-0cZ"/>
+                                            <outlet property="avgPeriodDuration" destination="NI0-4j-Nz9" id="5r3-IA-BuW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -43,6 +43,7 @@ class SettingsViewManager: NSObject {
         let picker = actionSheetFactory(title, rows: days, indexSelected: currentDuration, sender: tableView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setCycleDays(object)
+                self.tableView.reloadData()
             }
         }
         picker.showActionSheetPicker()
@@ -58,6 +59,7 @@ class SettingsViewManager: NSObject {
         let picker = actionSheetFactory(title, rows: days, indexSelected: notifDays, sender: tableView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setNotificationDays(object)
+                self.tableView.reloadData()
             }
         }
         picker.showActionSheetPicker()
@@ -74,6 +76,7 @@ class SettingsViewManager: NSObject {
         let picker = actionSheetFactory(title, rows: range, indexSelected: currentNumber, sender: tableView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setAnalysisNumber(object)
+                self.tableView.reloadData()
             }
         }
         picker.showActionSheetPicker()

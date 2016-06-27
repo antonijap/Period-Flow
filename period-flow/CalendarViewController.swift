@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
+        DefaultsManager.unlockProPack()
     }
     
     override func viewWillAppear(animated: Bool) {

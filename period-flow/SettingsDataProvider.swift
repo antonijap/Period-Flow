@@ -39,6 +39,7 @@ extension SettingsDataProvider: UITableViewDataSource {
         settingCell.configureForSection(indexPath.section)
         
         let analysisCell = tableView.dequeueReusableCellWithIdentifier(CELL_ANALYSIS) as? AnalysisCell ?? AnalysisCell()
+        analysisCell.configureCell()
         return indexPath.section == 4 ? analysisCell : settingCell
     }
 }
