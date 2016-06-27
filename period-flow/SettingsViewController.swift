@@ -2,65 +2,34 @@
 //  SettingsViewController.swift
 //  period-flow
 //
-//  Created by Steven on 6/26/16.
+//  Created by Steven on 6/27/16.
 //  Copyright © 2016 Antonija Pek. All rights reserved.
 //
 
 import UIKit
 
 class SettingsViewController: UIViewController {
-    
-    // MARK: - IBOutlets
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    // MARK: - Properties
-    
-    var dataProvider: SettingsDataProvider?
-    var viewManager: SettingsViewManager?
-
-    
-    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDataProvider()
-        setupViewManager()
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Methods
-    
 
-    func setupDataProvider() {
-        dataProvider = SettingsDataProvider(tableView: tableView)
-        tableView.dataSource = dataProvider
-    }
-    
-    func setupViewManager() {
-        viewManager = SettingsViewManager(tableView: tableView)
-        tableView.delegate = viewManager
-        viewManager?.delegate = self
-    }
-
-    // MARK: - IBActions
-    
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-}
-
-    // MARK: - Extension: SettingsViewManagerDelegate
-
-extension SettingsViewController: SettingsViewManagerDelegate {
-    
+    /*
     // MARK: - Navigation
-    
-    func showPurchaseController() {
-        performSegueWithIdentifier("ShowPurchase", sender: self)
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }
