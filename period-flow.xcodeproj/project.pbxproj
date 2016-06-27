@@ -34,6 +34,7 @@
 		B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */; };
 		B0E1B8921D20A2E100E2A202 /* AnalysisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */; };
 		B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8931D20C49D00E2A202 /* Constants.swift */; };
+		B0E1B8961D20CC1900E2A202 /* PeriodAnalysisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisCell.swift; sourceTree = "<group>"; };
 		B0E1B8931D20C49D00E2A202 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodAnalysisManager.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 				B0B98B571CFE767700CDBE14 /* RealmManager.swift */,
 				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
 				B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */,
+				B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
 				B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */,
+				B0E1B8961D20CC1900E2A202 /* PeriodAnalysisManager.swift in Sources */,
 				B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 				B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */,
