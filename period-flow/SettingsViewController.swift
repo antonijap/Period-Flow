@@ -35,7 +35,6 @@ class SettingsViewController: UIViewController {
     // MARK: - Methods
     
 
-    
     func setupDataProvider() {
         dataProvider = SettingsDataProvider(tableView: tableView)
         tableView.dataSource = dataProvider
@@ -55,7 +54,12 @@ class SettingsViewController: UIViewController {
 
 }
 
+    // MARK: - Extension: SettingsViewManagerDelegate
+
 extension SettingsViewController: SettingsViewManagerDelegate {
+    
+    // MARK: - Navigation
+    
     func showPurchaseController() {
         performSegueWithIdentifier("ShowPurchase", sender: self)
     }

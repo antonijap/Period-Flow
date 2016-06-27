@@ -29,32 +29,69 @@ class SettingsViewManager: NSObject {
     
     // MARK: - Methods
     
-    func displayActionSheet(sender: AnyObject) {
+    /// Factory method to create an ActionSheetStringPicker with nil cancel block and trailing completion
+    func actionSheetFactory(title: String, rows: [Int], indexSelected: Int, sender: AnyObject, completion: ActionStringDoneBlock) -> ActionSheetStringPicker {
+        return ActionSheetStringPicker(title: title, rows: rows, initialSelection: indexSelected, doneBlock: completion, cancelBlock: nil, origin: sender)
+    }
+    
+    /// Displays the picker to set the Cycle Duration
+    func displayDurationPicker() {
+        let title = "Cycle Duration"
+        let days = (1...100).map { $0 }
+        let currentDuration = DefaultsManager.getCycleDays()
         
-        var days = [Int]()
-        days += 1...100
-        
-        let doneBlock = { (picker: ActionSheetStringPicker!, int: Int, object: AnyObject!) in
+        let picker = actionSheetFactory(title, rows: days, indexSelected: currentDuration, sender: tableView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setCycleDays(object)
             }
         }
-        
-        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: DefaultsManager.getCycleDays() - 1,
-                                             doneBlock: doneBlock, cancelBlock: nil, origin: sender)
-        
         picker.showActionSheetPicker()
-        
     }
-
+    
+    /// Displays the picker to set the number of days before a notification occurs
+    func displayNotificationPicker() {
+        let title = "Days Before"
+        let currentDuration = DefaultsManager.getCycleDays()
+        let days = (1...currentDuration).map { $0 }
+        let notifDays = DefaultsManager.getNotificationDays() ?? 3
+        
+        let picker = actionSheetFactory(title, rows: days, indexSelected: notifDays, sender: tableView) { (picker, int, object) in
+            if let object = object as? Int {
+                DefaultsManager.setNotificationDays(object)
+            }
+        }
+        picker.showActionSheetPicker()
+    }
+    
+    /// Displays the picker to set the number of periods to base the analysis on
+    func displayAnalysisPicker() {
+        let title = "Number of Periods"
+        let currentNumber = DefaultsManager.getAnalysisNumber() ?? 0
+        let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
+        let rangeCap = totalPeriods > 0 ? totalPeriods! : 1
+        let range = (1...rangeCap).map { $0 }
+        
+        let picker = actionSheetFactory(title, rows: range, indexSelected: currentNumber, sender: tableView) { (picker, int, object) in
+            if let object = object as? Int {
+                DefaultsManager.setAnalysisNumber(object)
+            }
+        }
+        picker.showActionSheetPicker()
+    }
 }
 
 extension SettingsViewManager: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
-        case 0: displayActionSheet(tableView)
-        case 1: delegate?.showPurchaseController()
+        case 0:
+            displayDurationPicker()
+        case 1:
+            delegate?.showPurchaseController()
+        case 2:
+            displayNotificationPicker()
+        case 3 where indexPath.row == 0:
+            displayAnalysisPicker()
         default: break
         }
     }

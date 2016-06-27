@@ -272,21 +272,21 @@ DURATION</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Oh-C2-Ivt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="2Oh-C2-Ivt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="80" id="oop-7S-CO5" customClass="SettingsCell" customModule="Period_Flow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oop-7S-CO5" id="IBf-oF-kj1">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bez-it-Zeg" customClass="ShadowContainer" customModule="Period_Flow" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bez-it-Zeg" customClass="ShadowContainer" customModule="Period_Flow" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="568" height="47"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yun-zf-V5d">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yun-zf-V5d">
                                                             <rect key="frame" x="12" y="12" width="544" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -313,6 +313,62 @@ DURATION</string>
                                             <outlet property="settingsLabel" destination="yun-zf-V5d" id="rXm-ef-EKa"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnalysisCell" rowHeight="150" id="wF3-jZ-JKV" customClass="AnalysisCell" customModule="Period_Flow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="194" width="600" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wF3-jZ-JKV" id="toi-kq-NJP">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9L-ru-1iI" customClass="ShadowContainer" customModule="Period_Flow" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="568" height="118"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Period Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1b-3T-845">
+                                                            <rect key="frame" x="16" y="24" width="186" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Cycle Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLd-AK-jZZ">
+                                                            <rect key="frame" x="16" y="73" width="179" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI0-4j-Nz9">
+                                                            <rect key="frame" x="509" y="24" width="51" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1F-gh-lTx">
+                                                            <rect key="frame" x="509" y="73" width="51" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="NI0-4j-Nz9" secondAttribute="trailing" constant="8" id="8dG-TG-CkN"/>
+                                                        <constraint firstItem="C1b-3T-845" firstAttribute="top" secondItem="B9L-ru-1iI" secondAttribute="top" constant="24" id="9h3-bs-mbG"/>
+                                                        <constraint firstItem="NI0-4j-Nz9" firstAttribute="top" secondItem="B9L-ru-1iI" secondAttribute="top" constant="24" id="BsQ-gI-mFK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="k1F-gh-lTx" secondAttribute="bottom" constant="24" id="Gcp-zF-ie4"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YLd-AK-jZZ" secondAttribute="bottom" constant="24" id="NQl-Lw-eGD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="k1F-gh-lTx" secondAttribute="trailing" constant="8" id="ODY-Za-qBn"/>
+                                                        <constraint firstItem="C1b-3T-845" firstAttribute="leading" secondItem="B9L-ru-1iI" secondAttribute="leading" constant="16" id="U1C-vf-l1X"/>
+                                                        <constraint firstItem="YLd-AK-jZZ" firstAttribute="leading" secondItem="B9L-ru-1iI" secondAttribute="leading" constant="16" id="sp6-Mm-0pQ"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="B9L-ru-1iI" firstAttribute="trailing" secondItem="toi-kq-NJP" secondAttribute="trailingMargin" constant="-8" id="0S2-Ld-GHJ"/>
+                                                <constraint firstItem="B9L-ru-1iI" firstAttribute="leading" secondItem="toi-kq-NJP" secondAttribute="leadingMargin" constant="8" id="CnB-Os-3sr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="B9L-ru-1iI" secondAttribute="bottom" constant="8" id="d7d-sS-iiX"/>
+                                                <constraint firstItem="B9L-ru-1iI" firstAttribute="top" secondItem="toi-kq-NJP" secondAttribute="topMargin" constant="8" id="ioM-wI-hkn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -326,6 +382,7 @@ DURATION</string>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="1a6-fX-QUk">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="h0G-DP-J68">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="backButtonPressed:" destination="Hh7-Tf-w8Z" id="QRl-1C-yhC"/>
                             </connections>
@@ -380,9 +437,10 @@ DURATION</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FLN-Uk-J7N" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zBB-Yd-j3V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="zBB-Yd-j3V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.34901960784313724" green="0.80000000000000004" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

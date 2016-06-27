@@ -32,6 +32,7 @@
 		B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88B1D207ECF00E2A202 /* SettingsDataProvider.swift */; };
 		B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */; };
 		B0E1B8901D20842500E2A202 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */; };
+		B0E1B8921D20A2E100E2A202 /* AnalysisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		B0E1B88B1D207ECF00E2A202 /* SettingsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataProvider.swift; sourceTree = "<group>"; };
 		B0E1B88D1D207EE600E2A202 /* SettingsViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewManager.swift; sourceTree = "<group>"; };
 		B0E1B88F1D20842500E2A202 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisCell.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,11 +134,12 @@
 		6870C4911CFDE58100ACFFF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */,
 				685B92AE1CFE1317003452CE /* SelectionView.swift */,
 				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 				685B92AC1CFDFAC2003452CE /* CellView.swift */,
 				B0E1B8861D2059FE00E2A202 /* SettingsCell.swift */,
-				B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */,
+				B0E1B8911D20A2E100E2A202 /* AnalysisCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				B0E1B88C1D207ECF00E2A202 /* SettingsDataProvider.swift in Sources */,
 				B04D62651CFE0804001584C4 /* CalendarDataProvider.swift in Sources */,
 				B0E1B8851D2059C100E2A202 /* SettingsViewController.swift in Sources */,
+				B0E1B8921D20A2E100E2A202 /* AnalysisCell.swift in Sources */,
 				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
 				B0E1B88E1D207EE600E2A202 /* SettingsViewManager.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,

@@ -20,6 +20,8 @@ class SettingsDataProvider: NSObject {
         self.tableView = tableView
         super.init()
     }
+    
+    // MARK: - Methods
 }
 
 extension SettingsDataProvider: UITableViewDataSource {
@@ -29,22 +31,14 @@ extension SettingsDataProvider: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 4 ? 2 : 1
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0: return "CYCLE DURATION IN DAYS"
-        case 1: return "PURCHASES"
-        case 2: return "NOTIFY ME"
-        case 3: return "BASE YOUR ANALYSIS ON"
-        default: return nil
-        }
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SettingsCell") as? SettingsCell ?? SettingsCell()
-        cell.configureForSection(indexPath.section)
-        return cell
+        let settingCell = tableView.dequeueReusableCellWithIdentifier("SettingsCell") as? SettingsCell ?? SettingsCell()
+        settingCell.configureForSection(indexPath.section)
+        
+        let analysisCell = tableView.dequeueReusableCellWithIdentifier("AnalysisCell") as? AnalysisCell ?? AnalysisCell()
+        return indexPath.section == 4 ? analysisCell : settingCell
     }
 }

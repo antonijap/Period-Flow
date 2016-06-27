@@ -47,14 +47,15 @@ class SettingsCell: UITableViewCell {
     func configurePurchasesRow() {
         settingsLabel.text = purchased ? "PRO Pack Unlocked" : "PRO Pack Available for Purchase"
     }
-    
 
     func configureNotificationsRow() {
         settingsLabel.text = purchased ? "Unlocked" : "Unavailable - Unlock PRO Pack"
+        self.userInteractionEnabled = purchased
     }
     
     func configureAnalysisRow() {
         settingsLabel.text = purchased ? "Unlocked" : "Unavailable - Unlock PRO Pack"
+        self.userInteractionEnabled = purchased
     }
     
     
