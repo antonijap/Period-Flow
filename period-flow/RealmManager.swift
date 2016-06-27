@@ -40,11 +40,11 @@ class RealmManager {
     func queryPeriodsForAnalysis() -> Slice<Results<Period>>? {
         let analysisBasis = DefaultsManager.getAnalysisNumber()
         let periods = realm.objects(Period)
-        if periods.count < 0 {
+        if periods.count <= 0 {
             return nil
         } else {
             let endIndex = periods.count - 1
-            let startIndex = periods.count - analysisBasis
+            let startIndex = periods.count - analysisBasis < 0 ? 0 : periods.count - analysisBasis
             return periods[startIndex...endIndex]
         }
         

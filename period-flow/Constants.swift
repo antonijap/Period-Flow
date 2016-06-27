@@ -27,3 +27,15 @@ let KEY_PRO_PACK = "ProPack"
 
 let CELL_SETTINGS = "SettingsCell"
 let CELL_ANALYSIS = "AnalysisCell"
+
+
+// Extension: Double
+
+extension Double {
+    /// Formats a Double to specified number of digits
+    func toPlaces(number: Int) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.minimumFractionDigits = number
+        return formatter.stringFromNumber(self) ?? "\(self)"
+    }
+}

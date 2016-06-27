@@ -37,7 +37,9 @@ class DefaultsManager {
     
     /// Gets the number of periods to use for the analysis
     class func getAnalysisNumber() -> Int {
-        return NSUserDefaults.standardUserDefaults().valueForKey(KEY_ANALYSIS) as? Int ?? 1
+        let totalPeriods = RealmManager.sharedInstance.realm.objects(Period).count
+        let storedNumber = NSUserDefaults.standardUserDefaults().valueForKey(KEY_ANALYSIS) as? Int ?? totalPeriods
+        return storedNumber > totalPeriods ? totalPeriods : storedNumber
     }
     
     /// Checks if PRO Pack in app purchase is unlocked

@@ -28,7 +28,9 @@ class PeriodAnalysisManager {
             return nil
         }
         let totalDays = periods.reduce(0) { (total, period) in
-            let daysBetween = daysBetweenDate(period.startDate!, endDate: period.endDate!)
+            print(period.startDate!)
+            print(period.predictionDate)
+            let daysBetween = daysBetweenDate(period.predictionDate!, endDate: period.startDate!)
             return total + abs(daysBetween)
         }
         return Double(totalDays) / Double(DefaultsManager.getAnalysisNumber())

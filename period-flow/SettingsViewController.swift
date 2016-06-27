@@ -90,10 +90,10 @@ class SettingsViewController: UIViewController {
     
     func configureAnalysisView() {
         if let avgPeriodDuration = PeriodAnalysisManager.getAveragePeriodDuration() {
-            avgPeriodNumberLabel.text = "\(avgPeriodDuration)"
+            avgPeriodNumberLabel.text = "\(avgPeriodDuration.toPlaces(1))"
         }
         if let avgCycleDuration = PeriodAnalysisManager.getAverageCycleDuration() {
-            avgCycleNumberLabel.text = "\(avgCycleDuration)"
+            avgCycleNumberLabel.text = "\(avgCycleDuration.toPlaces(1))"
         }
     }
     
