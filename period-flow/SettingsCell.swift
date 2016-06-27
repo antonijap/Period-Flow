@@ -17,18 +17,10 @@ class SettingsCell: UITableViewCell {
     // MARK: - Properties
     
     let purchased = DefaultsManager.isProPackUnlocked()
-    
 
     // MARK: - Methods
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+    /// Configures the cell based on the section
     func configureForSection(section: Int) {
         switch section {
             case 0: configureCycleDaysRow()
@@ -39,16 +31,18 @@ class SettingsCell: UITableViewCell {
         }
     }
     
+    /// Configures the cell title for the cycle duration
     func configureCycleDaysRow() {
         let cycleDays = DefaultsManager.getCycleDays()
         settingsLabel.text = "\(cycleDays)"
     }
     
+    /// Configures the cell title for the purchases
     func configurePurchasesRow() {
-        
         settingsLabel.text = purchased ? "PRO Pack Unlocked" : "PRO Pack Available"
     }
-
+    
+    /// Configures the cell title for the notifications and controls interaction
     func configureNotificationsRow() {
         let notifDays = DefaultsManager.getNotificationDays()
         let dayOrDays = notifDays == 1 ? "day" : "days"
@@ -58,6 +52,7 @@ class SettingsCell: UITableViewCell {
         self.userInteractionEnabled = purchased
     }
     
+    /// Configures the cell title for the analysis and controls interaction
     func configureAnalysisRow() {
         let number = DefaultsManager.getAnalysisNumber()
         let title = number == 1 ? "Last period" : "Last \(number) period"
@@ -65,7 +60,4 @@ class SettingsCell: UITableViewCell {
         settingsLabel.text = purchased ? title : "Unlock PRO Pack"
         self.userInteractionEnabled = purchased
     }
-    
-    
-
 }
