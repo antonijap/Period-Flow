@@ -117,6 +117,8 @@ class SettingsViewController: UIViewController {
         let picker = actionSheetFactory(title, rows: days, indexSelected: index, sender: notificationsView) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setNotificationDays(object)
+                LocalNotificationsManager.cancelAllNotifications()
+                LocalNotificationsManager.registerNotification()
                 self.notificationsLabel.text = object == 1 ? "1 day before period starts" : "\(object) days before period starts"
             }
         }
