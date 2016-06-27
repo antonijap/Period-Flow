@@ -82,12 +82,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
-    
-    // MARK: - IBActions
-    
-    @IBAction func settingsButtonTapped(sender: AnyObject) {
-    
-    }
+
 }
 
 

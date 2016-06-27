@@ -60,6 +60,7 @@ class CellView: JTAppleDayCellView {
         }
     }
     
+    /// Configures the view for the current date
     func configureTodayView(date: NSDate) {
         if date == today {
             todayView.hidden = false

@@ -13,5 +13,4 @@ class SelectionView: UIView {
     override func awakeFromNib() {
         self.layer.cornerRadius = 2.0
     }
-
 }
