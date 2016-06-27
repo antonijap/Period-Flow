@@ -14,7 +14,7 @@ class PurchaseManager: NSObject {
     // MARK: - Properties
     
     lazy var products = [SKProduct]()
-    lazy var productIDs: Set<String> = ["com.antonijapek.periodflow.propack"]
+    lazy var productIDs: Set<String> = [PURCHASE_PROPACK]
     
     // MARK: - Methods
     

@@ -35,10 +35,10 @@ extension SettingsDataProvider: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let settingCell = tableView.dequeueReusableCellWithIdentifier("SettingsCell") as? SettingsCell ?? SettingsCell()
+        let settingCell = tableView.dequeueReusableCellWithIdentifier(CELL_SETTINGS) as? SettingsCell ?? SettingsCell()
         settingCell.configureForSection(indexPath.section)
         
-        let analysisCell = tableView.dequeueReusableCellWithIdentifier("AnalysisCell") as? AnalysisCell ?? AnalysisCell()
+        let analysisCell = tableView.dequeueReusableCellWithIdentifier(CELL_ANALYSIS) as? AnalysisCell ?? AnalysisCell()
         return indexPath.section == 4 ? analysisCell : settingCell
     }
 }

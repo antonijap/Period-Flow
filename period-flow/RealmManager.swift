@@ -207,13 +207,11 @@ class RealmManager {
                 switch date.compare(period.startDate!) {
                 case .OrderedAscending: break
                 case .OrderedDescending: updateStartDate(period, date: date + 1.days)
-                print("update descending")
                 case .OrderedSame: updateStartDate(period, date: date + 1.days)
             }
         } else {
             switch date.compare(period.endDate!) {
                 case .OrderedAscending: updateEndDate(period, date: date - 1.days)
-                print("update ascending")
                 case .OrderedDescending: break
                 case .OrderedSame: updateEndDate(period, date: date - 1.days)
             }

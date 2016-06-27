@@ -18,4 +18,12 @@ let PURCHASE_PROPACK = "com.antonijapek.periodflow.propack"
 
 // MARK: - NSUserDefaults Keys
 
-let 
+let KEY_CYCLE_DAYS = "CycleDays"
+let KEY_NOTIF_DAYS = "NotificationDays"
+let KEY_ANALYSIS = "AnalysisNumber"
+let KEY_PRO_PACK = "ProPack"
+
+// MARK: - Reuse Identifiers
+
+let CELL_SETTINGS = "SettingsCell"
+let CELL_ANALYSIS = "AnalysisCell"
