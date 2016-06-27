@@ -42,6 +42,11 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         setupPurchaseManager()
         setupContainers()
+        configureLabels()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +74,17 @@ class SettingsViewController: UIViewController {
         addTapGestureTo(notificationsView, selector: #selector(SettingsViewController.displayNotificationPicker))
         addTapGestureTo(analysisBasisView, selector: #selector(SettingsViewController.displayAnalysisPicker))
         addTapGestureTo(purchasesView, selector: #selector(SettingsViewController.purchaseProPackPressed))
+    }
+    
+    func configureLabels() {
+        let durationDays = DefaultsManager.getCycleDays()
+        cycleDurationLabel.text = durationDays == 1 ? "1 day" : "\(durationDays) days"
+        
+        let analysisBasis = DefaultsManager.getAnalysisNumber()
+        analysisBasisLabel.text = analysisBasis == 1 ? "Last Period" : "Last \(analysisBasis) periods"
+        
+        let notifDays = DefaultsManager.getNotificationDays()
+        notificationsLabel.text = notifDays == 1 ? "1 day before period starts" : "\(notifDays) days before period starts"
     }
     
     /// Factory method to create an ActionSheetStringPicker with nil cancel block and trailing completion
