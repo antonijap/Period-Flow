@@ -119,6 +119,7 @@
 			children = (
 				685B92AE1CFE1317003452CE /* SelectionView.swift */,
 				685B92AC1CFDFAC2003452CE /* CellView.swift */,
+				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -140,7 +141,6 @@
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
 				687D2CC51D0DEC2F007C83DE /* Assets.xcassets */,
-				6822A6C71D08728300A21F23 /* PredictionView.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
