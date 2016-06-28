@@ -33,10 +33,50 @@ class RealmManager {
     
     /// Query last period object in realm
     func queryLastPeriod() -> Period? {
-        guard let periods = queryAllPeriods() else {
+        return realm.objects(Period).first
+    }
+    
+    /// Query the number of periods based on the analysis number
+    func queryPeriodsForAnalysis() -> Slice<Results<Period>>? {
+        let analysisBasis = DefaultsManager.getAnalysisNumber()
+        let periods = realm.objects(Period)
+        if periods.count <= 0 {
             return nil
+        } else {
+            let endIndex = periods.count - 1
+            let startIndex = periods.count - analysisBasis < 0 ? 0 : periods.count - analysisBasis
+            return periods[startIndex...endIndex]
         }
-        return periods.last
+        
+        
+        // if there are 5 objects...
+        // we want last 3
+        // index s = 2
+        // index e = 4
+        
+        // if there are 5 objs...
+        // we want last 4
+        // index s = 1
+        // index e = 4
+        
+        // if there are 0 objs
+        // we want last 1
+        // index doesnt exist
+        
+        // if there are 1 objs
+        // we want last 1
+        // index s = 0
+        // index e = 0
+        
+        // if there are 2 objs
+        // we want last 1
+        // index s = 1
+        // index e = 1
+        
+        // if there are 3 objs
+        // we want last 2
+        // index s = 1
+        // index e = 2
     }
     
     /// Get period object that contains specific date
@@ -207,13 +247,11 @@ class RealmManager {
                 switch date.compare(period.startDate!) {
                 case .OrderedAscending: break
                 case .OrderedDescending: updateStartDate(period, date: date + 1.days)
-                print("update descending")
                 case .OrderedSame: updateStartDate(period, date: date + 1.days)
             }
         } else {
             switch date.compare(period.endDate!) {
                 case .OrderedAscending: updateEndDate(period, date: date - 1.days)
-                print("update ascending")
                 case .OrderedDescending: break
                 case .OrderedSame: updateEndDate(period, date: date - 1.days)
             }

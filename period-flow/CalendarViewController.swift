@@ -9,7 +9,6 @@
 import UIKit
 import JTAppleCalendar
 import SwiftDate
-import ActionSheetPicker_3_0
 import GoogleMobileAds
 
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
@@ -28,8 +27,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     var dataProvider: CalendarDataProvider?
     var viewManager: CalendarViewManager?
-    let today = NSDate.today()
-    //var selectedDates = [NSDate]()
+    var purchaseManager: PurchaseManager?
     
     // MARK: - View Life Cycle
     
@@ -39,11 +37,13 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupDataProvider()
         setupViewManager()
         setupCalendar()
+        DefaultsManager.unlockProPack()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.scrollToDate(today)
+        calendarView.scrollToDate(NSDate.today())
+        viewManager?.updateUIforCycleDays()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,19 +82,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
-    
-    // MARK: - IBActions
-    
-    @IBAction func settingsButtonTapped(sender: AnyObject) {
-        var days = [Int]()
-        days += 1...100
-        
-        let picker = ActionSheetStringPicker(title: "Cycle duration", rows: days, initialSelection: DefaultsManager.getCycleDays() - 1, doneBlock: { picker, int, object in
-            DefaultsManager.setCycleDays(object as! Int)
-            self.viewManager?.updateUIforCycleDays()
-            }, cancelBlock: nil, origin: sender)
-        picker.showActionSheetPicker()
-    }
+
 }
 
 

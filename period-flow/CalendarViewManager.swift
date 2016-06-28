@@ -93,7 +93,9 @@ class CalendarViewManager: NSObject {
     /// Update cycleDays label
     func updateUIforCycleDays() {
         delegate?.averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
-        delegate?.daysUntilNextPeriodLabel.text = "\(RealmManager.sharedInstance.daysUntilNextPeriod())"
+        if let days = RealmManager.sharedInstance.daysUntilNextPeriod() {
+            delegate?.daysUntilNextPeriodLabel.text = "\(days)"
+        }
         calendarView.reloadData()
     }
     
