@@ -14,7 +14,9 @@ class ShadowContainer: UIView {
         layer.cornerRadius = 2.0
         layer.shadowColor = Color.shadowColor
         layer.shadowOpacity = 0.8
-        layer.shadowRadius = 5.0
-        layer.shadowOffset = CGSizeMake(0.0, 2.0)
+        layer.shadowRadius = 1.0
+        layer.shadowOffset = CGSizeMake(0.0, 1.0)
+        layer.borderWidth = 1.0
+        layer.borderColor = Color.borderColor.CGColor
     }
 }

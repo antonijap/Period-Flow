@@ -15,4 +15,5 @@ enum Color {
     static let mint = UIColor(red:0.35, green:0.80, blue:0.85, alpha:1.00)
     static let lightMint = UIColor(red:0.35, green:0.80, blue:0.85, alpha:0.70)
     static let shadowColor = UIColor(red: 157.0/255.0, green: 157.0/255.0, blue: 157.0/255.0, alpha: 0.5).CGColor
+    static let borderColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
 }
