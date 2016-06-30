@@ -102,9 +102,9 @@ class CalendarViewManager: NSObject {
     /// Configures the period days counter
     func configureCounter() {
         let days = RealmManager.sharedInstance.daysUntilNextPeriod()
+        // TODO: Make code which grabs lates period - this is the period which is closest to today's date
         let lastPeriod = RealmManager.sharedInstance.queryLastPeriod()
-        print("Days until next period \(days)")
-        print("Last period \(lastPeriod!)")
+
         if let predictionDate = lastPeriod?.predictionDate, let days = days {
             
             let daysOrDays = days == 1 ? "DAY" : "DAYS"
