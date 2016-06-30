@@ -8,10 +8,6 @@
 
 import Foundation
 
-// MARK: - Segue Identifiers
-
-let SEGUE_PURCHASES = "ShowPurchases"
-
 // MARK: - Product Identifiers
 
 let PURCHASE_PROPACK = "com.antonijapek.periodflow.propack"
@@ -23,11 +19,6 @@ let KEY_NOTIF_DAYS = "NotificationDays"
 let KEY_ANALYSIS = "AnalysisNumber"
 let KEY_PRO_PACK = "ProPack"
 
-// MARK: - Reuse Identifiers
-
-let CELL_SETTINGS = "SettingsCell"
-let CELL_ANALYSIS = "AnalysisCell"
-
 
 // Extension: Double
 
@@ -37,5 +28,18 @@ extension Double {
         let formatter = NSNumberFormatter()
         formatter.minimumFractionDigits = number
         return formatter.stringFromNumber(self) ?? "\(self)"
+    }
+}
+
+// Extension: Array
+
+extension Array where Element: IntegerType {
+    /// Returns the sum of all elements in the array
+    var total: Element {
+        return reduce(0, combine: +)
+    }
+    /// Returns the average of all elements in the array
+    var average: Double {
+        return isEmpty ? 0 : Double(total.hashValue) / Double(count)
     }
 }

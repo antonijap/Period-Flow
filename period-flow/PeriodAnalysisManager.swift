@@ -13,6 +13,7 @@ class PeriodAnalysisManager {
     
     // MARK: - Methods
     
+    /// Gets the average period duration
     class func getAveragePeriodDuration() -> Double? {
         guard let periods = RealmManager.sharedInstance.queryPeriodsForAnalysis() else {
             return nil
@@ -23,40 +24,29 @@ class PeriodAnalysisManager {
         return Double(totalDays) / Double(DefaultsManager.getAnalysisNumber())
     }
     
-    // TODO: This function should determine how many days between first dates of all periods
-    class func getAverageCycleDuration() -> Double? {
-        guard let periods = RealmManager.sharedInstance.queryPeriodsForAnalysis() else {
-            return nil
-        }
-        let totalDays = periods.reduce(0) { (total, period) in
-            print(period.startDate!)
-            print(period.predictionDate)
-            let daysBetween = daysBetweenDate(period.predictionDate!, endDate: period.startDate!)
-            return total + abs(daysBetween)
-        }
-        return Double(totalDays) / Double(DefaultsManager.getAnalysisNumber())
-    }
-    
+    /// Gets the average duration of the cycle
     class func getAverageCycleDurationNew() -> Double? {
         guard let periods = RealmManager.sharedInstance.queryAllPeriods() else {
             return nil
         }
-        
         var arrayOfStartDates: [NSDate] = []
-        arrayOfStartDates.removeAll()
+
         for period in periods {
             arrayOfStartDates.append(period.startDate!)
         }
         print("Array of start dates hold: \(arrayOfStartDates)")
         
         var arrayOfDaysBetweenPeriods = [Int]()
-        arrayOfDaysBetweenPeriods.removeAll()
         var indexValue = 0
-        while indexValue < arrayOfStartDates.count - 1 {
-            let daysBetween = daysBetweenDate(arrayOfStartDates[indexValue], endDate: arrayOfStartDates[indexValue + 1])
-            print(daysBetween)
-            arrayOfDaysBetweenPeriods.append(daysBetween)
-            indexValue += 1
+        
+        if arrayOfStartDates.count == 1 {
+            return Double(DefaultsManager.getCycleDays())
+        } else {
+            while indexValue < arrayOfStartDates.count - 1 {
+                let daysBetween = daysBetweenDate(arrayOfStartDates[indexValue], endDate: arrayOfStartDates[indexValue + 1])
+                arrayOfDaysBetweenPeriods.append(daysBetween)
+                indexValue += 1
+            }
         }
         print("Array of days between Periods hold: \(arrayOfDaysBetweenPeriods)")
 
@@ -72,16 +62,5 @@ class PeriodAnalysisManager {
         let end = calendar.startOfDayForDate(endDate)
         let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
         return components.day
-    }
-}
-
-extension Array where Element: IntegerType {
-    /// Returns the sum of all elements in the array
-    var total: Element {
-        return reduce(0, combine: +)
-    }
-    /// Returns the average of all elements in the array
-    var average: Double {
-        return isEmpty ? 0 : Double(total.hashValue) / Double(count)
     }
 }

@@ -258,7 +258,7 @@
 				TargetAttributes = {
 					6870C47A1CFDE56B00ACFFF2 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = WNU245KFYF;
+						DevelopmentTeam = 3KD7B39L8W;
 					};
 				};
 			};
@@ -536,7 +536,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "Period Flow";
-				PROVISIONING_PROFILE = "c2c36df3-e036-4937-aff0-91c70eaf4547";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -554,7 +554,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "Period Flow";
-				PROVISIONING_PROFILE = "c2c36df3-e036-4937-aff0-91c70eaf4547";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

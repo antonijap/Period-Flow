@@ -67,11 +67,12 @@ class SettingsViewController: UIViewController {
         let days = (1...100).map { $0 }
         let index = DefaultsManager.getCycleDays()
         
-        let picker = actionSheetFactory(title, rows: days, indexSelected: index, sender: cycleDurationButton) { (picker, int, object) in
+        let picker = actionSheetFactory(title, rows: days, indexSelected: index - 1, sender: cycleDurationButton) { (picker, int, object) in
             if let object = object as? Int {
                 DefaultsManager.setCycleDays(object)
                 let text = object == 1 ? "1 day" : "\(object) days"
                 self.cycleDurationButton.setTitle(text, forState: .Normal)
+                self.configureAnalysisView()
             }
         }
         picker.showActionSheetPicker()
