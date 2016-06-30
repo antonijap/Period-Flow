@@ -100,11 +100,11 @@ class SettingsViewController: UIViewController {
     func displayAnalysisPicker() {
         let title = "Number of Periods"
         let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
+        
         let rangeStart = totalPeriods == 0 ? 0 : 1
         let rangeCap = totalPeriods ?? 1
         
         let range = (rangeStart...rangeCap).map { $0 }
-        
         
         let picker = actionSheetFactory(title, rows: range, indexSelected: 0, sender: baseAnalysisButton) { (picker, int, object) in
             if let object = object as? Int {
@@ -134,8 +134,20 @@ class SettingsViewController: UIViewController {
         self.cycleDurationButton.setTitle(durationText, forState: .Normal)
         
         let analysisBasis = DefaultsManager.getAnalysisNumber()
-        let analysisText = analysisBasis == 1 ? "Last Period" : "Last \(analysisBasis) periods"
-        self.baseAnalysisButton.setTitle(analysisText, forState: .Normal)
+        let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
+        if totalPeriods == 0 {
+            let text = "No data, please tap on a date to start"
+            self.baseAnalysisButton.setTitle(text, forState: .Normal)
+            baseAnalysisButton.userInteractionEnabled = false
+            baseAnalysisButton.alpha = 0.5
+            
+            averageCycleDurationLabel.text = "No data"
+            averagePeriodDurationLabel.text = "No data"
+        } else {
+            let analysisText = analysisBasis == 1 ? "Last Period" : "Last \(analysisBasis) periods"
+            self.baseAnalysisButton.setTitle(analysisText, forState: .Normal)
+        }
+        
         
         let notifDays = DefaultsManager.getNotificationDays()
         let notifText = notifDays == 1 ? "1 day before period starts" : "\(notifDays) days before period starts"
