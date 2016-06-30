@@ -44,6 +44,11 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         super.viewWillAppear(animated)
         calendarView.scrollToDate(NSDate.today())
         viewManager?.updateUIforCycleDays()
+        
+        // Check if user purchased PRO Pack
+//        if DefaultsManager.isProPackUnlocked() {
+//            bannerView.hidden = true
+//        }
     }
     
     override func viewDidAppear(animated: Bool) {

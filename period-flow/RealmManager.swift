@@ -33,7 +33,7 @@ class RealmManager {
     
     /// Query last period object in realm
     func queryLastPeriod() -> Period? {
-        return realm.objects(Period).first
+        return realm.objects(Period).last
     }
     
     /// Query the number of periods based on the analysis number
