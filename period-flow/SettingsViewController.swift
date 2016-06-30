@@ -124,7 +124,7 @@ class SettingsViewController: UIViewController {
         if let avgPeriodDuration = PeriodAnalysisManager.getAveragePeriodDuration() {
             averagePeriodDurationLabel.text = "\(avgPeriodDuration.toPlaces(1))"
         }
-        if let avgCycleDuration = PeriodAnalysisManager.getAverageCycleDurationNew() {
+        if let avgCycleDuration = PeriodAnalysisManager.getAverageCycleDuration() {
             averageCycleDurationLabel.text = "\(avgCycleDuration.toPlaces(1))"
         }
     }

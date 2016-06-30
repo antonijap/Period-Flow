@@ -25,7 +25,7 @@ class PeriodAnalysisManager {
     }
     
     /// Gets the average duration of the cycle
-    class func getAverageCycleDurationNew() -> Double? {
+    class func getAverageCycleDuration() -> Double? {
         guard let periods = RealmManager.sharedInstance.queryAllPeriods() else {
             return nil
         }
@@ -50,7 +50,7 @@ class PeriodAnalysisManager {
         }
         print("Array of days between Periods hold: \(arrayOfDaysBetweenPeriods)")
 
-        return arrayOfDaysBetweenPeriods.average
+        return arrayOfDaysBetweenPeriods.average + 1
     }
     
     // MARK: - Helper Methods
