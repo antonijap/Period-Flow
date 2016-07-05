@@ -33,7 +33,19 @@ class RealmManager {
     
     /// Query last period object in realm
     func queryLastPeriod() -> Period? {
-        return realm.objects(Period).last
+        guard let allPeriods = queryAllPeriods() else {
+            return nil
+        }
+        
+        var latestPeriod = Period()
+        for period in allPeriods {
+            // Add code that determines if period is close to today
+            if period.startDate < today {
+                latestPeriod = period
+            }
+        }
+        print("Latest period is \(latestPeriod)")
+        return latestPeriod
     }
     
     /// Query the number of periods based on the analysis number
