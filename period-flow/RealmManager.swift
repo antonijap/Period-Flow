@@ -12,6 +12,13 @@ import SwiftDate
 
 class RealmManager {
     
+    enum Order {
+        case AscendingStart
+        case AscendingEnd
+        case DescendingStart
+        case DescendingEnd
+    }
+    
     // MARK: - Singleton
     
     static var sharedInstance = RealmManager()
@@ -26,71 +33,52 @@ class RealmManager {
     
     // MARK: Querying objects in Realm
     
-    /// Query all period objects in realm database
-    func queryAllPeriods() -> Results<Period>? {
-        return realm.objects(Period)
+    /// Querys all the period objects in realm with no sorting
+    func queryAllPeriods() -> [Period]? {
+        return Array(realm.objects(Period))
     }
     
-    /// Query last period object in realm
+    /// Query all period objects in realm database
+    func queryAllPeriods(order: Order) -> [Period]? {
+        let periods = Array(realm.objects(Period))
+        switch order {
+        case .AscendingStart:
+            return periods.sort() {$0.startDate < $1.startDate}
+        case .DescendingStart:
+            return periods.sort() {$0.startDate > $1.startDate}
+        case .AscendingEnd:
+            return periods.sort() {$0.endDate < $1.endDate}
+        case .DescendingEnd:
+            return periods.sort() {$0.endDate > $1.endDate}
+        }
+    }
+    
+    /// Query last period in realm
     func queryLastPeriod() -> Period? {
-        return realm.objects(Period).last
+        let periods = queryAllPeriods(.DescendingEnd)
+        return periods?.first
     }
     
     /// Query the number of periods based on the analysis number
-    func queryPeriodsForAnalysis() -> Slice<Results<Period>>? {
+    func queryPeriodsForAnalysis() -> [Period]? {
         let analysisBasis = DefaultsManager.getAnalysisNumber()
-        let periods = realm.objects(Period)
+        guard let periods = queryAllPeriods(.DescendingStart) else {return nil}
         if periods.count <= 0 {
             return nil
         } else {
             let endIndex = periods.count - 1
             let startIndex = periods.count - analysisBasis < 0 ? 0 : periods.count - analysisBasis
-            return periods[startIndex...endIndex]
+            let result = periods[startIndex...endIndex]
+            return Array(result)
         }
-        
-        
-        // if there are 5 objects...
-        // we want last 3
-        // index s = 2
-        // index e = 4
-        
-        // if there are 5 objs...
-        // we want last 4
-        // index s = 1
-        // index e = 4
-        
-        // if there are 0 objs
-        // we want last 1
-        // index doesnt exist
-        
-        // if there are 1 objs
-        // we want last 1
-        // index s = 0
-        // index e = 0
-        
-        // if there are 2 objs
-        // we want last 1
-        // index s = 1
-        // index e = 1
-        
-        // if there are 3 objs
-        // we want last 2
-        // index s = 1
-        // index e = 2
     }
     
     /// Get period object that contains specific date
     func periodThatContains(date: NSDate) -> Period? {
-        
-        let results = queryAllPeriods()
-        guard let data = results else {
-            return nil
-        }
-        
+        guard let data = queryAllPeriods() else { return nil }
+
         for period in data {
-            if period.assumedDates.contains(date) {
-                return period
-            }
+            if period.assumedDates.contains(date) { return period }
         }
         return nil
     }
