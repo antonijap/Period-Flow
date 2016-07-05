@@ -26,35 +26,28 @@ class PeriodAnalysisManager {
     
     /// Gets the average duration of the cycle
     class func getAverageCycleDuration() -> Double? {
-        guard let periods = RealmManager.sharedInstance.queryAllPeriods() else {
-            return nil
-        }
-        var arrayOfStartDates: [NSDate] = []
-
-        for period in periods {
-            arrayOfStartDates.append(period.startDate!)
-        }
-        print("Array of start dates holds: \(arrayOfStartDates)")
+        guard let periods = RealmManager.sharedInstance.queryAllPeriods(.DescendingStart) else { return nil }
         
-        arrayOfStartDates.sortInPlace({ $0 < $1 })
+        var startDates = [NSDate]()
+        periods.forEach { startDates.append($0.startDate!) }
         
-        print("Array of CLEAN start dates holds: \(arrayOfStartDates)")
+        var endDates = [NSDate]()
+        periods.forEach { endDates.append($0.endDate!) }
         
-        var arrayOfDaysBetweenPeriods = [Int]()
-        var indexValue = 0
+        var daysBetweenToAverage = [Int]()
         
-        if arrayOfStartDates.count == 1 {
+        switch startDates.count {
+        case 0:
+            return 0
+        case 1:
             return Double(DefaultsManager.getCycleDays())
-        } else {
-            while indexValue < arrayOfStartDates.count - 1 {
-                let daysBetween = daysBetweenDate(arrayOfStartDates[indexValue], endDate: arrayOfStartDates[indexValue + 1])
-                arrayOfDaysBetweenPeriods.append(daysBetween)
-                indexValue += 1
+        default:
+            for n in 0..<startDates.count {
+                let daysBetween = daysBetweenDate(startDates[n], endDate: startDates[n + 1])
+                daysBetweenToAverage.append(daysBetween)
             }
+            return daysBetweenToAverage.average
         }
-        print("Array of days between Periods hold: \(arrayOfDaysBetweenPeriods)")
-
-        return arrayOfDaysBetweenPeriods.average + 1
     }
     
     // MARK: - Helper Methods
