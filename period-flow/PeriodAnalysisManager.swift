@@ -26,7 +26,7 @@ class PeriodAnalysisManager {
     
     /// Gets the average duration of the cycle
     class func getAverageCycleDuration() -> Double? {
-        guard let periods = RealmManager.sharedInstance.queryAllPeriods(.DescendingStart) else { return nil }
+        guard let periods = RealmManager.sharedInstance.queryPeriodsForAnalysis() else { return nil }
         
         var startDates = [NSDate]()
         periods.forEach { startDates.append($0.startDate!) }
