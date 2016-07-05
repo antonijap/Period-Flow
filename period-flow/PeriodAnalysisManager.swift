@@ -34,7 +34,11 @@ class PeriodAnalysisManager {
         for period in periods {
             arrayOfStartDates.append(period.startDate!)
         }
-        print("Array of start dates hold: \(arrayOfStartDates)")
+        print("Array of start dates holds: \(arrayOfStartDates)")
+        
+        arrayOfStartDates.sortInPlace({ $0 < $1 })
+        
+        print("Array of CLEAN start dates holds: \(arrayOfStartDates)")
         
         var arrayOfDaysBetweenPeriods = [Int]()
         var indexValue = 0
