@@ -80,7 +80,7 @@ class CalendarViewManager: NSObject {
     
     /// Displays future period on a Calendar
     func displayPredictionDate(cell: CellView, date: NSDate, cellState: CellState) {
-        let period = RealmManager.sharedInstance.queryAllPeriods()?.last
+        let period = RealmManager.sharedInstance.queryLastPeriod()
         if let period = period {
             if period.predictionDate!.isInSameDayAsDate(date) {
                 cell.displayPrediction(true, cellState: cellState)
