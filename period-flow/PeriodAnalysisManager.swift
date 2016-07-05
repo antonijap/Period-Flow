@@ -43,7 +43,10 @@ class PeriodAnalysisManager {
             return Double(DefaultsManager.getCycleDays())
         default:
             for n in 0..<startDates.count {
-                let daysBetween = daysBetweenDate(startDates[n], endDate: startDates[n + 1])
+                
+                if n == startDates.count - 1 { break }
+                
+                let daysBetween = abs(daysBetweenDate(startDates[n], endDate: startDates[n+1]))
                 daysBetweenToAverage.append(daysBetween)
             }
             return daysBetweenToAverage.average
