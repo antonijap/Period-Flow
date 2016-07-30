@@ -38,6 +38,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         setupViewManager()
         setupCalendar()
         DefaultsManager.unlockProPack()
+        LocalNotificationsManager.registerNotification() // Delete that
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -19,11 +19,13 @@ class LocalNotificationsManager {
         notification.alertTitle = "Title"
         notification.alertBody = "This is the body of the message"
         notification.applicationIconBadgeNumber = 1
-        let date = getNotificationDate()
+//        let date = getNotificationDate()
+        let date = NSDate().dateByAddingTimeInterval(10)
         notification.fireDate = date
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        print("Print notification: \(notification)")
     }
-    
+
     /// Cancels all scheduled notifications
     class func cancelAllNotifications() {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
