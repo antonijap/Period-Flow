@@ -119,7 +119,6 @@ class SettingsViewController: UIViewController {
     }
     
     /// Configures the analyis view with the data
-    
     func configureAnalysisView() {
         if let avgPeriodDuration = PeriodAnalysisManager.getAveragePeriodDuration() {
             averagePeriodDurationLabel.text = "\(avgPeriodDuration.toPlaces(1))"
@@ -156,7 +155,6 @@ class SettingsViewController: UIViewController {
     }
 
     // MARK: Actions
-
 
     @IBAction func cycleDurationButtonTapped(sender: AnyObject) {
         displayDurationPicker()

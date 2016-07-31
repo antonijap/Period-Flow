@@ -10,7 +10,7 @@ target 'period-flow' do
   # Pods for period-flow
   pod 'RealmSwift'
   pod 'SwiftDate', '~> 3.0'
-  pod 'JTAppleCalendar', '~> 3.0'
+  pod 'JTAppleCalendar'
   pod 'ActionSheetPicker-3.0', '~> 2.1.0'
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'

@@ -24,14 +24,13 @@ class CalendarDataProvider: NSObject {
     }
 }
 
-extension CalendarDataProvider: JTAppleCalendarViewDataSource {
-    
-    // This method is required. You provide a startDate, endDate, and a calendar configured to your liking.
-    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, calendar: NSCalendar) {
+extension CalendarDataProvider: JTAppleCalendarViewDataSource {    
+    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         let firstDate = 1.years.ago
         let secondDate = 1.years.fromNow
         let aCalendar = NSCalendar.autoupdatingCurrentCalendar() // Properly configure your calendar to your time zone here
+        let rows = 5
         
-        return (startDate: firstDate, endDate: secondDate, calendar: aCalendar)
+        return (startDate: firstDate, endDate: secondDate, numberOfRows: rows, calendar: aCalendar)
     }
 }
