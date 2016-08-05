@@ -24,7 +24,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var cycleDurationButton: CustomButton!
     @IBOutlet weak var notificationButton: CustomButton!
     @IBOutlet weak var baseAnalysisButton: CustomButton!
-    
+    @IBOutlet weak var notificationTimeButton: CustomButton!
+
     // MARK: - Properties
     
     var purchaseManager: PurchaseManager?
@@ -97,6 +98,17 @@ class SettingsViewController: UIViewController {
         picker.showActionSheetPicker()
     }
     
+    /// Displays the picker to set time of notification (optional, if this is not set use midnight)
+    func displayNotificationTimePicker() {
+        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), target: self, action: nil, origin: notificationTimeButton)
+        timePicker.minuteInterval = 30
+        timePicker.showActionSheetPicker()
+    }
+    
+    func timePicked() {
+        print("Time")
+    }
+    
     /// Displays the picker to set the number of periods to base the analysis on
     func displayAnalysisPicker() {
         let title = "Number of Periods"
@@ -128,6 +140,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    /// Manage labels on any update
     func configureLabels() {
         let durationDays = DefaultsManager.getCycleDays()
         let durationText = durationDays == 1 ? "1 day" : "\(durationDays) days"
@@ -162,6 +175,10 @@ class SettingsViewController: UIViewController {
     
     @IBAction func notificationButtonTapped(sender: AnyObject) {
         displayNotificationPicker()
+    }
+    
+    @IBAction func notificationTimeButtonTapped(sender: AnyObject) {
+        displayNotificationTimePicker()
     }
     
     @IBAction func baseAnalysisButtonTapped(sender: AnyObject) {
