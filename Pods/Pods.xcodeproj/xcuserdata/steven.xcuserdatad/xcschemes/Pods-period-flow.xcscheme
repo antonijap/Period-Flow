@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8A5077B2AF99233C786ADC6C68F8F05A"
+               BlueprintIdentifier = "904FEAF69B580F5BB76BD4DBC4E472DF"
                BuildableName = "Pods_period_flow.framework"
                BlueprintName = "Pods-period-flow"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8A5077B2AF99233C786ADC6C68F8F05A"
+            BlueprintIdentifier = "904FEAF69B580F5BB76BD4DBC4E472DF"
             BuildableName = "Pods_period_flow.framework"
             BlueprintName = "Pods-period-flow"
             ReferencedContainer = "container:Pods.xcodeproj">

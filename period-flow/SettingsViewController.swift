@@ -100,7 +100,12 @@ class SettingsViewController: UIViewController {
     
     /// Displays the picker to set time of notification (optional, if this is not set use midnight)
     func displayNotificationTimePicker() {
-        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), target: self, action: nil, origin: notificationTimeButton)
+        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), doneBlock: { (picker: ActionSheetDatePicker!, date: AnyObject!, object: AnyObject!) in
+            // MARK: - TODO
+            // Save selected time in defaults manager
+            // Update the notification to use that selected time
+            
+            }, cancelBlock: nil, origin: notificationTimeButton)
         timePicker.minuteInterval = 30
         timePicker.showActionSheetPicker()
     }

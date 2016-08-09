@@ -305,7 +305,7 @@
 		09289B018FCEA811F6956844770E115B /* RLMConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMConstants.m; path = Realm/RLMConstants.m; sourceTree = "<group>"; };
 		0B5149272D6E9C3D50E47A44DF9C276C /* RLMAnalytics.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMAnalytics.mm; path = Realm/RLMAnalytics.mm; sourceTree = "<group>"; };
 		0BAC0A70BC3D7603AE355366D795EBE1 /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
-		0D0B4067D8CFFA0A6C6CB0AB0659F197 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		0E3938A36B1C03A4DC8933E224B838C4 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
 		0EFC863CAC4F02EA8DDCADE91904BE26 /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
 		109D20F0FE54B73B4CC08F10D6D3A37A /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
 		10B606F2E474B9F9BB29E04F753EDA78 /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
@@ -399,6 +399,7 @@
 		74A1AFF103B1DCE4D696681B8AAAA4EC /* collection_change_builder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_change_builder.cpp; path = Realm/ObjectStore/impl/collection_change_builder.cpp; sourceTree = "<group>"; };
 		76256F40CB50FBF0F2C663B4B43A6163 /* RealmConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmConfiguration.swift; path = RealmSwift/RealmConfiguration.swift; sourceTree = "<group>"; };
 		78F14DBCCB6F6013C94B3DE5A012752C /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
+		78F800BA589BBDFB90369BEF72A78F2F /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		79A5FBF9C73AEF6EFA3E861EBF04E969 /* RealmSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RealmSwift-prefix.pch"; sourceTree = "<group>"; };
 		7A8BC09B7B576474D12062A204D1D304 /* Realm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Realm-dummy.m"; sourceTree = "<group>"; };
 		7AED294884E30D2C18EAA8214ECB2162 /* format.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = format.cpp; path = Realm/ObjectStore/util/format.cpp; sourceTree = "<group>"; };
@@ -427,6 +428,7 @@
 		AAD6C707ED1F48ED1D866CA61F6B171D /* SwiftDate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftDate-prefix.pch"; sourceTree = "<group>"; };
 		AB51FB97A314F328B6B238602891D299 /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
 		B064F1D1885D4B526AF0508CE27CB6D0 /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Object.swift; path = RealmSwift/Object.swift; sourceTree = "<group>"; };
+		B206C62E7E9461CB9704BACDAD574652 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		B3011DED2CD1BB0DDC0737E38996C43D /* SwiftDate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftDate-umbrella.h"; sourceTree = "<group>"; };
 		B303E99D4DA095ED84E80951BAA7F730 /* RLMCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMCollection.h; path = include/RLMCollection.h; sourceTree = "<group>"; };
 		B34058963BB4314D88D346A7A642143D /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
@@ -480,12 +482,10 @@
 		E865D27F06F47A355568831B502E265E /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = RealmSwift/Util.swift; sourceTree = "<group>"; };
 		EC963A5246A2C0D4EF3A4F6673542EEA /* DateInRegion+StartEnd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DateInRegion+StartEnd.swift"; path = "Sources/SwiftDate/DateInRegion+StartEnd.swift"; sourceTree = "<group>"; };
 		ECBCD102B36BCAEE6F00E74A53065A89 /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = RealmSwift/Property.swift; sourceTree = "<group>"; };
-		ECD6CC025AC6C206CB5B8D5F0CE521B4 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		F14A08E1F1096E096B4D9C3DC62BD215 /* RLMOptionalBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMOptionalBase.h; path = include/RLMOptionalBase.h; sourceTree = "<group>"; };
 		F1F196B58D0259969FF5085B4F1FC031 /* RLMMigration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration.h; path = include/RLMMigration.h; sourceTree = "<group>"; };
 		F268664F129513D1777434C32EBA7EE2 /* RLMArrayLinkView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMArrayLinkView.mm; path = Realm/RLMArrayLinkView.mm; sourceTree = "<group>"; };
 		F52526DC077194218A67A991BA387EA7 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
-		F617AFABCF73D52CC91A3B7319060F04 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
 		F8B412E2CF566A75DA1EFA599E1E20AF /* object_schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_schema.cpp; path = Realm/ObjectStore/object_schema.cpp; sourceTree = "<group>"; };
 		F9C4AE5285DBA673E27C6B0735E7B802 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDF071697791DE6CC771C47DBEE2FDC8 /* RLMObjectBase_Dynamic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectBase_Dynamic.h; path = include/RLMObjectBase_Dynamic.h; sourceTree = "<group>"; };
@@ -551,7 +551,7 @@
 				FC4C2F660E9E0508EE7FAC09C00C0517 /* ActionSheetPicker-3.0 */,
 				338343F702FFA73C7943D9068606DF7B /* Firebase */,
 				F2E5F4D740149B7CE25ED8C5D432325E /* FirebaseAnalytics */,
-				2DAE6480ABFE98C3F3667379E7C89B1F /* FirebaseInstanceID */,
+				48E11BA0289300B800A07E420E0995A7 /* FirebaseInstanceID */,
 				FA9CC5A85A42ED7FF813FDABA4F69BDE /* Google-Mobile-Ads-SDK */,
 				0DF4CB16C0E9F71784ABE57ED5425185 /* GoogleInterchangeUtilities */,
 				B84078A8B6A2A0E4DA1A97420A2B2901 /* GoogleSymbolUtilities */,
@@ -611,14 +611,6 @@
 			path = RealmSwift;
 			sourceTree = "<group>";
 		};
-		1A047CA41A83601372FBEFD7D0A4E7C5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				ECD6CC025AC6C206CB5B8D5F0CE521B4 /* FirebaseInstanceID.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1FF9A1CE58F20D6DBA5E7CA951ECEC30 /* JTAppleCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,19 +628,10 @@
 			path = JTAppleCalendar;
 			sourceTree = "<group>";
 		};
-		2DAE6480ABFE98C3F3667379E7C89B1F /* FirebaseInstanceID */ = {
-			isa = PBXGroup;
-			children = (
-				0D0B4067D8CFFA0A6C6CB0AB0659F197 /* FIRInstanceID.h */,
-				1A047CA41A83601372FBEFD7D0A4E7C5 /* Frameworks */,
-			);
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
 		338343F702FFA73C7943D9068606DF7B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				7F7F77829CC9619B384E58A8A948D01C /* Analytics */,
+				8D68DACE244DE1C77F3EDF63BBCDF642 /* Analytics */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -694,6 +677,15 @@
 				E1622BC298FECD491865BA7B8094EBE5 /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48E11BA0289300B800A07E420E0995A7 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				78F800BA589BBDFB90369BEF72A78F2F /* FIRInstanceID.h */,
+				A954E35C070D20FD45FFE9435270F1A2 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		4902F9F8224DA032B5DE898011FCFF35 /* Pods-period-flow */ = {
@@ -789,10 +781,10 @@
 			path = "../Target Support Files/Realm";
 			sourceTree = "<group>";
 		};
-		7F7F77829CC9619B384E58A8A948D01C /* Analytics */ = {
+		8D68DACE244DE1C77F3EDF63BBCDF642 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				F617AFABCF73D52CC91A3B7319060F04 /* Firebase.h */,
+				0E3938A36B1C03A4DC8933E224B838C4 /* Firebase.h */,
 			);
 			name = Analytics;
 			sourceTree = "<group>";
@@ -824,6 +816,14 @@
 			isa = PBXGroup;
 			children = (
 				3A0EEEFEEA103711050137148095260D /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A954E35C070D20FD45FFE9435270F1A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B206C62E7E9461CB9704BACDAD574652 /* FirebaseInstanceID.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
