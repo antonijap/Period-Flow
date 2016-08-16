@@ -8,6 +8,7 @@
 
 import UIKit
 import ActionSheetPicker_3_0
+import SwiftDate
 
 class SettingsViewController: UIViewController {
 
@@ -104,6 +105,8 @@ class SettingsViewController: UIViewController {
             // MARK: - TODO
             // Save selected time in defaults manager
             // Update the notification to use that selected time
+            
+            print("I PICKED: \(date)")
             
             }, cancelBlock: nil, origin: notificationTimeButton)
         timePicker.minuteInterval = 30

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5794E344E73C1445D7FFE549 /* Pods_period_flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */; };
 		6822A6C81D08728300A21F23 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6822A6C71D08728300A21F23 /* PredictionView.swift */; };
+		682DB5691D637AE100EF430E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682DB5681D637AE100EF430E /* Assets.xcassets */; };
 		685B92A81CFDF313003452CE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92A71CFDF313003452CE /* Color.swift */; };
 		685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685B92AA1CFDF9CC003452CE /* CellView.xib */; };
 		685B92AD1CFDFAC2003452CE /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B92AC1CFDFAC2003452CE /* CellView.swift */; };
@@ -19,7 +20,6 @@
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
 		687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687D2CC11D0DC825007C83DE /* DefaultsManager.swift */; };
 		687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */; };
-		687D2CC61D0DEC2F007C83DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC51D0DEC2F007C83DE /* Assets.xcassets */; };
 		687D2CCC1D0DF03D007C83DE /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */; };
 		688003751D22C2480086ACDD /* PurchaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688003741D22C2480086ACDD /* PurchaseContainer.swift */; };
 		6880037A1D22D3B10086ACDD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688003791D22D3B10086ACDD /* CustomButton.swift */; };
@@ -38,6 +38,7 @@
 /* Begin PBXFileReference section */
 		3D6D5374F1EBD4D18A2DA307 /* Pods-period-flow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-period-flow.release.xcconfig"; path = "Pods/Target Support Files/Pods-period-flow/Pods-period-flow.release.xcconfig"; sourceTree = "<group>"; };
 		6822A6C71D08728300A21F23 /* PredictionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
+		682DB5681D637AE100EF430E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		685B92A71CFDF313003452CE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		685B92AA1CFDF9CC003452CE /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		685B92AC1CFDFAC2003452CE /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		687D2CC11D0DC825007C83DE /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		687D2CC51D0DEC2F007C83DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
 		688003741D22C2480086ACDD /* PurchaseContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseContainer.swift; sourceTree = "<group>"; };
 		688003791D22D3B10086ACDD /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 				685B92A71CFDF313003452CE /* Color.swift */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
 				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
-				687D2CC51D0DEC2F007C83DE /* Assets.xcassets */,
+				682DB5681D637AE100EF430E /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */,
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
 				685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */,
-				687D2CC61D0DEC2F007C83DE /* Assets.xcassets in Resources */,
+				682DB5691D637AE100EF430E /* Assets.xcassets in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
