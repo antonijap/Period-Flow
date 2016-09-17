@@ -12,7 +12,7 @@ class PredictionView: UIView {
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 2.0
-        self.layer.borderColor = Color.mint.CGColor
+        self.layer.borderColor = Color.mint.cgColor
         self.layer.borderWidth = 1.0
     }
 }

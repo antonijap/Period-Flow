@@ -41,9 +41,9 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         LocalNotificationsManager.registerNotification() // Delete that
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.scrollToDate(NSDate.today())
+        calendarView.scrollToDate(Date.today())
         viewManager?.updateUIforCycleDays()
         
         // Check if user purchased PRO Pack
@@ -52,7 +52,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
 //        }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
@@ -64,7 +64,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.adUnitID = "ca-app-pub-2949684951870263/9071981034"
         bannerView.rootViewController = self
-        bannerView.loadRequest(request)
+        bannerView.load(request)
     }
     
     func setupDataProvider() {
@@ -84,7 +84,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.registerCellViewXib(fileName: "CellView")
         calendarView.cellInset = CGPoint(x: 2, y: 2)
         calendarView.allowsMultipleSelection = true
-        calendarView.firstDayOfWeek = .Sunday
+        calendarView.firstDayOfWeek = .sunday
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }

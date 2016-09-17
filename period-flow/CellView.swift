@@ -20,22 +20,22 @@ class CellView: JTAppleDayCellView {
     
     // MARK: - Properties
     
-    let today = NSDate.today()
+    let today = Date.today()
     
     // MARK: - Methods
     
     /// This is called whenever cell is render to the screen
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
+    func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
         dateLabel.text = cellState.text
-        predictionDay.hidden = true
-        configureTextColor(cellState)
+        predictionDay.isHidden = true
+        configureTextColor(cellState: cellState)
         configureBackgroundColor(cellState, date: date)
-        configureTodayView(date)
+        configureTodayView(date as Date)
     }
     
     /// .ThisMonth is grey, otherwise it's light grey
     func configureTextColor(cellState: CellState) {
-        if cellState.dateBelongsTo == .ThisMonth {
+        if cellState.dateBelongsTo == .thisMonth {
             dateLabel.textColor = Color.grey
         } else {
             dateLabel.textColor = Color.lightGrey
@@ -43,54 +43,54 @@ class CellView: JTAppleDayCellView {
     }
     
     /// Configures background color based of enum cellState.dateBelongsTo
-    func configureBackgroundColor(cellState: CellState, date: NSDate) {
+    func configureBackgroundColor(_ cellState: CellState, date: Date) {
         if cellState.isSelected {
-            selectedDayView.hidden = false
+            selectedDayView.isHidden = false
             dateLabel.textColor = Color.white
-            if cellState.dateBelongsTo == .PreviousMonthWithinBoundary {
-                selectedDayView.layer.backgroundColor = Color.lightMint.CGColor
-            } else if cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
-                selectedDayView.layer.backgroundColor = Color.lightMint.CGColor
+            if cellState.dateBelongsTo == .previousMonthWithinBoundary {
+                selectedDayView.layer.backgroundColor = Color.lightMint.cgColor
+            } else if cellState.dateBelongsTo == .followingMonthWithinBoundary {
+                selectedDayView.layer.backgroundColor = Color.lightMint.cgColor
             } else {
-                selectedDayView.layer.backgroundColor = Color.mint.CGColor
+                selectedDayView.layer.backgroundColor = Color.mint.cgColor
             }
         } else {
-            selectedDayView.hidden = true
-            configureTextColor(cellState)
+            selectedDayView.isHidden = true
+            configureTextColor(cellState: cellState)
         }
     }
     
     /// Configures the view for the current date
-    func configureTodayView(date: NSDate) {
+    func configureTodayView(_ date: Date) {
         if date == today {
-            todayView.hidden = false
+            todayView.isHidden = false
         } else {
-            todayView.hidden = true
+            todayView.isHidden = true
         }
     }
     
-    func cellSelectionChanged(cellState: CellState, date: NSDate) {
+    func cellSelectionChanged(_ cellState: CellState, date: NSDate) {
         if cellState.isSelected  {
-            selectedDayView.hidden = false
+            selectedDayView.isHidden = false
             dateLabel.textColor = Color.white
         } else {
-            selectedDayView.hidden = true
+            selectedDayView.isHidden = true
             dateLabel.textColor = Color.grey
         }
     }
     
     /// Display red border on a date that predict future period
-    func displayPrediction(isBleeding: Bool, cellState: CellState){
-        if isBleeding && cellState.dateBelongsTo == .ThisMonth {
-            predictionDay.hidden = false
-        } else if isBleeding == false && cellState.dateBelongsTo == .ThisMonth {
-            predictionDay.hidden = true
-        } else if isBleeding && cellState.dateBelongsTo == .PreviousMonthWithinBoundary {
-            predictionDay.hidden = false
-            predictionDay.layer.borderColor = Color.lightMint.CGColor
-        } else if isBleeding && cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
-            predictionDay.hidden = false
-            predictionDay.layer.borderColor = Color.lightMint.CGColor
+    func displayPrediction(_ isBleeding: Bool, cellState: CellState){
+        if isBleeding && cellState.dateBelongsTo == .thisMonth {
+            predictionDay.isHidden = false
+        } else if isBleeding == false && cellState.dateBelongsTo == .thisMonth {
+            predictionDay.isHidden = true
+        } else if isBleeding && cellState.dateBelongsTo == .previousMonthWithinBoundary {
+            predictionDay.isHidden = false
+            predictionDay.layer.borderColor = Color.lightMint.cgColor
+        } else if isBleeding && cellState.dateBelongsTo == .followingMonthWithinBoundary {
+            predictionDay.isHidden = false
+            predictionDay.layer.borderColor = Color.lightMint.cgColor
         }
     }
 }

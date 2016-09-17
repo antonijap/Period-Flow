@@ -14,13 +14,13 @@ class Period: Object {
     
     // MARK: - Properties
     
-    dynamic var startDate: NSDate?
-    dynamic var endDate: NSDate?
+    dynamic var startDate: Date?
+    dynamic var endDate: Date?
     
     // Populates an array of dates in between start and end date of object
-    var assumedDates: [NSDate] {
+    var assumedDates: [Date] {
         
-        var dates = [NSDate]()
+        var dates = [Date]()
         
         if let startDate = self.startDate, let endDate = self.endDate {
             
@@ -38,7 +38,7 @@ class Period: Object {
         return dates
     }
     
-    var predictionDate: NSDate? {
+    var predictionDate: Date? {
         
         guard let startDate = self.startDate else {
             return nil

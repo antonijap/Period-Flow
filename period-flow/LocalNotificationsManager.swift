@@ -20,25 +20,25 @@ class LocalNotificationsManager {
         notification.alertBody = "This is the body of the message"
         notification.applicationIconBadgeNumber = 1
 //        let date = getNotificationDate()
-        let date = NSDate().dateByAddingTimeInterval(10)
+        let date = Date().addingTimeInterval(10)
         notification.fireDate = date
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        UIApplication.shared.scheduleLocalNotification(notification)
         print("Print notification: \(notification)")
     }
 
     /// Cancels all scheduled notifications
     class func cancelAllNotifications() {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
     }
     
     // MARK: - Helper Methods
     
     /// Gets the specified date to send a notification, default value is one date before prediction date
-    private class func getNotificationDate() -> NSDate? {
+    fileprivate class func getNotificationDate() -> Date? {
         guard let lastPeriod = RealmManager.sharedInstance.queryLastPeriod(), let predictionDate = lastPeriod.predictionDate else {
             return nil
         }
         let daysBefore = DefaultsManager.getNotificationDays()
-        return predictionDate - daysBefore.days
+        return (predictionDate as Date) - daysBefore.days
     }
 }

@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
         setupPurchaseManager()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureAnalysisView()
         configureLabels()
@@ -53,14 +53,14 @@ class SettingsViewController: UIViewController {
     
     /// Triggers the in app purchase for PRO pack product
     func purchaseProPackPressed() {
-        if let product = purchaseManager?.products.first where product.productIdentifier == PURCHASE_PROPACK {
+        if let product = purchaseManager?.products.first , product.productIdentifier == PURCHASE_PROPACK {
             purchaseManager?.createPayment(product)
         }
     }
     
     /// Factory method to create an ActionSheetStringPicker with nil cancel block and trailing completion
-    func actionSheetFactory(title: String, rows: [Int], indexSelected: Int, sender: AnyObject, completion: ActionStringDoneBlock) -> ActionSheetStringPicker {
-        return ActionSheetStringPicker(title: title, rows: rows, initialSelection: indexSelected, doneBlock: completion, cancelBlock: nil, origin: sender)
+    func actionSheetFactory(_ title: String, rows: [Int], indexSelected: Int, sender: AnyObject, completion: @escaping ActionStringDoneBlock) -> ActionSheetStringPicker {
+        return ActionSheetStringPicker(title: title, rows: rows, initialSelection: indexSelected, doneBlock: completion, cancel: nil, origin: sender)
     }
     
     /// Displays the picker to set the Cycle Duration
@@ -73,11 +73,11 @@ class SettingsViewController: UIViewController {
             if let object = object as? Int {
                 DefaultsManager.setCycleDays(object)
                 let text = object == 1 ? "1 day" : "\(object) days"
-                self.cycleDurationButton.setTitle(text, forState: .Normal)
+                self.cycleDurationButton.setTitle(text, for: UIControlState())
                 self.configureAnalysisView()
             }
         }
-        picker.showActionSheetPicker()
+        picker.show()
     }
     
     /// Displays the picker to set the number of days before a notification occurs
@@ -93,29 +93,29 @@ class SettingsViewController: UIViewController {
                 LocalNotificationsManager.cancelAllNotifications()
                 LocalNotificationsManager.registerNotification()
                 let text = object == 1 ? "1 day before period starts" : "\(object) days before period starts"
-                self.notificationButton.setTitle(text, forState: .Normal)
+                self.notificationButton.setTitle(text, for: UIControlState())
             }
         }
-        picker.showActionSheetPicker()
+        picker.show()
     }
     
-    /// Displays the picker to set time of notification (optional, if this is not set use midnight)
-    func displayNotificationTimePicker() {
-        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), doneBlock: { (picker: ActionSheetDatePicker!, date: AnyObject!, object: AnyObject!) in
-            // MARK: - TODO
-            // Save selected time in defaults manager
-            // Update the notification to use that selected time
-            
-            print("I PICKED: \(date)")
-            
-            }, cancelBlock: nil, origin: notificationTimeButton)
-        timePicker.minuteInterval = 30
-        timePicker.showActionSheetPicker()
-    }
-    
-    func timePicked() {
-        print("Time")
-    }
+//    /// Displays the picker to set time of notification (optional, if this is not set use midnight)
+//    func displayNotificationTimePicker() {
+//        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.time, selectedDate: Date(), doneBlock: { (picker: ActionSheetDatePicker!, date: AnyObject!, object: AnyObject!) in
+//            // MARK: - TODO
+//            // Save selected time in defaults manager
+//            // Update the notification to use that selected time
+//            
+//            print("I PICKED: \(date)")
+//            
+//            }, cancel: nil, origin: notificationTimeButton)
+//        timePicker.minuteInterval = 30
+//        timePicker.show()
+//    }
+//    
+//    func timePicked() {
+//        print("Time")
+//    }
     
     /// Displays the picker to set the number of periods to base the analysis on
     func displayAnalysisPicker() {
@@ -132,10 +132,10 @@ class SettingsViewController: UIViewController {
                 DefaultsManager.setAnalysisNumber(object)
                 self.configureAnalysisView()
                 let text = object == 1 ? "Last Period" : "Last \(object) periods"
-                self.baseAnalysisButton.setTitle(text, forState: .Normal)
+                self.baseAnalysisButton.setTitle(text, for: UIControlState())
             }
         }
-        picker.showActionSheetPicker()
+        picker.show()
     }
     
     /// Configures the analyis view with the data
@@ -152,56 +152,56 @@ class SettingsViewController: UIViewController {
     func configureLabels() {
         let durationDays = DefaultsManager.getCycleDays()
         let durationText = durationDays == 1 ? "1 day" : "\(durationDays) days"
-        self.cycleDurationButton.setTitle(durationText, forState: .Normal)
+        self.cycleDurationButton.setTitle(durationText, for: UIControlState())
         
         let analysisBasis = DefaultsManager.getAnalysisNumber()
         let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
         if totalPeriods == 0 {
             let text = "No data, please tap on a date to start"
-            self.baseAnalysisButton.setTitle(text, forState: .Normal)
-            baseAnalysisButton.userInteractionEnabled = false
+            self.baseAnalysisButton.setTitle(text, for: UIControlState())
+            baseAnalysisButton.isUserInteractionEnabled = false
             baseAnalysisButton.alpha = 0.5
             
             averageCycleDurationLabel.text = "No data"
             averagePeriodDurationLabel.text = "No data"
         } else {
             let analysisText = analysisBasis == 1 ? "Last Period" : "Last \(analysisBasis) periods"
-            self.baseAnalysisButton.setTitle(analysisText, forState: .Normal)
+            self.baseAnalysisButton.setTitle(analysisText, for: UIControlState())
         }
         
         
         let notifDays = DefaultsManager.getNotificationDays()
         let notifText = notifDays == 1 ? "1 day before period starts" : "\(notifDays) days before period starts"
-        self.notificationButton.setTitle(notifText, forState: .Normal)
+        self.notificationButton.setTitle(notifText, for: UIControlState())
     }
 
     // MARK: Actions
 
-    @IBAction func cycleDurationButtonTapped(sender: AnyObject) {
+    @IBAction func cycleDurationButtonTapped(_ sender: AnyObject) {
         displayDurationPicker()
     }
     
-    @IBAction func notificationButtonTapped(sender: AnyObject) {
+    @IBAction func notificationButtonTapped(_ sender: AnyObject) {
         displayNotificationPicker()
     }
     
-    @IBAction func notificationTimeButtonTapped(sender: AnyObject) {
-        displayNotificationTimePicker()
+    @IBAction func notificationTimeButtonTapped(_ sender: AnyObject) {
+//        displayNotificationTimePicker()
     }
     
-    @IBAction func baseAnalysisButtonTapped(sender: AnyObject) {
+    @IBAction func baseAnalysisButtonTapped(_ sender: AnyObject) {
         displayAnalysisPicker()
     }
     
-    @IBAction func purchaseTapped(sender: AnyObject) {
+    @IBAction func purchaseTapped(_ sender: AnyObject) {
         purchaseProPackPressed()
     }
     
-    @IBAction func restoreButtonTapped(sender: AnyObject) {
+    @IBAction func restoreButtonTapped(_ sender: AnyObject) {
         purchaseManager?.restoreTransactions()
     }
     
-    @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButtonTapped(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

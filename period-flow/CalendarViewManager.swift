@@ -27,8 +27,8 @@ class CalendarViewManager: NSObject {
     
     var calendarView: JTAppleCalendarView!
     var delegate: CalendarViewManagerDelegate?
-    var selectedDates = [NSDate]()
-    var today = NSDate()
+    var selectedDates = [Date]()
+    var today = Date()
     
     // MARK: - Initializers
     
@@ -51,12 +51,12 @@ class CalendarViewManager: NSObject {
     
     /// Update UI when a date is selected
     func updateUIForSelection() {
-        var datesToSelect = [NSDate]()
+        var datesToSelect = [Date]()
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
         if let periods = queryResults {
             for period in periods {
                 datesToSelect += period.assumedDates.filter { date in
-                    calendarView.selectedDates.contains(date) != true
+                    calendarView.selectedDates.contains(date as Date) != true
                 }
             }
             calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
@@ -66,7 +66,7 @@ class CalendarViewManager: NSObject {
     
     /// Update UI when a date is deselected
     func updateUIForDeselection() {
-        var selectedDates = Set<NSDate>(calendarView.selectedDates)
+        var selectedDates = Set<Date>(calendarView.selectedDates)
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
         if let periods = queryResults {
             for period in periods {
@@ -74,15 +74,15 @@ class CalendarViewManager: NSObject {
                 
             }
         }
-        calendarView.selectDates([NSDate](selectedDates), triggerSelectionDelegate: false)
+        calendarView.selectDates([Date](selectedDates), triggerSelectionDelegate: false)
         calendarView.reloadData()
     }
     
     /// Displays future period on a Calendar
-    func displayPredictionDate(cell: CellView, date: NSDate, cellState: CellState) {
+    func displayPredictionDate(_ cell: CellView, date: Date, cellState: CellState) {
         let period = RealmManager.sharedInstance.queryLastPeriod()
         if let period = period {
-            if period.predictionDate!.isInSameDayAsDate(date) {
+            if period.predictionDate!.isInSameDayAsDate(date: date) {
                 cell.displayPrediction(true, cellState: cellState)
             } else {
                 cell.displayPrediction(false, cellState: cellState)
@@ -111,9 +111,9 @@ class CalendarViewManager: NSObject {
             delegate?.daysUntilNextPeriodLabel.text = "\(days)"
             
             switch true {
-                case today.isBefore(.Day, ofDate: predictionDate):
+                case today.isBefore(component: .day, ofDate: predictionDate):
                     delegate?.counterLabel.text = "\(daysOrDays) UNTIL \nNEXT PERIOD"
-                case today.isAfter(.Day, ofDate: predictionDate):
+                case today.isAfter(component: .day, ofDate: predictionDate):
                     delegate?.counterLabel.text = "\(daysOrDays) \nLATE"
                 case today.isInToday():
                     delegate?.counterLabel.text = "PERIOD STARTS \nTODAY"
@@ -131,13 +131,13 @@ class CalendarViewManager: NSObject {
 extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
     // Rendering all dates, reloadCalendar() reloads .ThisMonth
-    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let cell = cell as! CellView
-        cell.setupCellBeforeDisplay(cellState, date: date)
-        if cellState.dateBelongsTo == .ThisMonth {
-            cell.userInteractionEnabled = true
+        cell.setupCellBeforeDisplay(cellState, date: (date as NSDate) as Date)
+        if cellState.dateBelongsTo == .thisMonth {
+            cell.isUserInteractionEnabled = true
         } else {
-            cell.userInteractionEnabled = false
+            cell.isUserInteractionEnabled = false
         }
         
         // Circle prediction date, default 28 days
@@ -145,9 +145,9 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     }
     
     // User selects a date
-    func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = cell as! CellView
-        cell.cellSelectionChanged(cellState, date: date)
+        cell.cellSelectionChanged(cellState, date: date as NSDate)
         
         RealmManager.sharedInstance.updateOrBeginNewObject(date)
         updateUIForSelection()
@@ -156,9 +156,9 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     }
     
     // User deselects a date
-    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         let cell = cell as! CellView
-        cell.cellSelectionChanged(cellState, date: date)
+        cell.cellSelectionChanged(cellState, date: date as NSDate as NSDate)
         
         RealmManager.sharedInstance.updateOrDeleteObject(date)
         updateUIForDeselection()
@@ -168,7 +168,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     }
     
     // Set month name label and year label
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
         delegate?.monthNameLabel.text = startDate.monthName
         delegate?.yearLabel.text = String(startDate.year)
     }

@@ -28,11 +28,11 @@ class PeriodAnalysisManager {
     class func getAverageCycleDuration() -> Double? {
         guard let periods = RealmManager.sharedInstance.queryPeriodsForAnalysis() else { return nil }
         
-        var startDates = [NSDate]()
-        periods.forEach { startDates.append($0.startDate!) }
+        var startDates = [Date]()
+        periods.forEach { startDates.append($0.startDate! as Date) }
         
-        var endDates = [NSDate]()
-        periods.forEach { endDates.append($0.endDate!) }
+        var endDates = [Date]()
+        periods.forEach { endDates.append($0.endDate! as Date) }
         
         var daysBetweenToAverage = [Int]()
         
@@ -56,11 +56,11 @@ class PeriodAnalysisManager {
     // MARK: - Helper Methods
     
     /// Gets number of days between two NSDates as Int value
-    private class func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let start = calendar.startOfDayForDate(startDate)
-        let end = calendar.startOfDayForDate(endDate)
-        let components = calendar.components([.Day], fromDate: start, toDate: end, options: [])
-        return components.day
+    fileprivate class func daysBetweenDate(_ startDate: Date, endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: startDate)
+        let end = calendar.startOfDay(for: endDate)
+        let components = (calendar as NSCalendar).components([.day], from: start, to: end, options: [])
+        return components.day!
     }
 }

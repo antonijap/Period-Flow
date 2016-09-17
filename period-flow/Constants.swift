@@ -24,19 +24,19 @@ let KEY_PRO_PACK = "ProPack"
 
 extension Double {
     /// Formats a Double to specified number of digits
-    func toPlaces(number: Int) -> String {
-        let formatter = NSNumberFormatter()
+    func toPlaces(_ number: Int) -> String {
+        let formatter = NumberFormatter()
         formatter.minimumFractionDigits = number
-        return formatter.stringFromNumber(self) ?? "\(self)"
+        return formatter.string(from: NSNumber(self)) ?? "\(self)"
     }
 }
 
 // Extension: Array
 
-extension Array where Element: IntegerType {
+extension Array where Element: Integer {
     /// Returns the sum of all elements in the array
     var total: Element {
-        return reduce(0, combine: +)
+        return reduce(0, +)
     }
     /// Returns the average of all elements in the array
     var average: Double {

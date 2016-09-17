@@ -13,7 +13,7 @@ class PurchaseContainer: UIView {
     override func awakeFromNib() {
         layer.cornerRadius = 2.0
         layer.borderWidth = 1.0
-        layer.borderColor = Color.mint.CGColor
+        layer.borderColor = Color.mint.cgColor
     }
 
 }
