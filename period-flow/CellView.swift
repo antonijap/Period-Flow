@@ -30,7 +30,7 @@ class CellView: JTAppleDayCellView {
         predictionDay.isHidden = true
         configureTextColor(cellState: cellState)
         configureBackgroundColor(cellState, date: date)
-        configureTodayView(date as Date)
+        configureTodayView(date: date as Date)
     }
     
     /// .ThisMonth is grey, otherwise it's light grey
@@ -61,7 +61,7 @@ class CellView: JTAppleDayCellView {
     }
     
     /// Configures the view for the current date
-    func configureTodayView(_ date: Date) {
+    func configureTodayView(date: Date) {
         if date == today {
             todayView.isHidden = false
         } else {
