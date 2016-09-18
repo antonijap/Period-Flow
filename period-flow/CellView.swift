@@ -29,7 +29,7 @@ class CellView: JTAppleDayCellView {
         dateLabel.text = cellState.text
         predictionDay.isHidden = true
         configureTextColor(cellState: cellState)
-        configureBackgroundColor(cellState, date: date)
+        configureBackgroundColor(cellState: cellState, date: date)
         configureTodayView(date: date as Date)
     }
     
@@ -43,7 +43,7 @@ class CellView: JTAppleDayCellView {
     }
     
     /// Configures background color based of enum cellState.dateBelongsTo
-    func configureBackgroundColor(_ cellState: CellState, date: Date) {
+    func configureBackgroundColor(cellState: CellState, date: Date) {
         if cellState.isSelected {
             selectedDayView.isHidden = false
             dateLabel.textColor = Color.white
@@ -62,7 +62,7 @@ class CellView: JTAppleDayCellView {
     
     /// Configures the view for the current date
     func configureTodayView(date: Date) {
-        if date == today {
+        if date.isInSameDayAsDate(date: today) {
             todayView.isHidden = false
         } else {
             todayView.isHidden = true

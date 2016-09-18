@@ -27,7 +27,7 @@ extension Double {
     func toPlaces(_ number: Int) -> String {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = number
-        return formatter.string(from: NSNumber(self)) ?? "\(self)"
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
 

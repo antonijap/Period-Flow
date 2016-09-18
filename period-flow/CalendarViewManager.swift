@@ -70,8 +70,8 @@ class CalendarViewManager: NSObject {
         let queryResults = RealmManager.sharedInstance.queryAllPeriods()
         if let periods = queryResults {
             for period in periods {
-                selectedDates.subtractInPlace(period.assumedDates)
-                
+                let assumedDates = Set<Date>(period.assumedDates)
+                selectedDates.subtract(assumedDates)
             }
         }
         calendarView.selectDates([Date](selectedDates), triggerSelectionDelegate: false)
