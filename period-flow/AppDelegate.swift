@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Firebas Config.
-        FIRApp.configure()
+//        FIRApp.configure()
         
         // Configure local notifications
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)

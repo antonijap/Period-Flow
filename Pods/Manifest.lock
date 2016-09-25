@@ -45,10 +45,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   JTAppleCalendar:
-    :commit: 7936627b029104d0d56c2ad68496fdbb436c164d
+    :commit: 87d164c928c7296a31523208c09f51d33e74b118
     :git: https://github.com/patchthecode/JTAppleCalendar.git
   SwiftDate:
-    :commit: 4f894d54a04a5bbc3fb0a084506f7abef59a1904
+    :commit: 040b2c844a34a677feed13238a1bbcf85eceac41
     :git: https://github.com/malcommac/SwiftDate.git
 
 SPEC CHECKSUMS:

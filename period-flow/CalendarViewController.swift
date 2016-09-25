@@ -33,7 +33,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAdMob()
+//        setupAdMob()
         setupDataProvider()
         setupViewManager()
         setupCalendar()

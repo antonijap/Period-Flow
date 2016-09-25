@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -209,7 +209,7 @@ DURATION</string>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="57" id="ZPR-P6-IGC"/>
                                         </constraints>
-                                        <state key="normal" image="0D60BAD2-9976-4B8C-AF7B-9178FE9AE435">
+                                        <state key="normal" image="7936F2DD-65F6-4F03-9AE9-910B37B4A778">
                                             <color key="titleColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <variation key="default">
@@ -245,18 +245,17 @@ DURATION</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="dxN-My-rGk"/>
-                                        <exclude reference="mtL-sy-wPK"/>
-                                        <exclude reference="yAM-X4-vMG"/>
-                                        <exclude reference="phH-on-MrR"/>
                                         <exclude reference="aqm-LW-AcZ"/>
                                         <exclude reference="e8t-Xi-ub2"/>
                                         <exclude reference="gbH-4M-duY"/>
+                                        <exclude reference="phH-on-MrR"/>
+                                        <exclude reference="dxN-My-rGk"/>
+                                        <exclude reference="mtL-sy-wPK"/>
+                                        <exclude reference="yAM-X4-vMG"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Avk-Vg-yIe" userLabel="Cycles Duration Stack">
-                                <frame key="frameInset" minX="20" minY="84" width="560" height="69"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Avk-Vg-yIe" userLabel="Cycles Duration Stack">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CYCLE DURATION IN DAYS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-Yo-a1S">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
@@ -282,8 +281,7 @@ DURATION</string>
                                     <constraint firstItem="qiF-mW-KKv" firstAttribute="leading" secondItem="Avk-Vg-yIe" secondAttribute="leading" id="S7A-UJ-CZ3"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yPs-Ng-pPQ" userLabel="Notification Stack">
-                                <frame key="frameInset" minX="20" minY="178" width="560" height="69"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yPs-Ng-pPQ" userLabel="Notification Stack">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTIFY ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-q2-5qo">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
@@ -309,8 +307,7 @@ DURATION</string>
                                     <constraint firstItem="uf7-CS-av9" firstAttribute="top" secondItem="c2Q-q2-5qo" secondAttribute="bottom" constant="10" id="w00-oc-PER"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IPg-Vv-gdo" userLabel="Notification Time Stack">
-                                <frame key="frameInset" minX="20" minY="272" width="560" height="69"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IPg-Vv-gdo" userLabel="Notification Time Stack">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AT TIME (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbk-iE-B8W">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
@@ -336,8 +333,7 @@ DURATION</string>
                                     <constraint firstItem="nFz-z3-GZf" firstAttribute="top" secondItem="sbk-iE-B8W" secondAttribute="bottom" constant="10" id="vub-tK-jkr"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-VK-8je" userLabel="Base My Analysis Stack">
-                                <frame key="frameInset" minX="20" minY="366" width="560" height="69"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-VK-8je" userLabel="Base My Analysis Stack">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASE ANALYSIS ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSu-p2-tAl">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
@@ -425,8 +421,7 @@ DURATION</string>
                                     <constraint firstItem="JxZ-A0-n6Q" firstAttribute="leading" secondItem="SdS-cB-J2K" secondAttribute="leading" id="WrJ-ew-hat"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QT9-sM-O8t" userLabel="Purchase Stack">
-                                <frame key="frameInset" minX="20" minY="545" width="560" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QT9-sM-O8t" userLabel="Purchase Stack">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ecb-ZY-DIe">
                                         <subviews>
@@ -525,7 +520,7 @@ DURATION</string>
         </scene>
     </scenes>
     <resources>
-        <image name="0D60BAD2-9976-4B8C-AF7B-9178FE9AE435" width="17" height="10">
+        <image name="7936F2DD-65F6-4F03-9AE9-910B37B4A778" width="17" height="10">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
