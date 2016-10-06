@@ -13,7 +13,6 @@ target 'period-flow' do
   pod 'SwiftDate', :git => 'https://github.com/malcommac/SwiftDate.git', :branch => 'feature/swift-3.0'
   pod 'ActionSheetPicker-3.0', '~> 2.1.0'
   pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
 end
 
 post_install do |installer|

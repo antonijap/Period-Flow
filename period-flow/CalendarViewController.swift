@@ -9,7 +9,6 @@
 import UIKit
 import JTAppleCalendar
 import SwiftDate
-import GoogleMobileAds
 
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
@@ -20,7 +19,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var monthNameLabel: UILabel!
     @IBOutlet weak var averageCycleDaysLabel: UILabel!
     @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
-    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var counterLabel: UILabel!
     
     // MARK: - Properties
@@ -33,23 +31,16 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupAdMob()
         setupDataProvider()
         setupViewManager()
         setupCalendar()
         DefaultsManager.unlockProPack()
-        LocalNotificationsManager.registerNotification() // Delete that
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarView.scrollToDate(Date.today())
         viewManager?.updateUIforCycleDays()
-        
-        // Check if user purchased PRO Pack
-//        if DefaultsManager.isProPackUnlocked() {
-//            bannerView.hidden = true
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,15 +48,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     }
     
     // MARK: - Methods
-    
-    func setupAdMob() {
-        let request = GADRequest()
-        request.testDevices = ["2c7073a24ea8e6ba2a519bd8c2b5297e", kGADSimulatorID]
-        bannerView.adSize = kGADAdSizeSmartBannerPortrait
-        bannerView.adUnitID = "ca-app-pub-2949684951870263/9071981034"
-        bannerView.rootViewController = self
-        bannerView.load(request)
-    }
     
     func setupDataProvider() {
         dataProvider = CalendarDataProvider(calendarView: calendarView)

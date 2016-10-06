@@ -133,7 +133,7 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     // Rendering all dates, reloadCalendar() reloads .ThisMonth
     func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let cell = cell as! CellView
-        cell.setupCellBeforeDisplay(cellState, date: (date as NSDate) as Date)
+        cell.setupCellBeforeDisplay(cellState, date: date)
         if cellState.dateBelongsTo == .thisMonth {
             cell.isUserInteractionEnabled = true
         } else {
