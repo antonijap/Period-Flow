@@ -38,7 +38,7 @@ class RealmManager {
     // MARK: - Properties
     
     let realm = try! Realm()
-    var today = Date.today()
+    var today = DateInRegion().absoluteDate
     
     // MARK: - Methods
     

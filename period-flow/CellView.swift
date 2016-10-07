@@ -20,7 +20,7 @@ class CellView: JTAppleDayCellView {
     
     // MARK: - Properties
     
-    let today = Date.today()
+    let today = DateInRegion().absoluteDate
     
     // MARK: - Methods
     
@@ -62,14 +62,14 @@ class CellView: JTAppleDayCellView {
     
     /// Configures the view for the current date
     func configureTodayView(date: Date) {
-        if date.isInSameDayAsDate(date: today) {
+        if date.isInSameDayOf(date: today) {
             todayView.isHidden = false
         } else {
             todayView.isHidden = true
         }
     }
     
-    func cellSelectionChanged(_ cellState: CellState, date: NSDate) {
+    func cellSelectionChanged(_ cellState: CellState, date: Date) {
         if cellState.isSelected  {
             selectedDayView.isHidden = false
             dateLabel.textColor = Color.white

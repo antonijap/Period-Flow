@@ -19,7 +19,6 @@
 		6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4821CFDE56C00ACFFF2 /* Main.storyboard */; };
 		6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6870C4871CFDE56C00ACFFF2 /* LaunchScreen.storyboard */; };
 		687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687D2CC11D0DC825007C83DE /* DefaultsManager.swift */; };
-		687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */; };
 		687D2CCC1D0DF03D007C83DE /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */; };
 		688003751D22C2480086ACDD /* PurchaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688003741D22C2480086ACDD /* PurchaseContainer.swift */; };
 		6880037A1D22D3B10086ACDD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688003791D22D3B10086ACDD /* CustomButton.swift */; };
@@ -33,6 +32,7 @@
 		B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8931D20C49D00E2A202 /* Constants.swift */; };
 		B0E1B8961D20CC1900E2A202 /* PeriodAnalysisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */; };
 		B0E1B89F1D21ADD400E2A202 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B89E1D21ADD400E2A202 /* LocalNotificationsManager.swift */; };
+		CF0B784E1DA81A03003D1610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF0B784D1DA81A03003D1610 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		6870C4881CFDE56C00ACFFF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6870C48A1CFDE56C00ACFFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		687D2CC11D0DC825007C83DE /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
-		687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		687D2CCB1D0DF03D007C83DE /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
 		688003741D22C2480086ACDD /* PurchaseContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseContainer.swift; sourceTree = "<group>"; };
 		688003791D22D3B10086ACDD /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -65,6 +64,9 @@
 		B0E1B8931D20C49D00E2A202 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodAnalysisManager.swift; sourceTree = "<group>"; };
 		B0E1B89E1D21ADD400E2A202 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
+		CF0B78461DA81791003D1610 /* period-flow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "period-flow-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF0B784A1DA81840003D1610 /* period-flow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "period-flow-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF0B784D1DA81A03003D1610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,8 +162,10 @@
 				68E8430C1D05F41600224BC4 /* Fonts */,
 				B0E1B8931D20C49D00E2A202 /* Constants.swift */,
 				685B92A71CFDF313003452CE /* Color.swift */,
+				CF0B784A1DA81840003D1610 /* period-flow-Bridging-Header.h */,
+				CF0B78461DA81791003D1610 /* period-flow-Bridging-Header.h */,
+				CF0B784D1DA81A03003D1610 /* GoogleService-Info.plist */,
 				6870C48A1CFDE56C00ACFFF2 /* Info.plist */,
-				687D2CC31D0DD473007C83DE /* GoogleService-Info.plist */,
 				682DB5681D637AE100EF430E /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -288,11 +292,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				687D2CCC1D0DF03D007C83DE /* Raleway-Light.ttf in Resources */,
-				687D2CC41D0DD473007C83DE /* GoogleService-Info.plist in Resources */,
 				6870C4891CFDE56C00ACFFF2 /* LaunchScreen.storyboard in Resources */,
 				685B92AB1CFDF9CC003452CE /* CellView.xib in Resources */,
 				682DB5691D637AE100EF430E /* Assets.xcassets in Resources */,
 				6870C4841CFDE56C00ACFFF2 /* Main.storyboard in Resources */,
+				CF0B784E1DA81A03003D1610 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +556,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "period-flow/Info.plist";
@@ -560,6 +565,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "Period Flow";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "period-flow/period-flow-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,6 +579,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "period-flow/Info.plist";
@@ -580,6 +588,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonijapek.periodflow;
 				PRODUCT_NAME = "Period Flow";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "period-flow/period-flow-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

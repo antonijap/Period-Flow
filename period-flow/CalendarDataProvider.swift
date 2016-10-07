@@ -26,11 +26,11 @@ class CalendarDataProvider: NSObject {
 
 extension CalendarDataProvider: JTAppleCalendarViewDataSource {    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
-        let firstDate = 1.years.ago
-        let secondDate = 1.years.fromNow
+        let firstDate = 1.years.ago()
+        let secondDate = 1.years.fromNow()
         let aCalendar = Calendar.autoupdatingCurrent // Properly configure your calendar to your time zone here
         let rows = 5
         
-        return (startDate: firstDate, endDate: secondDate, numberOfRows: rows, calendar: aCalendar)
+        return (startDate: firstDate!, endDate: secondDate!, numberOfRows: rows, calendar: aCalendar)
     }
 }

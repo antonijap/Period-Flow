@@ -1,7 +1,7 @@
 {
   "name": "SwiftDate",
-  "version": "3.0.9",
-  "summary": "Swift library to easily manage dates; also with varying time zones, calendars and locales",
+  "version": "4.0.5",
+  "summary": "The best way to deal with Dates & Time Zones in Swift",
   "homepage": "https://github.com/malcommac/SwiftDate",
   "license": {
     "type": "MIT",
@@ -13,9 +13,9 @@
   "social_media_url": "http://twitter.com/danielemargutti",
   "source": {
     "git": "https://github.com/malcommac/SwiftDate.git",
-    "tag": "3.0.9"
+    "tag": "4.0.5"
   },
-  "source_files": "Sources/SwiftDate/*.swift",
+  "source_files": "Sources/**/*.swift",
   "platforms": {
     "ios": "8.0",
     "watchos": "2.0",
@@ -23,5 +23,6 @@
     "tvos": "9.0"
   },
   "requires_arc": true,
-  "module_name": "SwiftDate"
+  "module_name": "SwiftDate",
+  "resources": "Sources/SwiftDate/SwiftDate.bundle"
 }

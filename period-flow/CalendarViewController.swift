@@ -33,14 +33,17 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         super.viewDidLoad()
         setupDataProvider()
         setupViewManager()
-        setupCalendar()
+        setupCalendar() 
+    }
+    
+    override func viewDidLayoutSubviews() {
         DefaultsManager.unlockProPack()
+        viewManager?.updateUIforCycleDays()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.scrollToDate(Date.today())
-        viewManager?.updateUIforCycleDays()
+        calendarView.scrollToDate(DateInRegion().absoluteDate)
     }
     
     override func viewDidAppear(_ animated: Bool) {

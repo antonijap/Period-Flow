@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F4O-It-wUG" userLabel="Info">
@@ -125,7 +125,7 @@ DURATION</string>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="10"/>
                                 <state key="normal" title="Button" image="menu"/>
                                 <connections>
-                                    <segue destination="Hh7-Tf-w8Z" kind="show" id="wtT-8a-RbT"/>
+                                    <segue destination="Hh7-Tf-w8Z" kind="show" id="CRP-yI-Ebz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -162,7 +162,7 @@ DURATION</string>
             </objects>
             <point key="canvasLocation" x="337.5" y="428.87323943661971"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="9Lg-uB-EXN">
             <objects>
                 <viewController id="Hh7-Tf-w8Z" customClass="SettingsViewController" customModule="Period_Flow" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,7 +171,7 @@ DURATION</string>
                         <viewControllerLayoutGuide type="bottom" id="Vlv-89-sQ7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ne0-lJ-vtV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Avk-Vg-yIe" userLabel="Cycles Duration Stack">
@@ -258,13 +258,13 @@ DURATION</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-17-Cmd">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="AVERAGE CYCLE DURATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f30-oh-4s7">
-                                                        <frame key="frameInset" width="213" height="15"/>
+                                                        <frame key="frameInset" width="268" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No data" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KU9-WI-nF2">
-                                                        <frame key="frameInset" minX="233" width="47" height="15"/>
+                                                        <frame key="frameInset" minX="288" width="47" height="15"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="textColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -274,13 +274,13 @@ DURATION</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iY3-wy-35G">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="AVERAGE PERIOD DURATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIK-CA-ynN">
-                                                        <frame key="frameInset" width="213" height="15"/>
+                                                        <frame key="frameInset" width="268" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No data" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bt-nA-1Mm">
-                                                        <frame key="frameInset" minX="233" width="47" height="15"/>
+                                                        <frame key="frameInset" minX="288" width="47" height="15"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="textColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -305,20 +305,23 @@ DURATION</string>
                                         <color key="textColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nx-9L-Qyh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLV-gk-foQ">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="Wz3-wH-0ts"/>
-                                            <constraint firstAttribute="height" constant="21" id="ygC-ON-2lg"/>
+                                            <constraint firstAttribute="height" constant="30" id="3QR-pp-JSA"/>
+                                            <constraint firstAttribute="width" constant="46" id="ZO3-lO-GJo"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="Hh7-Tf-w8Z" eventType="touchUpInside" id="QCV-aS-qjJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="4nx-9L-Qyh" firstAttribute="leading" secondItem="zvv-SB-t50" secondAttribute="leading" constant="20" id="0TW-5U-lGf"/>
-                                    <constraint firstAttribute="bottom" secondItem="4nx-9L-Qyh" secondAttribute="bottom" constant="12" id="TP5-Rh-Q7L"/>
+                                    <constraint firstItem="OLV-gk-foQ" firstAttribute="leading" secondItem="zvv-SB-t50" secondAttribute="leading" constant="20" id="Ian-kS-2ZI"/>
+                                    <constraint firstAttribute="bottom" secondItem="OLV-gk-foQ" secondAttribute="bottom" constant="6" id="PNn-Sh-jqS"/>
                                     <constraint firstAttribute="bottom" secondItem="Re8-q6-s9S" secondAttribute="bottom" constant="12" id="W32-A8-Sac"/>
                                     <constraint firstAttribute="height" constant="67" id="bA0-XO-HMc"/>
                                     <constraint firstItem="Re8-q6-s9S" firstAttribute="centerX" secondItem="zvv-SB-t50" secondAttribute="centerX" id="yJy-nB-SNT"/>
@@ -333,7 +336,7 @@ DURATION</string>
                                                 <color key="textColor" red="0.34509803919999998" green="0.79607843140000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock notifications, analysis and remove ads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6T-ig-IuP">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock notifications and analysis." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6T-ig-IuP">
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -389,7 +392,6 @@ DURATION</string>
                             <constraint firstItem="Avk-Vg-yIe" firstAttribute="leading" secondItem="ne0-lJ-vtV" secondAttribute="leading" constant="20" id="xL1-JH-a6i"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="4dS-iL-ocZ"/>
                     <connections>
                         <outlet property="analysisStack" destination="SdS-cB-J2K" id="k2A-mJ-s6u"/>
                         <outlet property="averageCycleDurationLabel" destination="KU9-WI-nF2" id="NKI-TG-vWl"/>
@@ -409,25 +411,7 @@ DURATION</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1500" y="428.87323943661971"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="s7w-xJ-LoK">
-            <objects>
-                <viewController id="PbK-Yx-Ym4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hbv-C0-ubH"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fo4-Lc-RgB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c2R-W6-eRx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BD4-pY-9zB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2971.875" y="428.87323943661971"/>
+            <point key="canvasLocation" x="1187" y="429"/>
         </scene>
     </scenes>
     <resources>
