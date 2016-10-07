@@ -33,7 +33,6 @@
 		B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8931D20C49D00E2A202 /* Constants.swift */; };
 		B0E1B8961D20CC1900E2A202 /* PeriodAnalysisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */; };
 		B0E1B89F1D21ADD400E2A202 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B89E1D21ADD400E2A202 /* LocalNotificationsManager.swift */; };
-		CF73783D1D99A2CA008EDB1E /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73783C1D99A2CA008EDB1E /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +65,6 @@
 		B0E1B8931D20C49D00E2A202 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodAnalysisManager.swift; sourceTree = "<group>"; };
 		B0E1B89E1D21ADD400E2A202 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
-		CF73783C1D99A2CA008EDB1E /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D688D65867A831BBA82C4CBC /* Pods_period_flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_period_flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,7 +150,6 @@
 				6870C47E1CFDE56C00ACFFF2 /* AppDelegate.swift */,
 				6870C4801CFDE56C00ACFFF2 /* CalendarViewController.swift */,
 				6880037D1D22D7100086ACDD /* SettingsViewController.swift */,
-				CF73783C1D99A2CA008EDB1E /* SettingsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -423,7 +420,6 @@
 				B0B84CB91D01200800804FDE /* Period.swift in Sources */,
 				6822A6C81D08728300A21F23 /* PredictionView.swift in Sources */,
 				685B92A81CFDF313003452CE /* Color.swift in Sources */,
-				CF73783D1D99A2CA008EDB1E /* SettingsVC.swift in Sources */,
 				B0E1B89F1D21ADD400E2A202 /* LocalNotificationsManager.swift in Sources */,
 				B0B98B581CFE767700CDBE14 /* RealmManager.swift in Sources */,
 				687D2CC21D0DC825007C83DE /* DefaultsManager.swift in Sources */,
