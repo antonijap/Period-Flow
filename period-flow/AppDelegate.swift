@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
         gai?.trackUncaughtExceptions = true  // report uncaught exceptions
-        gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
+//        gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
         
         // Configure local notifications
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)

@@ -108,7 +108,7 @@ DURATION</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4ar-c4-TTj"/>
                                     <constraint firstAttribute="width" constant="100" id="OqE-Y0-1lr"/>

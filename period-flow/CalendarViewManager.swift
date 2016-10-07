@@ -47,6 +47,7 @@ class CalendarViewManager: NSObject {
             print("Assumed dates are: \(period.assumedDates)")
         }
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
+        calendarView.reloadData()
     }
     
     /// Update UI when a date is selected
@@ -60,8 +61,8 @@ class CalendarViewManager: NSObject {
                 }
             }
             calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
-//            calendarView.reloadData()
-            calendarView.reloadDates(datesToSelect)
+            calendarView.reloadData()
+//            calendarView.reloadDates(datesToSelect)
         }
     }
     
