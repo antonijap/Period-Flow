@@ -131,21 +131,21 @@ DURATION</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="0kW-78-1mZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F4O-It-wUG" secondAttribute="bottom" constant="20" id="1U2-Xo-wjH"/>
                             <constraint firstItem="KZo-eX-ETZ" firstAttribute="leading" secondItem="F4O-It-wUG" secondAttribute="leading" id="4Xa-EA-309"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="15" id="7gh-IF-pEM"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="8bk-aV-uAZ"/>
                             <constraint firstAttribute="trailing" secondItem="vWC-RV-G0r" secondAttribute="trailing" constant="16" id="8ek-jp-JQw"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="B8D-tK-xcc"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="5" id="K2x-e5-1Bl"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="5" id="Cj8-4z-sbI"/>
+                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="Mpl-TT-1Rd" secondAttribute="bottom" constant="40" id="HRS-Gq-xy1"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="centerX" secondItem="F4O-It-wUG" secondAttribute="centerX" id="OOB-yY-n2O"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Phy-Nu-nmL"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="KZo-eX-ETZ" secondAttribute="leading" id="Y45-XU-d4J"/>
-                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="Mpl-TT-1Rd" secondAttribute="bottom" constant="40" id="Yab-vx-2JH"/>
+                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" constant="6" id="fgN-9l-e9o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F4O-It-wUG" secondAttribute="trailing" id="lOM-ei-5cD"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="q7y-TZ-W8V"/>
                             <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="38" id="roP-NO-YTe"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="syP-AQ-GRP"/>
                             <constraint firstItem="KZo-eX-ETZ" firstAttribute="top" secondItem="0Nd-xl-GqP" secondAttribute="bottom" id="ww8-zj-DGe"/>
                         </constraints>
                     </view>

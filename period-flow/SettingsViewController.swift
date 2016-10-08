@@ -42,9 +42,39 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         configureAnalysisView()
         configureLabels()
+        checkIfPurchased()
+        print("PRO Pack purchased: \(DefaultsManager.isProPackUnlocked())")
     }
     
     // MARK: Methods
+    
+    func checkIfPurchased() {
+        if DefaultsManager.isProPackUnlocked() {
+            // True
+            // Show analysis and notifications
+            
+            notificationStack.isUserInteractionEnabled = true
+            notificationStack.alpha = 1
+            
+            baseAnalysisStack.isUserInteractionEnabled = true
+            baseAnalysisStack.alpha = 1
+            
+            baseAnalysisButton.isUserInteractionEnabled = true
+            baseAnalysisButton.alpha = 1
+            
+            analysisStack.isUserInteractionEnabled = true
+            analysisStack.alpha = 1
+        } else {
+            notificationStack.isUserInteractionEnabled = false
+            notificationStack.alpha = 0.5
+            
+            baseAnalysisStack.isUserInteractionEnabled = false
+            baseAnalysisStack.alpha = 0.5
+            
+            analysisStack.isUserInteractionEnabled = false
+            analysisStack.alpha = 0.5
+        }
+    }
     
     func setupPurchaseManager() {
         purchaseManager = PurchaseManager()
@@ -81,6 +111,7 @@ class SettingsViewController: UIViewController {
     }
     
     /// Displays the picker to set the number of days before a notification occurs
+    // TODO: Add hours and/or minutes to this picker
     func displayNotificationPicker() {
         let title = "Days Before"
         let currentDuration = DefaultsManager.getCycleDays()

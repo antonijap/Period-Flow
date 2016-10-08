@@ -30,7 +30,7 @@ class CellView: JTAppleDayCellView {
         predictionDay.isHidden = true
         configureTextColor(cellState: cellState)
         configureBackgroundColor(cellState: cellState, date: date)
-        configureTodayView(date: date as Date)
+        configureTodayView(date: date)
     }
     
     /// .ThisMonth is grey, otherwise it's light grey

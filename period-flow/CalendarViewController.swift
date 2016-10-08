@@ -42,7 +42,11 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         super.viewDidAppear(animated)
         let now = DateInRegion().absoluteDate
         calendarView.scrollToDate(now)
-        print("Now is \(now)!!!")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        setUpAnalytics() // Uncomment this before release
     }
     
     // MARK: - Methods
@@ -67,6 +71,13 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.firstDayOfWeek = .sunday
         calendarView.scrollEnabled = true
         averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
+    }
+    
+    func setUpAnalytics() {
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIScreenName, value: "Calendar Screen")
+        let build = GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]
+        tracker?.send(build)
     }
 
 }

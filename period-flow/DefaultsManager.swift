@@ -45,6 +45,7 @@ class DefaultsManager {
     /// Checks if PRO Pack in app purchase is unlocked
     class func isProPackUnlocked() -> Bool {
         return UserDefaults.standard.bool(forKey: KEY_PRO_PACK) 
+//        return false
     }
     
     /// Unlocks the PRO Pack in app purchase

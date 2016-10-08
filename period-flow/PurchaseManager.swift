@@ -53,7 +53,7 @@ class PurchaseManager: NSObject {
     // MARK: - Extension: SKProductsRequestDelegate
 
 extension PurchaseManager: SKProductsRequestDelegate {
-    
+
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         products = response.products
     }
@@ -68,6 +68,7 @@ extension PurchaseManager: SKPaymentTransactionObserver {
             switch transaction.transactionState {
                 case .purchased:
                     DefaultsManager.unlockProPack()
+                    print("PRO Pack is just unlocked.")
                     SKPaymentQueue.default().finishTransaction(transaction)
                 case .failed:
                     SKPaymentQueue.default().finishTransaction(transaction)
