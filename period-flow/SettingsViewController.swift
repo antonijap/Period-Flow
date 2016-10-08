@@ -127,6 +127,7 @@ class SettingsViewController: UIViewController {
                 self.notificationButton.setTitle(text, for: UIControlState())
             }
         }
+        
         picker.show()
     }
     

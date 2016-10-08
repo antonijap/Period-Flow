@@ -269,16 +269,16 @@ open class JTAppleCalendarView: UIView {
             #if os(iOS)
                 let orientation = UIApplication.shared.statusBarOrientation
                 if orientation == .unknown { return }
-                if lastOrientation != orientation {
-                    calendarView.collectionViewLayout.invalidateLayout()
-                    let layout = calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol
-                    layout.clearCache()   
-                    lastOrientation = orientation
-                    updateLayoutItemSize(self.calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol)
-                    if delegate != nil { reloadData() }
-                } else {
-                    updateLayoutItemSize(self.calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol)
-                }
+                //                if lastOrientation != orientation {
+                calendarView.collectionViewLayout.invalidateLayout()
+                let layout = calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol
+                layout.clearCache()
+                lastOrientation = orientation
+                updateLayoutItemSize(self.calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol)
+                if delegate != nil { reloadData() }
+                //                } else {
+                updateLayoutItemSize(self.calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol)
+                //                }
             #elseif os(tvOS)
                 calendarView.collectionViewLayout.invalidateLayout()
                 let layout = calendarView.collectionViewLayout as! JTAppleCalendarLayoutProtocol

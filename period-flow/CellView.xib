@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,48 +19,29 @@
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uym-sD-4Yb" userLabel="predictionDay" customClass="PredictionView" customModule="Period_Flow" customModuleProvider="target"/>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x63-94-BiS">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="h2Q-Mx-Il0"/>
-                        <constraint firstAttribute="width" constant="94" id="xni-ui-X4t"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
-                    <variation key="heightClass=regular-widthClass=regular">
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                    </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="oAd-2m-9FL" secondAttribute="trailing" id="07s-rZ-alb"/>
-                <constraint firstItem="uym-sD-4Yb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1Re-y9-2nt"/>
-                <constraint firstAttribute="bottom" secondItem="wPH-81-pOJ" secondAttribute="bottom" id="7Mg-fk-yBj"/>
-                <constraint firstItem="wPH-81-pOJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BdB-gJ-ZpK"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="E20-8u-FUt"/>
-                <constraint firstAttribute="bottom" secondItem="oAd-2m-9FL" secondAttribute="bottom" id="LyR-lF-y9F"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="OPO-ZK-au6"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PqZ-g1-9NK"/>
-                <constraint firstItem="x63-94-BiS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UTx-VF-ChN"/>
-                <constraint firstAttribute="trailing" secondItem="wPH-81-pOJ" secondAttribute="trailing" id="Xju-yX-r0i"/>
-                <constraint firstItem="x63-94-BiS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yc8-j0-zKC"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aQC-wf-Td9"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="guE-Lw-GCM"/>
-                <constraint firstItem="uym-sD-4Yb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nf5-ax-ON8"/>
-                <constraint firstItem="wPH-81-pOJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oUj-gj-m2e"/>
-                <constraint firstItem="oAd-2m-9FL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQM-k2-Uda"/>
-                <constraint firstAttribute="bottom" secondItem="uym-sD-4Yb" secondAttribute="bottom" id="tNi-WL-NDC"/>
-                <constraint firstAttribute="trailing" secondItem="uym-sD-4Yb" secondAttribute="trailing" id="xce-Yh-5tb"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="7e2-SN-R0T"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8lg-JI-YdP"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BXY-x9-HY3"/>
+                <constraint firstItem="x63-94-BiS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KbR-GS-sUM"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mtz-H9-yeI"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="OXe-HL-qYh"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XpL-cl-bpm"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="czj-jb-7B2"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="fJ7-Db-7eW"/>
+                <constraint firstItem="oAd-2m-9FL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="gmO-0m-nJK"/>
+                <constraint firstItem="wPH-81-pOJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="maS-wq-HmF"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="pwH-C8-ubB"/>
+                <constraint firstItem="x63-94-BiS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wse-qP-hIX"/>
+                <constraint firstItem="uym-sD-4Yb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x2H-Tq-Ste"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="OPO-ZK-au6"/>
-                    <exclude reference="PqZ-g1-9NK"/>
-                    <exclude reference="aQC-wf-Td9"/>
-                    <exclude reference="guE-Lw-GCM"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="dateLabel" destination="x63-94-BiS" id="vD7-Ik-b98"/>
                 <outlet property="predictionDay" destination="uym-sD-4Yb" id="CnN-tw-d2D"/>
@@ -70,4 +51,9 @@
             <point key="canvasLocation" x="-100" y="3"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

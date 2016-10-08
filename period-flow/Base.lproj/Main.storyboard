@@ -107,7 +107,6 @@ DURATION</string>
                                 <color key="textColor" red="0.34509803921568627" green="0.79607843137254897" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-xl-GqP" userLabel="year">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4ar-c4-TTj"/>
@@ -117,36 +116,37 @@ DURATION</string>
                                 <color key="textColor" red="0.34509803921568627" green="0.79607843137254897" blue="0.84705882352941175" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-RV-G0r" userLabel="menuButton">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-RV-G0r" userLabel="menuButton">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="S29-hN-ulk"/>
-                                    <constraint firstAttribute="height" constant="29" id="js5-RL-7se"/>
+                                    <constraint firstAttribute="width" constant="63" id="S29-hN-ulk"/>
+                                    <constraint firstAttribute="height" constant="35" id="js5-RL-7se"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" title="Button" image="menu"/>
+                                <state key="normal" image="dots"/>
                                 <connections>
                                     <segue destination="Hh7-Tf-w8Z" kind="show" id="CRP-yI-Ebz"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-TT-1Rd" userLabel="calendarView" customClass="JTAppleCalendarView" customModule="JTAppleCalendar"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="0kW-78-1mZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F4O-It-wUG" secondAttribute="bottom" constant="20" id="1U2-Xo-wjH"/>
                             <constraint firstItem="KZo-eX-ETZ" firstAttribute="leading" secondItem="F4O-It-wUG" secondAttribute="leading" id="4Xa-EA-309"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="top" secondItem="KZo-eX-ETZ" secondAttribute="bottom" constant="15" id="7gh-IF-pEM"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="8bk-aV-uAZ"/>
                             <constraint firstAttribute="trailing" secondItem="vWC-RV-G0r" secondAttribute="trailing" constant="16" id="8ek-jp-JQw"/>
-                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="5" id="Cj8-4z-sbI"/>
-                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="Mpl-TT-1Rd" secondAttribute="bottom" constant="40" id="HRS-Gq-xy1"/>
                             <constraint firstItem="l4K-g0-3TN" firstAttribute="centerX" secondItem="F4O-It-wUG" secondAttribute="centerX" id="OOB-yY-n2O"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Phy-Nu-nmL"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="leading" secondItem="KZo-eX-ETZ" secondAttribute="leading" id="Y45-XU-d4J"/>
-                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" constant="6" id="fgN-9l-e9o"/>
+                            <constraint firstAttribute="trailing" secondItem="Mpl-TT-1Rd" secondAttribute="trailing" constant="10" id="Z88-Nc-Drv"/>
+                            <constraint firstItem="F4O-It-wUG" firstAttribute="top" secondItem="Mpl-TT-1Rd" secondAttribute="bottom" constant="40" id="lCF-DB-PNI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F4O-It-wUG" secondAttribute="trailing" id="lOM-ei-5cD"/>
                             <constraint firstItem="0Nd-xl-GqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="q7y-TZ-W8V"/>
-                            <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="38" id="roP-NO-YTe"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="rcp-zu-pQP"/>
+                            <constraint firstItem="vWC-RV-G0r" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="roP-NO-YTe"/>
                             <constraint firstItem="KZo-eX-ETZ" firstAttribute="top" secondItem="0Nd-xl-GqP" secondAttribute="bottom" id="ww8-zj-DGe"/>
+                            <constraint firstItem="Mpl-TT-1Rd" firstAttribute="top" secondItem="l4K-g0-3TN" secondAttribute="bottom" constant="20" id="xJb-Xz-Shw"/>
                         </constraints>
                     </view>
                     <connections>
@@ -160,7 +160,7 @@ DURATION</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337.5" y="428.87323943661971"/>
+            <point key="canvasLocation" x="336.80000000000001" y="428.63568215892059"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="9Lg-uB-EXN">
@@ -415,6 +415,6 @@ DURATION</string>
         </scene>
     </scenes>
     <resources>
-        <image name="menu" width="25" height="17"/>
+        <image name="dots" width="26" height="6"/>
     </resources>
 </document>
