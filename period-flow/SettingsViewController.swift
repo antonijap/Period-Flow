@@ -9,23 +9,31 @@
 import UIKit
 import ActionSheetPicker_3_0
 import SwiftDate
+import UserNotifications
 
+@available(iOS 10.0, *)
 class SettingsViewController: UIViewController {
 
     // MARK: Outlets
     
     @IBOutlet weak var notificationStack: UIStackView!
-    @IBOutlet weak var baseAnalysisStack: UIStackView!
     @IBOutlet weak var analysisStack: UIStackView!
+    
     @IBOutlet weak var purchaseStack: UIStackView!
     
     @IBOutlet weak var averageCycleDurationLabel: UILabel!
     @IBOutlet weak var averagePeriodDurationLabel: UILabel!
     
+    @IBOutlet weak var oneDayNotification: CustomButton!
+    @IBOutlet weak var threeDaysNotification: CustomButton!
+    @IBOutlet weak var fiveDaysNotification: CustomButton!
+    @IBOutlet weak var nineAM: CustomButton!
+    @IBOutlet weak var twelveAM: CustomButton!
+    @IBOutlet weak var ninePM: CustomButton!
+    @IBOutlet weak var removeNotificationButton: HollowButton!
+    
+    
     @IBOutlet weak var cycleDurationButton: CustomButton!
-    @IBOutlet weak var notificationButton: CustomButton!
-    @IBOutlet weak var baseAnalysisButton: CustomButton!
-    @IBOutlet weak var notificationTimeButton: CustomButton!
 
     // MARK: - Properties
     
@@ -43,6 +51,7 @@ class SettingsViewController: UIViewController {
         configureAnalysisView()
         configureLabels()
         checkIfPurchased()
+        checkForNotifications()
         print("PRO Pack purchased: \(DefaultsManager.isProPackUnlocked())")
     }
     
@@ -55,24 +64,11 @@ class SettingsViewController: UIViewController {
             
             notificationStack.isUserInteractionEnabled = true
             notificationStack.alpha = 1
-            
-            baseAnalysisStack.isUserInteractionEnabled = true
-            baseAnalysisStack.alpha = 1
-            
-            baseAnalysisButton.isUserInteractionEnabled = true
-            baseAnalysisButton.alpha = 1
-            
-            analysisStack.isUserInteractionEnabled = true
-            analysisStack.alpha = 1
+    
+            configureAnalysisVisibility()
         } else {
             notificationStack.isUserInteractionEnabled = false
             notificationStack.alpha = 0.5
-            
-            baseAnalysisStack.isUserInteractionEnabled = false
-            baseAnalysisStack.alpha = 0.5
-            
-            analysisStack.isUserInteractionEnabled = false
-            analysisStack.alpha = 0.5
         }
     }
     
@@ -110,66 +106,6 @@ class SettingsViewController: UIViewController {
         picker.show()
     }
     
-    /// Displays the picker to set the number of days before a notification occurs
-    // TODO: Add hours and/or minutes to this picker
-    func displayNotificationPicker() {
-        let title = "Days Before"
-        let currentDuration = DefaultsManager.getCycleDays()
-        let days = (1...currentDuration).map { $0 }
-        let index = DefaultsManager.getNotificationDays() - 1
-        
-        let picker = actionSheetFactory(title, rows: days, indexSelected: index, sender: notificationButton) { (picker, int, object) in
-            if let object = object as? Int {
-                DefaultsManager.setNotificationDays(object)
-                LocalNotificationsManager.cancelAllNotifications()
-                LocalNotificationsManager.registerNotification()
-                let text = object == 1 ? "1 day before period starts" : "\(object) days before period starts"
-                self.notificationButton.setTitle(text, for: UIControlState())
-            }
-        }
-        
-        picker.show()
-    }
-    
-//    /// Displays the picker to set time of notification (optional, if this is not set use midnight)
-//    func displayNotificationTimePicker() {
-//        let timePicker = ActionSheetDatePicker(title: "Time", datePickerMode: UIDatePickerMode.time, selectedDate: Date(), doneBlock: { (picker: ActionSheetDatePicker!, date: AnyObject!, object: AnyObject!) in
-//            // MARK: - TODO
-//            // Save selected time in defaults manager
-//            // Update the notification to use that selected time
-//            
-//            print("I PICKED: \(date)")
-//            
-//            }, cancel: nil, origin: notificationTimeButton)
-//        timePicker.minuteInterval = 30
-//        timePicker.show()
-//    }
-//    
-//    func timePicked() {
-//        print("Time")
-//    }
-    
-    /// Displays the picker to set the number of periods to base the analysis on
-    func displayAnalysisPicker() {
-        let title = "Number of Periods"
-        let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
-        
-        let rangeStart = totalPeriods == 0 ? 0 : 1
-        let rangeCap = totalPeriods ?? 1
-        
-        let range = (rangeStart...rangeCap).map { $0 }
-        
-        let picker = actionSheetFactory(title, rows: range, indexSelected: 0, sender: baseAnalysisButton) { (picker, int, object) in
-            if let object = object as? Int {
-                DefaultsManager.setAnalysisNumber(object)
-                self.configureAnalysisView()
-                let text = object == 1 ? "Last Period" : "Last \(object) periods"
-                self.baseAnalysisButton.setTitle(text, for: UIControlState())
-            }
-        }
-        picker.show()
-    }
-    
     /// Configures the analyis view with the data
     func configureAnalysisView() {
         if let avgPeriodDuration = PeriodAnalysisManager.getAveragePeriodDuration() {
@@ -185,44 +121,163 @@ class SettingsViewController: UIViewController {
         let durationDays = DefaultsManager.getCycleDays()
         let durationText = durationDays == 1 ? "1 day" : "\(durationDays) days"
         self.cycleDurationButton.setTitle(durationText, for: UIControlState())
-        
-        let analysisBasis = DefaultsManager.getAnalysisNumber()
+    }
+    
+    func configureAnalysisVisibility() {
         let totalPeriods = RealmManager.sharedInstance.queryAllPeriods()?.count
         if totalPeriods == 0 {
-            let text = "No data, please tap on a date to start"
-            self.baseAnalysisButton.setTitle(text, for: UIControlState())
-            baseAnalysisButton.isUserInteractionEnabled = false
-            baseAnalysisButton.alpha = 0.5
-            
             averageCycleDurationLabel.text = "No data"
             averagePeriodDurationLabel.text = "No data"
+            analysisStack.isUserInteractionEnabled = false
+            analysisStack.alpha = 0.5
         } else {
-            let analysisText = analysisBasis == 1 ? "Last Period" : "Last \(analysisBasis) periods"
-            self.baseAnalysisButton.setTitle(analysisText, for: UIControlState())
+            analysisStack.isUserInteractionEnabled = true
+            analysisStack.alpha = 1
         }
-        
-        
-        let notifDays = DefaultsManager.getNotificationDays()
-        let notifText = notifDays == 1 ? "1 day before period starts" : "\(notifDays) days before period starts"
-        self.notificationButton.setTitle(notifText, for: UIControlState())
     }
 
     // MARK: Actions
+    
+    @IBAction func oneDayButtonSelected(_ sender: UIButton) {
+        // Toggle selection
+        if sender.layer.borderColor == Color.blue.cgColor {
+            // Button is selected
+            sender.layer.borderColor = Color.borderColor.cgColor
+            oneDayNotification.setTitleColor(Color.grey, for: .normal)
 
+            // Save how many days before period will notification show
+            DefaultsManager.setNotificationDays(sender.tag)
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            oneDayNotification.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+            threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+            
+            fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+            fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+        }
+    }
+    
+    @IBAction func threeDaysButtonSelected(_ sender: UIButton) {
+        if sender.layer.borderColor == Color.blue.cgColor {
+            sender.layer.borderColor = Color.borderColor.cgColor
+            threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            threeDaysNotification.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+            oneDayNotification.setTitleColor(Color.grey, for: .normal)
+            
+            fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+            fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+            
+            // Save how many days before period will notification show
+            DefaultsManager.setNotificationDays(sender.tag)
+        }
+    }
+
+    @IBAction func fiveDaysButtonSelected(_ sender: UIButton) {
+        if sender.layer.borderColor == Color.blue.cgColor {
+            sender.layer.borderColor = Color.borderColor.cgColor
+            fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            fiveDaysNotification.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+            oneDayNotification.setTitleColor(Color.grey, for: .normal)
+            
+            threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+            threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+            
+            // Save how many days before period will notification show
+            DefaultsManager.setNotificationDays(sender.tag)
+        }
+    }
+    
+    @IBAction func nineAMbuttonSelected(_ sender: UIButton) {
+        if sender.layer.borderColor == Color.blue.cgColor {
+            sender.layer.borderColor = Color.borderColor.cgColor
+            nineAM.setTitleColor(Color.grey, for: .normal)
+
+            
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            nineAM.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            twelveAM.layer.borderColor = Color.borderColor.cgColor
+            twelveAM.setTitleColor(Color.grey, for: .normal)
+            
+            ninePM.layer.borderColor = Color.borderColor.cgColor
+            ninePM.setTitleColor(Color.grey, for: .normal)
+            
+            // Save Time
+            DefaultsManager.setNotificationTime(sender.tag)
+            print(DefaultsManager.getNotificationTime())
+        }
+    }
+    
+    @IBAction func twelveAMButtonSelected(_ sender: UIButton) {
+        if sender.layer.borderColor == Color.blue.cgColor {
+            sender.layer.borderColor = Color.borderColor.cgColor
+            twelveAM.setTitleColor(Color.grey, for: .normal)
+            
+            DefaultsManager.setNotificationTime(sender.tag)
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            twelveAM.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            nineAM.layer.borderColor = Color.borderColor.cgColor
+            nineAM.setTitleColor(Color.grey, for: .normal)
+            
+            ninePM.layer.borderColor = Color.borderColor.cgColor
+            ninePM.setTitleColor(Color.grey, for: .normal)
+        }
+    }
+    
+    @IBAction func ninePMButtonSelected(_ sender: UIButton) {
+        if sender.layer.borderColor == Color.blue.cgColor {
+            sender.layer.borderColor = Color.borderColor.cgColor
+            ninePM.setTitleColor(Color.grey, for: .normal)
+            
+            DefaultsManager.setNotificationTime(sender.tag)
+        } else {
+            sender.layer.borderColor = Color.blue.cgColor
+            ninePM.setTitleColor(Color.blue, for: .normal)
+            
+            // Disable other buttons
+            nineAM.layer.borderColor = Color.borderColor.cgColor
+            nineAM.setTitleColor(Color.grey, for: .normal)
+            
+            twelveAM.layer.borderColor = Color.borderColor.cgColor
+            twelveAM.setTitleColor(Color.grey, for: .normal)
+        }
+    }
+    
+    @IBAction func saveNotificationPressed(_ sender: UIButton) {
+        // Get Days And Time
+        scheduleNotification(DefaultsManager.getNotificationTime())
+        
+        // Will check for notifications and display remove button
+        checkForNotifications()
+    }
+    
+    @IBAction func removeNotificationPressed(_ sender: UIButton) {
+        // Remove notifications, if there are nay
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        checkForNotifications()
+    }
+    
     @IBAction func cycleDurationButtonTapped(_ sender: AnyObject) {
         displayDurationPicker()
-    }
-    
-    @IBAction func notificationButtonTapped(_ sender: AnyObject) {
-        displayNotificationPicker()
-    }
-    
-    @IBAction func notificationTimeButtonTapped(_ sender: AnyObject) {
-//        displayNotificationTimePicker()
-    }
-    
-    @IBAction func baseAnalysisButtonTapped(_ sender: AnyObject) {
-        displayAnalysisPicker()
     }
     
     @IBAction func purchaseTapped(_ sender: AnyObject) {
@@ -236,4 +291,74 @@ class SettingsViewController: UIViewController {
     @IBAction func backButtonTapped(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+
+@available(iOS 10.0, *)
+extension SettingsViewController {
+    func scheduleNotification(_ time: Int) {
+        let calendar = Calendar.autoupdatingCurrent
+
+        guard let lastPeriod = RealmManager.sharedInstance.queryLastPeriod(), let predictionDate = lastPeriod.predictionDate else {
+            return
+        }
+        
+        guard let notifDays = DefaultsManager.getNotificationDays() else {
+            return
+        }
+        
+        let day = predictionDate.day - notifDays
+        
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: predictionDate.year, month: predictionDate.month, day: day, hour: time, minute: 15)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        let content = UNMutableNotificationContent()
+        
+        content.title = "Period Flow"
+
+        
+        if DefaultsManager.getNotificationDays() == 1 {
+            content.body = "Period coming in \(DefaultsManager.getNotificationDays()) day!"
+        } else {
+            content.body = "Period coming in \(DefaultsManager.getNotificationDays()) days!"
+        }
+
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: "\(time)", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            } else {
+                print(request)
+            }
+        }
+    }
+    
+        func checkForNotifications() {
+            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+                if !requests.isEmpty {
+                    print("There ARE Notifications")
+                    DispatchQueue.main.async(){
+                        self.removeNotificationButton.isHidden = false
+                        guard let day = DefaultsManager.getNotificationDays() else {
+                            return
+                        }
+                        
+                        if day == 1 {
+                            
+                        } else if day == 3 {
+                            
+                        } else if day == 5 {
+                            
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async(){
+                       self.removeNotificationButton.isHidden = true
+                    }
+                }
+            })
+        }
 }

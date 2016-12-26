@@ -12,12 +12,15 @@ import Foundation
 
 let PURCHASE_PROPACK = "com.antonijapek.periodflow.propack"
 
-// MARK: - NSUserDefaults Keys
+// MARK: - UserDefaults Keys
 
 let KEY_CYCLE_DAYS = "CycleDays"
-let KEY_NOTIF_DAYS = "NotificationDays"
+let ONE_DAY_IN_ADVANCE = "OneDayInAdvance"
+let THREE_DAYS_IN_ADVANCE = "ThreeDaysInAdvance"
+let FIVE_DAYS_IN_ADVANCE = "FiveDaysInAdvance"
 let KEY_ANALYSIS = "AnalysisNumber"
 let KEY_PRO_PACK = "ProPack"
+let NOTIFICATION_DAYS = "NotificationDays"
 
 
 // Extension: Double

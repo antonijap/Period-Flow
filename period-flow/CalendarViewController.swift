@@ -17,7 +17,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthNameLabel: UILabel!
-    @IBOutlet weak var averageCycleDaysLabel: UILabel!
     @IBOutlet weak var daysUntilNextPeriodLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     
@@ -32,21 +31,22 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataProvider()
-        setupViewManager()
         setupCalendar()
-        DefaultsManager.unlockProPack()
-        viewManager?.updateUIforCycleDays()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let now = DateInRegion().absoluteDate
-        calendarView.scrollToDate(now)
+        setupViewManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setUpAnalytics() // Uncomment this before release
+//        setUpAnalytics() // TODO: - Uncomment this before release
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        calendarView.scrollToDate(Date())
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - Methods
@@ -65,12 +65,10 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     }
     
     func setupCalendar() {
-        calendarView.registerCellViewXib(fileName: "CellView")
+        calendarView.registerCellViewXib(file: "CellView")
         calendarView.cellInset = CGPoint(x: 2, y: 2)
         calendarView.allowsMultipleSelection = true
-        calendarView.firstDayOfWeek = .sunday
         calendarView.scrollEnabled = true
-        averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
     }
     
     func setUpAnalytics() {

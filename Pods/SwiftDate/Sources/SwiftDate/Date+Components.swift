@@ -25,12 +25,11 @@
 import Foundation
 
 /// This is the default region set. It will be set automatically at each startup as the local device's region
-internal var DateDefaultRegion: Region = Region.GMT()
+internal var DateDefaultRegion: Region = Region.Local()
 
 // MARK: - Date Extension to work with date components
 
 public extension Date {
-	
 	
 	/// Define a default region to use when you work with components and function of SwiftDate
 	/// and `Date` objects. Default region is set automatically at runtime to `Region.Local()` which defines
@@ -38,14 +37,14 @@ public extension Date {
 	/// and `Locale` (not updating).
 	///
 	/// - parameter region: region to set. If nil is passed default region is set to Region.Local()
-	public func setDefaultRegion(_ region: Region?) {
+	public static func setDefaultRegion(_ region: Region?) {
 		DateDefaultRegion = region ?? Region.Local()
 	}
 	
 	/// Return the default region set.
 	///
 	/// - returns: region set; if not changed is set to `Region.Local()`
-	public var defaultRegion: Region {
+	public static var defaultRegion: Region {
 		return DateDefaultRegion
 	}
 	
@@ -169,6 +168,25 @@ public extension Date {
 	/// Calculation is made in the context of `defaultRegion`.
 	public var modifiedJulianDay: Double {
 		return self.inDateDefaultRegion().modifiedJulianDay
+	}
+	
+	/// Return the next weekday after today.
+	/// For example using now.next(.friday) it will return the first Friday after self represented date.
+	///
+	/// - Parameter day: weekday you want to get
+	/// - Returns: the next weekday after sender date
+	public func next(day: WeekDay) -> Date? {
+		return self.inDateDefaultRegion().next(day: day)?.absoluteDate
+	}
+	
+	/// Get the first day of the week according to the current calendar set
+	public var startWeek: Date {
+		return self.startOf(component: .weekOfYear)
+	}
+	
+	/// Get the last day of the week according to the current calendar set
+	public var endWeek: Date {
+		return self.endOf(component: .weekOfYear)
 	}
 	
 	/// Returns two `DateInRegion` objects indicating the start and the end of the current weekend.

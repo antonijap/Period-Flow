@@ -16,7 +16,6 @@ protocol CalendarViewManagerDelegate {
     var calendarView: JTAppleCalendarView! {get set}
     var yearLabel: UILabel! {get set}
     var monthNameLabel: UILabel! {get set}
-    var averageCycleDaysLabel: UILabel! {get set}
     var daysUntilNextPeriodLabel: UILabel! {get set}
     var counterLabel: UILabel! {get set}
 }
@@ -44,8 +43,8 @@ class CalendarViewManager: NSObject {
         
         for period in periods {
             selectedDates = selectedDates + period.assumedDates
-            print("Assumed dates are: \(period.assumedDates)")
         }
+        
         calendarView.selectDates(selectedDates, triggerSelectionDelegate: false)
         calendarView.reloadData()
     }
@@ -62,7 +61,6 @@ class CalendarViewManager: NSObject {
             }
             calendarView.selectDates(datesToSelect, triggerSelectionDelegate: false)
             calendarView.reloadData()
-//            calendarView.reloadDates(datesToSelect)
         }
     }
     
@@ -92,15 +90,6 @@ class CalendarViewManager: NSObject {
         }
     }
     
-    /// Update cycleDays label
-    func updateUIforCycleDays() {
-        delegate?.averageCycleDaysLabel.text = "\(DefaultsManager.getCycleDays())"
-        if let days = RealmManager.sharedInstance.daysUntilNextPeriod() {
-            delegate?.daysUntilNextPeriodLabel.text = "\(days)"
-        }
-        calendarView.reloadData()
-    }
-    
     /// Configures the period days counter
     func configureCounter() {
         let days = RealmManager.sharedInstance.daysUntilNextPeriod()
@@ -114,15 +103,15 @@ class CalendarViewManager: NSObject {
             
             switch true {
                 case today.isBefore(date: predictionDate, granularity: .day):
-                    delegate?.counterLabel.text = "\(daysOrDays) UNTIL \nNEXT PERIOD"
+                    delegate?.counterLabel.text = "\(daysOrDays) UNTIL NEXT PERIOD"
                 case today.isAfter(date: predictionDate, granularity: .day):
-                    delegate?.counterLabel.text = "\(daysOrDays) \nLATE"
+                    delegate?.counterLabel.text = "\(daysOrDays) LATE"
                 case today.isToday:
-                    delegate?.counterLabel.text = "PERIOD STARTS \nTODAY"
+                    delegate?.counterLabel.text = "PERIOD STARTS TODAY"
                 default: break
             }
         } else {
-            delegate?.counterLabel.text = "SELECT A DATE \nTO BEGIN"
+            delegate?.counterLabel.text = "SELECT A DATE TO BEGIN"
             delegate?.daysUntilNextPeriodLabel.text = "?"
         }
     }
@@ -132,8 +121,8 @@ class CalendarViewManager: NSObject {
 
 extension CalendarViewManager: JTAppleCalendarViewDelegate {
     
-    // Rendering all dates, reloadCalendar() reloads .ThisMonth
-    func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
+    // Rendering all dates
+    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let cell = cell as! CellView
         cell.setupCellBeforeDisplay(cellState, date: date)
         if cellState.dateBelongsTo == .thisMonth {
@@ -169,8 +158,14 @@ extension CalendarViewManager: JTAppleCalendarViewDelegate {
     }
     
     // Set month name label and year label
-    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        delegate?.monthNameLabel.text = startDate.monthName
-        delegate?.yearLabel.text = String(startDate.year)
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let calendar = Calendar.autoupdatingCurrent
+        let components = calendar.dateComponents([.month,.day,.year], from: visibleDates.monthDates.first!)
+        
+        let monthName = calendar.monthSymbols[components.month! - 1]
+        let year = components.year!
+        
+        delegate?.monthNameLabel.text = String(monthName)
+        delegate?.yearLabel.text = String(year)
     }
 }

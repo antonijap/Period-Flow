@@ -24,29 +24,25 @@ class CalendarDataProvider: NSObject {
     }
 }
 
-extension CalendarDataProvider: JTAppleCalendarViewDataSource {    
-//    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
-//        let firstDate = 1.years.ago()
-//        let secondDate = 1.years.from(date: DateInRegion().absoluteDate)
-//        let aCalendar = Calendar.autoupdatingCurrent // Properly configure your calendar to your time zone here
-//        let rows = 5
-//        print("Prvi datum je \(firstDate), drugi datum je \(secondDate)")
-//        return (startDate: firstDate!, endDate: secondDate!, numberOfRows: rows, calendar: aCalendar)
-//    }
-    
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
-        // You can set your date using NSDate() or NSDateFormatter. Your choice.
+extension CalendarDataProvider: JTAppleCalendarViewDataSource {
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        // TODO:
-        // Make firstDate and secondDate to be 40 years from today
+        let startDate = formatter.date(from: "2010 01 10")! // You can use date generated from a formatter
+        let endDate = formatter.date(from: "2020 01 01")!   // You can also use dates created from this function
         
-        let firstDate = formatter.date(from: "2000 01 01")
-        let secondDate = formatter.date(from: "2050 01 01")
-        let numberOfRows = 6
-        let aCalendar = Calendar.current // Properly configure your calendar to your time zone here
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        return (startDate: firstDate!, endDate: secondDate!, numberOfRows: numberOfRows, calendar: aCalendar)
+        let parameters = ConfigurationParameters(startDate: startDate,
+                                                 endDate: endDate,
+                                                 numberOfRows: 6,
+                                                 calendar: calendar,
+                                                 generateInDates: .forAllMonths,
+                                                 generateOutDates: .tillEndOfGrid,
+                                                 firstDayOfWeek: .sunday)
+        return parameters
     }
 }
+
+

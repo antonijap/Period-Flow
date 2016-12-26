@@ -20,13 +20,13 @@ class CellView: JTAppleDayCellView {
     
     // MARK: - Properties
     
-    let today = DateInRegion().absoluteDate
+    let today = Date()
     
     // MARK: - Methods
     
     /// This is called whenever cell is render to the screen
     func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
-        dateLabel.text = cellState.text
+        dateLabel.text = cellState.date.string(custom: "d")
         predictionDay.isHidden = true
         configureTextColor(cellState: cellState)
         configureBackgroundColor(cellState: cellState, date: date)
@@ -48,11 +48,11 @@ class CellView: JTAppleDayCellView {
             selectedDayView.isHidden = false
             dateLabel.textColor = Color.white
             if cellState.dateBelongsTo == .previousMonthWithinBoundary {
-                selectedDayView.layer.backgroundColor = Color.lightMint.cgColor
+                selectedDayView.layer.backgroundColor = Color.lightBlue
             } else if cellState.dateBelongsTo == .followingMonthWithinBoundary {
-                selectedDayView.layer.backgroundColor = Color.lightMint.cgColor
+                selectedDayView.layer.backgroundColor = Color.lightBlue
             } else {
-                selectedDayView.layer.backgroundColor = Color.mint.cgColor
+                selectedDayView.layer.backgroundColor = Color.blue.cgColor
             }
         } else {
             selectedDayView.isHidden = true
@@ -62,7 +62,10 @@ class CellView: JTAppleDayCellView {
     
     /// Configures the view for the current date
     func configureTodayView(date: Date) {
-        if date.isInSameDayOf(date: today) {
+        self.todayView.layer.borderWidth = 1
+        self.todayView.layer.borderColor = UIColor(red:0.84, green:0.84, blue:0.84, alpha:1.00).cgColor
+        
+        if date.isToday {
             todayView.isHidden = false
         } else {
             todayView.isHidden = true
@@ -87,10 +90,10 @@ class CellView: JTAppleDayCellView {
             predictionDay.isHidden = true
         } else if isBleeding && cellState.dateBelongsTo == .previousMonthWithinBoundary {
             predictionDay.isHidden = false
-            predictionDay.layer.borderColor = Color.lightMint.cgColor
+            predictionDay.layer.backgroundColor = Color.lightBlue
         } else if isBleeding && cellState.dateBelongsTo == .followingMonthWithinBoundary {
             predictionDay.isHidden = false
-            predictionDay.layer.borderColor = Color.lightMint.cgColor
+            predictionDay.layer.backgroundColor = Color.lightBlue
         }
     }
 }

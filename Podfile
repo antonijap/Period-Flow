@@ -9,7 +9,7 @@ target 'period-flow' do
 
   # Pods for period-flow
   pod 'RealmSwift'
-  pod 'JTAppleCalendar', :git => 'https://github.com/patchthecode/JTAppleCalendar.git', :branch => 'Swift3'
+  pod 'JTAppleCalendar', '~> 6.0'
   pod 'ActionSheetPicker-3.0', '~> 2.1.0'
   pod 'SwiftDate', '~> 4.0'
   pod 'Google/Analytics'
@@ -18,7 +18,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '3.0' # or '3.0'
+      config.build_settings['SWIFT_VERSION'] = '3.0'
     end
   end
 end

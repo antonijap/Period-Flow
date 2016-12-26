@@ -22,12 +22,22 @@ class DefaultsManager {
     
     /// Set number of days before to receive notification in NSUserDefaults
     class func setNotificationDays(_ value: Int) {
-        UserDefaults.standard.setValue(value, forKey: KEY_NOTIF_DAYS)
+        UserDefaults.standard.setValue(value, forKey: NOTIFICATION_DAYS)
     }
     
     /// Gets the number of days before to receive notifications from NSUserDefaults
-    class func getNotificationDays() -> Int {
-        return UserDefaults.standard.value(forKey: KEY_NOTIF_DAYS) as? Int ?? 1
+    class func getNotificationDays() -> Int? {
+        return UserDefaults.standard.value(forKey: NOTIFICATION_DAYS) as? Int
+    }
+    
+    /// Gets the date to receive notifications from NSUserDefaults
+    class func getNotificationTime() -> Int {
+        return UserDefaults.standard.value(forKey: "NotificationTime") as! Int
+    }
+    
+    /// Set time to receive notification in NSUserDefaults
+    class func setNotificationTime(_ value: Int) {
+        UserDefaults.standard.setValue(value, forKey: "NotificationTime")
     }
     
     /// Sets the number of periods to use for the analysis
@@ -44,8 +54,8 @@ class DefaultsManager {
     
     /// Checks if PRO Pack in app purchase is unlocked
     class func isProPackUnlocked() -> Bool {
-        return UserDefaults.standard.bool(forKey: KEY_PRO_PACK) 
-//        return false
+//        return UserDefaults.standard.bool(forKey: KEY_PRO_PACK) 
+        return true
     }
     
     /// Unlocks the PRO Pack in app purchase
