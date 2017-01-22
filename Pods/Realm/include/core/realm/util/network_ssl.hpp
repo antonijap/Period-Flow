@@ -228,27 +228,28 @@ public:
     /// destroy the stream object. Other stream objects are not affected.
 
     void handshake();
-    std::error_code handshake(std::error_code&);
+    std::error_code handshake(std::error_code&) noexcept;
 
     std::size_t read(char* buffer, std::size_t size);
-    std::size_t read(char* buffer, std::size_t size, std::error_code& ec);
+    std::size_t read(char* buffer, std::size_t size, std::error_code& ec) noexcept;
     std::size_t read(char* buffer, std::size_t size, ReadAheadBuffer&);
-    std::size_t read(char* buffer, std::size_t size, ReadAheadBuffer&, std::error_code& ec);
+    std::size_t read(char* buffer, std::size_t size, ReadAheadBuffer&,
+                     std::error_code& ec) noexcept;
     std::size_t read_until(char* buffer, std::size_t size, char delim, ReadAheadBuffer&);
     std::size_t read_until(char* buffer, std::size_t size, char delim, ReadAheadBuffer&,
-                           std::error_code& ec);
+                           std::error_code& ec) noexcept;
 
     std::size_t write(const char* data, std::size_t size);
-    std::size_t write(const char* data, std::size_t size, std::error_code& ec);
+    std::size_t write(const char* data, std::size_t size, std::error_code& ec) noexcept;
 
     std::size_t read_some(char* buffer, std::size_t size);
-    std::size_t read_some(char* buffer, std::size_t size, std::error_code&);
+    std::size_t read_some(char* buffer, std::size_t size, std::error_code&) noexcept;
 
     std::size_t write_some(const char* data, std::size_t size);
-    std::size_t write_some(const char* data, std::size_t size, std::error_code&);
+    std::size_t write_some(const char* data, std::size_t size, std::error_code&) noexcept;
 
     void shutdown();
-    std::error_code shutdown(std::error_code&);
+    std::error_code shutdown(std::error_code&) noexcept;
 
     template<class H> void async_handshake(H handler);
 
@@ -289,7 +290,15 @@ private:
     // The host name that the certificate should be checked against.
     std::string m_host_name;
 
-    // See Service::BasicStreamOps for details on these these 6 functions.
+    // For async_handshake(), async_read_some()
+    Service::OwnersOperPtr m_read_oper;
+
+    // For async_write_some(), async_shutdown()
+    Service::OwnersOperPtr m_write_oper;
+
+    // See Service::BasicStreamOps for details on these these 8 functions.
+    void do_init_read_sync(std::error_code&) noexcept;
+    void do_init_write_sync(std::error_code&) noexcept;
     void do_init_read_async(std::error_code&, Want&) noexcept;
     void do_init_write_async(std::error_code&, Want&) noexcept;
     std::size_t do_read_some_sync(char* buffer, std::size_t size,
@@ -370,13 +379,8 @@ private:
     };
     util::Optional<BlockingOperation> m_last_operation;
 
-    // Details of the underlying I/O error that lead to errSecIO being returned
-    // from a SecureTransport function.
+    // Details of the underlying I/O error that lead to errSecIO being returned from a SecureTransport function.
     std::error_code m_last_error;
-
-    // The number of bytes accepted by SSWrite() but not yet confirmed to be
-    // written to the underlying socket.
-    std::size_t m_num_partially_written_bytes = 0;
 
     template<class Oper>
     std::size_t ssl_perform(Oper oper, std::error_code& ec, Want& want) noexcept;
@@ -459,14 +463,17 @@ public:
         m_stream{&stream}
     {
     }
-    Want initiate()
+    Want initiate() noexcept
     {
-        REALM_ASSERT(this == m_stream->m_tcp_socket.m_read_oper.get());
+        REALM_ASSERT(this == m_stream->m_read_oper.get());
         REALM_ASSERT(!is_complete());
-        m_stream->m_tcp_socket.m_desc.ensure_nonblocking_mode(); // Throws
-        return advance();
+        if (m_stream->lowest_layer().ensure_nonblocking_mode(m_error_code)) {
+            set_is_complete(true); // Failure
+            return Want::nothing;
+        }
+        return proceed();
     }
-    Want advance() noexcept override final
+    Want proceed() noexcept override final
     {
         REALM_ASSERT(!is_complete());
         REALM_ASSERT(!is_canceled());
@@ -486,9 +493,9 @@ public:
     {
         m_stream = nullptr;
     }
-    Service::Descriptor& descriptor() noexcept override final
+    SocketBase& get_socket() noexcept
     {
-        return m_stream->lowest_layer().m_desc;
+        return m_stream->lowest_layer();
     }
 protected:
     Stream* m_stream;
@@ -523,14 +530,17 @@ public:
         m_stream{&stream}
     {
     }
-    Want initiate()
+    Want initiate() noexcept
     {
-        REALM_ASSERT(this == m_stream->m_tcp_socket.m_write_oper.get());
+        REALM_ASSERT(this == m_stream->m_write_oper.get());
         REALM_ASSERT(!is_complete());
-        m_stream->m_tcp_socket.m_desc.ensure_nonblocking_mode(); // Throws
-        return advance();
+        if (m_stream->lowest_layer().ensure_nonblocking_mode(m_error_code)) {
+            set_is_complete(true); // Failure
+            return Want::nothing;
+        }
+        return proceed();
     }
-    Want advance() noexcept override final
+    Want proceed() noexcept override final
     {
         REALM_ASSERT(!is_complete());
         REALM_ASSERT(!is_canceled());
@@ -551,9 +561,9 @@ public:
     {
         m_stream = nullptr;
     }
-    Service::Descriptor& descriptor() noexcept override final
+    SocketBase& get_socket() noexcept
     {
-        return m_stream->lowest_layer().m_desc;
+        return m_stream->lowest_layer();
     }
 protected:
     Stream* m_stream;
@@ -591,7 +601,21 @@ inline Stream::Stream(Socket& socket, Context& context, HandshakeType type):
 
 inline Stream::~Stream() noexcept
 {
-    m_tcp_socket.cancel();
+    bool any_incomplete = false;
+    if (m_read_oper && m_read_oper->is_uncanceled()) {
+        m_read_oper->cancel();
+        if (!m_read_oper->is_complete())
+            any_incomplete = true;
+    }
+    if (m_write_oper && m_write_oper->is_uncanceled()) {
+        m_write_oper->cancel();
+        if (!m_write_oper->is_complete())
+            any_incomplete = true;
+    }
+    if (any_incomplete) {
+        Service& service = m_tcp_socket.get_service();
+        service.cancel_incomplete_io_ops(m_tcp_socket.get_sock_fd());
+    }
     ssl_destroy();
 }
 
@@ -614,112 +638,112 @@ inline void Stream::set_check_host(std::string host_name)
 inline void Stream::handshake()
 {
     std::error_code ec;
-    if (handshake(ec)) // Throws
+    if (handshake(ec))
         throw std::system_error(ec);
 }
 
 inline std::size_t Stream::read(char* buffer, std::size_t size)
 {
     std::error_code ec;
-    read(buffer, size, ec); // Throws
+    read(buffer, size, ec);
     if (ec)
         throw std::system_error(ec);
     return size;
 }
 
-inline std::size_t Stream::read(char* buffer, std::size_t size, std::error_code& ec)
+inline std::size_t Stream::read(char* buffer, std::size_t size, std::error_code& ec) noexcept
 {
-    return StreamOps::read(*this, buffer, size, ec); // Throws
+    return StreamOps::read(*this, buffer, size, ec);
 }
 
 inline std::size_t Stream::read(char* buffer, std::size_t size, ReadAheadBuffer& rab)
 {
     std::error_code ec;
-    read(buffer, size, rab, ec); // Throws
+    read(buffer, size, rab, ec);
     if (ec)
         throw std::system_error(ec);
     return size;
 }
 
 inline std::size_t Stream::read(char* buffer, std::size_t size, ReadAheadBuffer& rab,
-                                std::error_code& ec)
+                                std::error_code& ec) noexcept
 {
     int delim = std::char_traits<char>::eof();
-    return StreamOps::buffered_read(*this, buffer, size, delim, rab, ec); // Throws
+    return StreamOps::buffered_read(*this, buffer, size, delim, rab, ec);
 }
 
 inline std::size_t Stream::read_until(char* buffer, std::size_t size, char delim,
                                       ReadAheadBuffer& rab)
 {
     std::error_code ec;
-    std::size_t n = read_until(buffer, size, delim, rab, ec); // Throws
+    std::size_t n = read_until(buffer, size, delim, rab, ec);
     if (ec)
         throw std::system_error(ec);
     return n;
 }
 
 inline std::size_t Stream::read_until(char* buffer, std::size_t size, char delim,
-                                      ReadAheadBuffer& rab, std::error_code& ec)
+                                      ReadAheadBuffer& rab, std::error_code& ec) noexcept
 {
     int delim_2 = std::char_traits<char>::to_int_type(delim);
-    return StreamOps::buffered_read(*this, buffer, size, delim_2, rab, ec); // Throws
+    return StreamOps::buffered_read(*this, buffer, size, delim_2, rab, ec);
 }
 
 inline std::size_t Stream::write(const char* data, std::size_t size)
 {
     std::error_code ec;
-    write(data, size, ec); // Throws
+    write(data, size, ec);
     if (ec)
         throw std::system_error(ec);
     return size;
 }
 
-inline std::size_t Stream::write(const char* data, std::size_t size, std::error_code& ec)
+inline std::size_t Stream::write(const char* data, std::size_t size, std::error_code& ec) noexcept
 {
-    return StreamOps::write(*this, data, size, ec); // Throws
+    return StreamOps::write(*this, data, size, ec);
 }
 
 inline std::size_t Stream::read_some(char* buffer, std::size_t size)
 {
     std::error_code ec;
-    std::size_t n = read_some(buffer, size, ec); // Throws
+    std::size_t n = read_some(buffer, size, ec);
     if (ec)
         throw std::system_error(ec);
     return n;
 }
 
-inline std::size_t Stream::read_some(char* buffer, std::size_t size, std::error_code& ec)
+inline std::size_t Stream::read_some(char* buffer, std::size_t size, std::error_code& ec) noexcept
 {
-    return StreamOps::read_some(*this, buffer, size, ec); // Throws
+    return StreamOps::read_some(*this, buffer, size, ec);
 }
 
 inline std::size_t Stream::write_some(const char* data, std::size_t size)
 {
     std::error_code ec;
-    std::size_t n = write_some(data, size, ec); // Throws
+    std::size_t n = write_some(data, size, ec);
     if (ec)
         throw std::system_error(ec);
     return n;
 }
 
-inline std::size_t Stream::write_some(const char* data, std::size_t size, std::error_code& ec)
+inline std::size_t Stream::write_some(const char* data, std::size_t size,
+                                      std::error_code& ec) noexcept
 {
-    return StreamOps::write_some(*this, data, size, ec); // Throws
+    return StreamOps::write_some(*this, data, size, ec);
 }
 
 inline void Stream::shutdown()
 {
     std::error_code ec;
-    if (shutdown(ec)) // Throws
+    if (shutdown(ec))
         throw std::system_error(ec);
 }
 
 template<class H> inline void Stream::async_handshake(H handler)
 {
     LendersHandshakeOperPtr op =
-        Service::alloc<HandshakeOper<H>>(m_tcp_socket.m_read_oper, *this,
-                                         std::move(handler)); // Throws
-    m_tcp_socket.m_desc.initiate_oper(std::move(op)); // Throws
+        Service::alloc<HandshakeOper<H>>(m_read_oper, *this, std::move(handler)); // Throws
+    Service::initiate_io_oper(std::move(op)); // Throws
 }
 
 template<class H> inline void Stream::async_read(char* buffer, std::size_t size, H handler)
@@ -764,18 +788,29 @@ template<class H> inline void Stream::async_write_some(const char* data, std::si
 template<class H> inline void Stream::async_shutdown(H handler)
 {
     LendersShutdownOperPtr op =
-        Service::alloc<ShutdownOper<H>>(m_tcp_socket.m_write_oper, *this,
-                                        std::move(handler)); // Throws
-    m_tcp_socket.m_desc.initiate_oper(std::move(op)); // Throws
+        Service::alloc<ShutdownOper<H>>(m_write_oper, *this, std::move(handler)); // Throws
+    Service::initiate_io_oper(std::move(op)); // Throws
 }
 
-inline void Stream::do_init_read_async(std::error_code&, Want& want) noexcept
+inline void Stream::do_init_read_sync(std::error_code& ec) noexcept
 {
+    lowest_layer().ensure_blocking_mode(ec);
+}
+
+inline void Stream::do_init_write_sync(std::error_code& ec) noexcept
+{
+    lowest_layer().ensure_blocking_mode(ec);
+}
+
+inline void Stream::do_init_read_async(std::error_code& ec, Want& want) noexcept
+{
+    lowest_layer().ensure_nonblocking_mode(ec);
     want = Want::nothing; // Proceed immediately unless there is an error
 }
 
-inline void Stream::do_init_write_async(std::error_code&, Want& want) noexcept
+inline void Stream::do_init_write_async(std::error_code& ec, Want& want) noexcept
 {
+    lowest_layer().ensure_nonblocking_mode(ec);
     want = Want::nothing; // Proceed immediately unless there is an error
 }
 
@@ -925,10 +960,7 @@ inline bool Stream::ssl_shutdown(std::error_code& ec, Want& want) noexcept
 //
 // First of all, if the operation remains incomplete (neither successfully
 // completed, nor failed), ssl_perform() will set `ec` to `std::system_error()`,
-// `want` to something other than `Want::nothing`, and return zero. Note that
-// read and write operations are partial in the sense that they do not need to
-// read or write everything before completing successfully. They only nead to
-// read or write at least one byte to complete successfully.
+// `want` to something other than `Want::nothing`, and return zero.
 //
 // Such a situation will normally only happen when the underlying TCP socket is
 // in nonblocking mode, and the read/write requirements of the operation could

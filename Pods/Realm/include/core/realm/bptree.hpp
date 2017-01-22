@@ -249,15 +249,9 @@ public:
     BpTree();
     explicit BpTree(BpTreeBase::unattached_tag);
     explicit BpTree(Allocator& alloc);
-    REALM_DEPRECATED("Initialize with MemRef instead") explicit BpTree(std::unique_ptr<Array> init_root)
+    explicit BpTree(std::unique_ptr<Array> init_root)
         : BpTreeBase(std::move(init_root))
     {
-
-    }
-    explicit BpTree(Allocator& alloc, MemRef mem)
-        : BpTreeBase(std::unique_ptr<Array>(new LeafType(alloc)))
-    {
-        init_from_mem(alloc, mem);
     }
     BpTree(BpTree&&) = default;
     BpTree& operator=(BpTree&&) = default;
@@ -285,7 +279,7 @@ public:
     size_t find_first(T value, size_t begin = 0, size_t end = npos) const;
     void find_all(IntegerColumn& out_indices, T value, size_t begin = 0, size_t end = npos) const;
 
-    static MemRef create_leaf(Array::Type leaf_type, size_t size, T value, Allocator&);
+    static MemRef create_leaf(Array::Type, size_t size, T value, Allocator&);
 
     /// See LeafInfo for information about what to put in the inout_leaf
     /// parameter.
@@ -438,10 +432,9 @@ inline BpTreeNode& BpTreeBase::root_as_node()
 
 inline const BpTreeNode& BpTreeBase::root_as_node() const
 {
-    Array* arr = m_root.get();
     REALM_ASSERT_DEBUG(!root_is_leaf());
-    REALM_ASSERT_DEBUG(dynamic_cast<const BpTreeNode*>(arr) != nullptr);
-    return static_cast<const BpTreeNode&>(*arr);
+    REALM_ASSERT_DEBUG(dynamic_cast<const BpTreeNode*>(m_root.get()) != nullptr);
+    return static_cast<const BpTreeNode&>(root());
 }
 
 inline void BpTreeBase::set_parent(ArrayParent* parent, size_t ndx_in_parent) noexcept
@@ -707,16 +700,11 @@ template <class T>
 void BpTree<T>::init_from_parent()
 {
     ref_type ref = root().get_ref_from_parent();
-    if (ref) {
-        ArrayParent* parent = m_root->get_parent();
-        size_t ndx_in_parent = m_root->get_ndx_in_parent();
-        auto new_root = create_root_from_ref(get_alloc(), ref);
-        new_root->set_parent(parent, ndx_in_parent);
-        m_root = std::move(new_root);
-    }
-    else {
-        m_root->detach();
-    }
+    ArrayParent* parent = m_root->get_parent();
+    size_t ndx_in_parent = m_root->get_ndx_in_parent();
+    auto new_root = create_root_from_ref(get_alloc(), ref);
+    new_root->set_parent(parent, ndx_in_parent);
+    m_root = std::move(new_root);
 }
 
 template <class T>
@@ -1148,8 +1136,7 @@ template <class T>
 MemRef BpTree<T>::create_leaf(Array::Type leaf_type, size_t size, T value, Allocator& alloc)
 {
     bool context_flag = false;
-    MemRef mem = LeafType::create_array(leaf_type, context_flag, size, std::move(value), alloc);
-    return mem;
+    return LeafType::create_array(leaf_type, context_flag, size, std::move(value), alloc);
 }
 
 template <class T>

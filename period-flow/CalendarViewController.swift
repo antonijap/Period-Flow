@@ -38,11 +38,13 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        setUpAnalytics() // TODO: - Uncomment this before release
+        calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
+        calendarView.scrollToDate(Date())
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        calendarView.scrollToDate(Date())
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -69,6 +71,16 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.cellInset = CGPoint(x: 2, y: 2)
         calendarView.allowsMultipleSelection = true
         calendarView.scrollEnabled = true
+        calendarView.animationsEnabled = true
+        
+        let calendar = Calendar.autoupdatingCurrent
+        let components = calendar.dateComponents([.month,.day,.year], from: Date())
+        
+        let monthName = calendar.monthSymbols[components.month! - 1]
+        let year = components.year!
+
+        monthNameLabel.text = String(monthName)
+        yearLabel.text = String(year)
     }
     
     func setUpAnalytics() {

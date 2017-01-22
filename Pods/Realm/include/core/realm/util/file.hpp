@@ -416,13 +416,7 @@ public:
     /// provides the information to unambiguously distinguish that
     /// particular reason).
     static void move(const std::string& old_path, const std::string& new_path);
-
-    /// Copy the file at the specified origin path to the specified target path.
-    static void copy(const std::string& origin_path, const std::string& target_path);
-
-    /// Compare the two files at the specified paths for equality. Returns true
-    /// if, and only if they are equal.
-    static bool compare(const std::string& path_1, const std::string& path_2);
+    static bool copy(std::string source, std::string destination);
 
     /// Check whether two open file descriptors refer to the same
     /// underlying file, that is, if writing via one of them, will

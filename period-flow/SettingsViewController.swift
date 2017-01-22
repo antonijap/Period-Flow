@@ -18,6 +18,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var notificationStack: UIStackView!
     @IBOutlet weak var analysisStack: UIStackView!
+    @IBOutlet weak var timeStack: UIStackView!
+    @IBOutlet weak var notificationButtonsStack: UIStackView!
     
     @IBOutlet weak var purchaseStack: UIStackView!
     
@@ -53,6 +55,13 @@ class SettingsViewController: UIViewController {
         checkIfPurchased()
         checkForNotifications()
         print("PRO Pack purchased: \(DefaultsManager.isProPackUnlocked())")
+        
+        print(DefaultsManager.getNotificationTime() ?? 9999)
+        print(DefaultsManager.getNotificationDays() ?? 9999)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: Methods
@@ -64,11 +73,27 @@ class SettingsViewController: UIViewController {
             
             notificationStack.isUserInteractionEnabled = true
             notificationStack.alpha = 1
+            
+            timeStack.isUserInteractionEnabled = true
+            timeStack.alpha = 1
+            
+            notificationButtonsStack.isUserInteractionEnabled = true
+            notificationButtonsStack.alpha = 1
     
             configureAnalysisVisibility()
         } else {
+            // False
+            
             notificationStack.isUserInteractionEnabled = false
             notificationStack.alpha = 0.5
+            
+            timeStack.isUserInteractionEnabled = false
+            timeStack.alpha = 0.5
+            
+            notificationButtonsStack.isUserInteractionEnabled = false
+            notificationButtonsStack.alpha = 0.5
+            
+            configureAnalysisVisibility()
         }
     }
     
@@ -144,9 +169,7 @@ class SettingsViewController: UIViewController {
             // Button is selected
             sender.layer.borderColor = Color.borderColor.cgColor
             oneDayNotification.setTitleColor(Color.grey, for: .normal)
-
-            // Save how many days before period will notification show
-            DefaultsManager.setNotificationDays(sender.tag)
+            
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             oneDayNotification.setTitleColor(Color.blue, for: .normal)
@@ -157,6 +180,9 @@ class SettingsViewController: UIViewController {
             
             fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
             fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+            
+            // Save how many days before period will notification show
+            DefaultsManager.setNotificationDays(sender.tag)
         }
     }
     
@@ -164,6 +190,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             threeDaysNotification.setTitleColor(Color.blue, for: .normal)
@@ -184,6 +211,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+ 
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             fiveDaysNotification.setTitleColor(Color.blue, for: .normal)
@@ -204,8 +232,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             nineAM.setTitleColor(Color.grey, for: .normal)
-
-            
+ 
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             nineAM.setTitleColor(Color.blue, for: .normal)
@@ -219,7 +246,6 @@ class SettingsViewController: UIViewController {
             
             // Save Time
             DefaultsManager.setNotificationTime(sender.tag)
-            print(DefaultsManager.getNotificationTime())
         }
     }
     
@@ -227,8 +253,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             twelveAM.setTitleColor(Color.grey, for: .normal)
-            
-            DefaultsManager.setNotificationTime(sender.tag)
+
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             twelveAM.setTitleColor(Color.blue, for: .normal)
@@ -239,6 +264,9 @@ class SettingsViewController: UIViewController {
             
             ninePM.layer.borderColor = Color.borderColor.cgColor
             ninePM.setTitleColor(Color.grey, for: .normal)
+            
+            // Save Time
+            DefaultsManager.setNotificationTime(sender.tag)
         }
     }
     
@@ -247,7 +275,6 @@ class SettingsViewController: UIViewController {
             sender.layer.borderColor = Color.borderColor.cgColor
             ninePM.setTitleColor(Color.grey, for: .normal)
             
-            DefaultsManager.setNotificationTime(sender.tag)
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             ninePM.setTitleColor(Color.blue, for: .normal)
@@ -258,12 +285,17 @@ class SettingsViewController: UIViewController {
             
             twelveAM.layer.borderColor = Color.borderColor.cgColor
             twelveAM.setTitleColor(Color.grey, for: .normal)
+            
+            // Save Time
+            DefaultsManager.setNotificationTime(sender.tag)
         }
     }
     
     @IBAction func saveNotificationPressed(_ sender: UIButton) {
         // Get Days And Time
-        scheduleNotification(DefaultsManager.getNotificationTime())
+        if let time = DefaultsManager.getNotificationTime() {
+            scheduleNotification(time)
+        }
         
         // Will check for notifications and display remove button
         checkForNotifications()
@@ -282,10 +314,12 @@ class SettingsViewController: UIViewController {
     
     @IBAction func purchaseTapped(_ sender: AnyObject) {
         purchaseProPackPressed()
+        checkIfPurchased()
     }
     
     @IBAction func restoreButtonTapped(_ sender: AnyObject) {
         purchaseManager?.restoreTransactions()
+        checkIfPurchased() 
     }
     
     @IBAction func backButtonTapped(_ sender: AnyObject) {
@@ -310,7 +344,7 @@ extension SettingsViewController {
         let day = predictionDate.day - notifDays
         
         let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: predictionDate.year, month: predictionDate.month, day: day, hour: time, minute: 15)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: true)
         let content = UNMutableNotificationContent()
         
         content.title = "Period Flow"
@@ -335,30 +369,134 @@ extension SettingsViewController {
             }
         }
     }
-    
-        func checkForNotifications() {
-            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-                if !requests.isEmpty {
-                    print("There ARE Notifications")
-                    DispatchQueue.main.async(){
-                        self.removeNotificationButton.isHidden = false
-                        guard let day = DefaultsManager.getNotificationDays() else {
-                            return
-                        }
-                        
-                        if day == 1 {
-                            
-                        } else if day == 3 {
-                            
-                        } else if day == 5 {
-                            
-                        }
+
+    func checkForNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+            
+            print(requests)
+            
+            
+            if requests.isEmpty {
+                DispatchQueue.main.async(){
+                    self.removeNotificationButton.isHidden = true
+                    
+                    self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.twelveAM.layer.borderColor = Color.borderColor.cgColor
+                    self.twelveAM.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.ninePM.layer.borderColor = Color.borderColor.cgColor
+                    self.ninePM.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.nineAM.layer.borderColor = Color.borderColor.cgColor
+                    self.nineAM.setTitleColor(Color.grey, for: .normal)
+                }
+            } else {
+                print("There ARE Notifications")
+                print(requests)
+                DispatchQueue.main.async(){
+                    self.removeNotificationButton.isHidden = false
+                    guard let day = DefaultsManager.getNotificationDays() else {
+                        return
                     }
-                } else {
-                    DispatchQueue.main.async(){
-                       self.removeNotificationButton.isHidden = true
+                    
+                    guard let time = DefaultsManager.getNotificationTime() else {
+                        return
+                    }
+                    
+                    if day == 1 {
+                        self.oneDayNotification.layer.borderColor = Color.blue.cgColor
+                        self.oneDayNotification.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    } else if day == 3 {
+                        self.threeDaysNotification.layer.borderColor = Color.blue.cgColor
+                        self.threeDaysNotification.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    } else if day == 5 {
+                        self.fiveDaysNotification.layer.borderColor = Color.blue.cgColor
+                        self.fiveDaysNotification.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    } else {
+                        // Disable other buttons
+                        self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                        self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    }
+                    
+                    if time == 9 {
+                        self.nineAM.layer.borderColor = Color.blue.cgColor
+                        self.nineAM.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.twelveAM.layer.borderColor = Color.borderColor.cgColor
+                        self.twelveAM.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.ninePM.layer.borderColor = Color.borderColor.cgColor
+                        self.ninePM.setTitleColor(Color.grey, for: .normal)
+                    } else if time == 12 {
+                        self.twelveAM.layer.borderColor = Color.blue.cgColor
+                        self.twelveAM.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.nineAM.layer.borderColor = Color.borderColor.cgColor
+                        self.nineAM.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.ninePM.layer.borderColor = Color.borderColor.cgColor
+                        self.ninePM.setTitleColor(Color.grey, for: .normal)
+                    } else if time == 21 {
+                        self.ninePM.layer.borderColor = Color.blue.cgColor
+                        self.ninePM.setTitleColor(Color.blue, for: .normal)
+                        
+                        // Disable other buttons
+                        self.twelveAM.layer.borderColor = Color.borderColor.cgColor
+                        self.twelveAM.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.nineAM.layer.borderColor = Color.borderColor.cgColor
+                        self.nineAM.setTitleColor(Color.grey, for: .normal)
+                    } else {
+                        // Disable other buttons
+                        self.twelveAM.layer.borderColor = Color.borderColor.cgColor
+                        self.twelveAM.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.ninePM.layer.borderColor = Color.borderColor.cgColor
+                        self.ninePM.setTitleColor(Color.grey, for: .normal)
+                        
+                        self.nineAM.layer.borderColor = Color.borderColor.cgColor
+                        self.nineAM.setTitleColor(Color.grey, for: .normal)
                     }
                 }
-            })
-        }
+                
+            }
+        })
+    }
 }

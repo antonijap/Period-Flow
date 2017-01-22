@@ -32,17 +32,15 @@ extension CalendarDataProvider: JTAppleCalendarViewDataSource {
         let startDate = formatter.date(from: "2010 01 10")! // You can use date generated from a formatter
         let endDate = formatter.date(from: "2020 01 01")!   // You can also use dates created from this function
         
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+//        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: 6,
-                                                 calendar: calendar,
+                                                 calendar: Calendar.current,
                                                  generateInDates: .forAllMonths,
                                                  generateOutDates: .tillEndOfGrid,
                                                  firstDayOfWeek: .sunday)
         return parameters
     }
 }
-
-

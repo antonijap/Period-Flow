@@ -171,7 +171,7 @@ public final class Migration {
         rlmMigration.renameProperty(forClass: typeName, oldName: oldName, newName: newName)
     }
 
-    internal init(_ rlmMigration: RLMMigration) {
+    fileprivate init(_ rlmMigration: RLMMigration) {
         self.rlmMigration = rlmMigration
     }
 }
@@ -390,7 +390,7 @@ public final class Migration {
         rlmMigration.renamePropertyForClass(className, oldName: oldName, newName: newName)
     }
 
-    internal init(_ rlmMigration: RLMMigration) {
+    private init(_ rlmMigration: RLMMigration) {
         self.rlmMigration = rlmMigration
     }
 }

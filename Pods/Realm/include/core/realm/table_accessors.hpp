@@ -1887,12 +1887,6 @@ public:
         Base::m_query->m_impl.contains(col_idx, value, case_sensitive);
         return *Base::m_query;
     }
-
-    Query& like(StringData value, bool case_sensitive=true) const
-    {
-        Base::m_query->m_impl.like(col_idx, value, case_sensitive);
-        return *Base::m_query;
-    }
 };
 
 
