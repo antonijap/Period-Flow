@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 
+@available(iOS 10.0, *)
 class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     // MARK: - IBOutlets
@@ -37,7 +38,7 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setUpAnalytics() // TODO: - Uncomment this before release
+        setUpAnalytics() // TODO: - Uncomment this before release
         calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
         calendarView.scrollToDate(Date())
     }

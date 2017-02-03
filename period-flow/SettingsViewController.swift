@@ -11,7 +11,6 @@ import ActionSheetPicker_3_0
 import SwiftDate
 import UserNotifications
 
-@available(iOS 10.0, *)
 class SettingsViewController: UIViewController {
 
     // MARK: Outlets
@@ -54,6 +53,11 @@ class SettingsViewController: UIViewController {
         configureLabels()
         checkIfPurchased()
         checkForNotifications()
+        setUpAnalytics()
+        
+        // Register to receive notification
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.checkIfPurchased), name: Notification.Name("UpdateUI"), object: nil)
+        
         print("PRO Pack purchased: \(DefaultsManager.isProPackUnlocked())")
         
         print(DefaultsManager.getNotificationTime() ?? 9999)
@@ -66,11 +70,18 @@ class SettingsViewController: UIViewController {
     
     // MARK: Methods
     
+    func setUpAnalytics() {
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIScreenName, value: "Settings Screen")
+        let build = GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]
+        tracker?.send(build)
+    }
+    
     func checkIfPurchased() {
         if DefaultsManager.isProPackUnlocked() {
             // True
             // Show analysis and notifications
-            
+            print(DefaultsManager.isProPackUnlocked())
             notificationStack.isUserInteractionEnabled = true
             notificationStack.alpha = 1
             
@@ -293,12 +304,23 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveNotificationPressed(_ sender: UIButton) {
         // Get Days And Time
-        if let time = DefaultsManager.getNotificationTime() {
-            scheduleNotification(time)
+        if nineAM.layer.borderColor == Color.borderColor.cgColor, twelveAM.layer.borderColor == Color.borderColor.cgColor, ninePM.layer.borderColor == Color.borderColor.cgColor, threeDaysNotification.layer.borderColor == Color.borderColor.cgColor, fiveDaysNotification.layer.borderColor == Color.borderColor.cgColor, oneDayNotification.layer.borderColor == Color.borderColor.cgColor {
+            // Nothing is selected
+            // Trigger Alert
+            let alert = UIAlertController(title: "Ooops", message: "You have to select day and time to save notification.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            // Something is tapped
+            if let time = DefaultsManager.getNotificationTime() {
+                scheduleNotification(time)
+            }
+            
+            // Will check for notifications and display remove button
+            checkForNotifications()
         }
         
-        // Will check for notifications and display remove button
-        checkForNotifications()
     }
     
     @IBAction func removeNotificationPressed(_ sender: UIButton) {
@@ -328,7 +350,6 @@ class SettingsViewController: UIViewController {
 }
 
 
-@available(iOS 10.0, *)
 extension SettingsViewController {
     func scheduleNotification(_ time: Int) {
         let calendar = Calendar.autoupdatingCurrent
@@ -374,8 +395,7 @@ extension SettingsViewController {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             
             print(requests)
-            
-            
+
             if requests.isEmpty {
                 DispatchQueue.main.async(){
                     self.removeNotificationButton.isHidden = true

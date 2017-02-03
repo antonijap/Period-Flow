@@ -9,6 +9,7 @@
 import Foundation
 import StoreKit
 
+
 class PurchaseManager: NSObject {
     
     // MARK: - Properties
@@ -70,6 +71,7 @@ extension PurchaseManager: SKPaymentTransactionObserver {
                     DefaultsManager.unlockProPack()
                     print("PRO Pack is just unlocked.")
                     SKPaymentQueue.default().finishTransaction(transaction)
+                    NotificationCenter.default.post(name: Notification.Name("UpdateUI"), object: nil)
                 case .failed:
                     SKPaymentQueue.default().finishTransaction(transaction)
                 case .restored:
