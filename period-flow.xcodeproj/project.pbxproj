@@ -30,6 +30,7 @@
 		B0E1B8891D2066C200E2A202 /* ShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */; };
 		B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8931D20C49D00E2A202 /* Constants.swift */; };
 		B0E1B8961D20CC1900E2A202 /* PeriodAnalysisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */; };
+		B0E3B7701E4F8E5E00B50FE3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B76F1E4F8E5E00B50FE3 /* NotificationManager.swift */; };
 		CF0B784E1DA81A03003D1610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF0B784D1DA81A03003D1610 /* GoogleService-Info.plist */; };
 		CF6A45461E34E2300016DDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6A45451E34E2300016DDC2 /* Assets.xcassets */; };
 		CF6D01741E112E9800DBC991 /* FullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D01731E112E9800DBC991 /* FullButton.swift */; };
@@ -63,6 +64,7 @@
 		B0E1B8881D2066C200E2A202 /* ShadowContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowContainer.swift; sourceTree = "<group>"; };
 		B0E1B8931D20C49D00E2A202 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodAnalysisManager.swift; sourceTree = "<group>"; };
+		B0E3B76F1E4F8E5E00B50FE3 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		CF0B78461DA81791003D1610 /* period-flow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "period-flow-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF0B784A1DA81840003D1610 /* period-flow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "period-flow-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF0B784D1DA81A03003D1610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				687D2CC11D0DC825007C83DE /* DefaultsManager.swift */,
 				B0E1B8821D204E0800E2A202 /* PurchaseManager.swift */,
 				B0E1B8951D20CC1900E2A202 /* PeriodAnalysisManager.swift */,
+				B0E3B76F1E4F8E5E00B50FE3 /* NotificationManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -268,7 +271,6 @@
 				TargetAttributes = {
 					6870C47A1CFDE56B00ACFFF2 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = WNU245KFYF;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -385,7 +387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E0DA73E96A0973889CF6CE5B /* [CP] Copy Pods Resources */ = {
@@ -443,6 +445,7 @@
 				B0E1B8941D20C49D00E2A202 /* Constants.swift in Sources */,
 				B0E1B8831D204E0800E2A202 /* PurchaseManager.swift in Sources */,
 				6880037E1D22D7100086ACDD /* SettingsViewController.swift in Sources */,
+				B0E3B7701E4F8E5E00B50FE3 /* NotificationManager.swift in Sources */,
 				688003751D22C2480086ACDD /* PurchaseContainer.swift in Sources */,
 				685B92AF1CFE1317003452CE /* SelectionView.swift in Sources */,
 			);
@@ -571,6 +574,7 @@
 				CODE_SIGN_ENTITLEMENTS = "period-flow/Period Flow.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "period-flow/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -595,6 +599,7 @@
 				CODE_SIGN_ENTITLEMENTS = "period-flow/Period Flow.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "period-flow/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
