@@ -12,7 +12,7 @@ import SwiftDate
 import UserNotifications
 
 class SettingsViewController: UIViewController {
-
+    
     // MARK: Outlets
     
     @IBOutlet weak var notificationStack: UIStackView!
@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
     
     
     @IBOutlet weak var cycleDurationButton: CustomButton!
-
+    
     // MARK: - Properties
     
     var purchaseManager: PurchaseManager?
@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController {
             
             notificationButtonsStack.isUserInteractionEnabled = true
             notificationButtonsStack.alpha = 1
-    
+            
             configureAnalysisVisibility()
         } else {
             // False
@@ -171,7 +171,7 @@ class SettingsViewController: UIViewController {
             analysisStack.alpha = 1
         }
     }
-
+    
     // MARK: Actions
     
     @IBAction func oneDayButtonSelected(_ sender: UIButton) {
@@ -201,7 +201,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             threeDaysNotification.setTitleColor(Color.grey, for: .normal)
-
+            
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             threeDaysNotification.setTitleColor(Color.blue, for: .normal)
@@ -217,12 +217,12 @@ class SettingsViewController: UIViewController {
             DefaultsManager.setNotificationDays(sender.tag)
         }
     }
-
+    
     @IBAction func fiveDaysButtonSelected(_ sender: UIButton) {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
- 
+            
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             fiveDaysNotification.setTitleColor(Color.blue, for: .normal)
@@ -243,7 +243,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             nineAM.setTitleColor(Color.grey, for: .normal)
- 
+            
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             nineAM.setTitleColor(Color.blue, for: .normal)
@@ -264,7 +264,7 @@ class SettingsViewController: UIViewController {
         if sender.layer.borderColor == Color.blue.cgColor {
             sender.layer.borderColor = Color.borderColor.cgColor
             twelveAM.setTitleColor(Color.grey, for: .normal)
-
+            
         } else {
             sender.layer.borderColor = Color.blue.cgColor
             twelveAM.setTitleColor(Color.blue, for: .normal)
@@ -312,10 +312,8 @@ class SettingsViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            // Something is tapped
-            if let time = DefaultsManager.getNotificationTime() {
-                scheduleNotification(time)
-            }
+            
+            scheduleNotification()
             
             // Will check for notifications and display remove button
             checkForNotifications()
@@ -341,7 +339,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func restoreButtonTapped(_ sender: AnyObject) {
         purchaseManager?.restoreTransactions()
-        checkIfPurchased() 
+        checkIfPurchased()
     }
     
     @IBAction func backButtonTapped(_ sender: AnyObject) {
@@ -349,79 +347,20 @@ class SettingsViewController: UIViewController {
     }
 }
 
+// MARK: - Notification Helper Methods
 
 extension SettingsViewController {
-    func scheduleNotification(_ time: Int) {
-        let calendar = Calendar.autoupdatingCurrent
-
-        guard let lastPeriod = RealmManager.sharedInstance.queryLastPeriod(), let predictionDate = lastPeriod.predictionDate else {
-            return
-        }
-        
-        guard let notifDays = DefaultsManager.getNotificationDays() else {
-            return
-        }
-        
-        let day = predictionDate.day - notifDays
-        
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: predictionDate.year, month: predictionDate.month, day: day, hour: time, minute: 15)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: true)
-        let content = UNMutableNotificationContent()
-        
-        content.title = "Period Flow"
-
-        
-        if DefaultsManager.getNotificationDays() == 1 {
-            content.body = "Period coming in \(DefaultsManager.getNotificationDays()) day!"
-        } else {
-            content.body = "Period coming in \(DefaultsManager.getNotificationDays()) days!"
-        }
-
-        content.sound = UNNotificationSound.default()
-        
-        let request = UNNotificationRequest(identifier: "\(time)", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                print("Uh oh! We had an error: \(error)")
-            } else {
-                print(request)
-            }
-        }
+    
+    func scheduleNotification() {
+        NotificationManager.scheduleNotifications()
     }
-
+    
     func checkForNotifications() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+        
+        NotificationManager.notificationsExist { (notifsExist) in
             
-            print(requests)
-
-            if requests.isEmpty {
-                DispatchQueue.main.async(){
-                    self.removeNotificationButton.isHidden = true
-                    
-                    self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
-                    self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
-                    
-                    self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
-                    self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
-                    
-                    self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
-                    self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
-                    
-                    self.twelveAM.layer.borderColor = Color.borderColor.cgColor
-                    self.twelveAM.setTitleColor(Color.grey, for: .normal)
-                    
-                    self.ninePM.layer.borderColor = Color.borderColor.cgColor
-                    self.ninePM.setTitleColor(Color.grey, for: .normal)
-                    
-                    self.nineAM.layer.borderColor = Color.borderColor.cgColor
-                    self.nineAM.setTitleColor(Color.grey, for: .normal)
-                }
-            } else {
-                print("There ARE Notifications")
-                print(requests)
-                DispatchQueue.main.async(){
+            if notifsExist {
+                DispatchQueue.main.async() {
                     self.removeNotificationButton.isHidden = false
                     guard let day = DefaultsManager.getNotificationDays() else {
                         return
@@ -515,8 +454,30 @@ extension SettingsViewController {
                         self.nineAM.setTitleColor(Color.grey, for: .normal)
                     }
                 }
-                
+            } else {
+                DispatchQueue.main.async(){
+                    self.removeNotificationButton.isHidden = true
+                    
+                    self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.threeDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.threeDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.fiveDaysNotification.layer.borderColor = Color.borderColor.cgColor
+                    self.fiveDaysNotification.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.twelveAM.layer.borderColor = Color.borderColor.cgColor
+                    self.twelveAM.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.ninePM.layer.borderColor = Color.borderColor.cgColor
+                    self.ninePM.setTitleColor(Color.grey, for: .normal)
+                    
+                    self.nineAM.layer.borderColor = Color.borderColor.cgColor
+                    self.nineAM.setTitleColor(Color.grey, for: .normal)
+                }
             }
-        })
+        }
     }
 }
+

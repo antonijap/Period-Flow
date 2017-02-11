@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwiftDate
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -143,11 +144,26 @@ class RealmManager {
     
     // MARK: Updating Objects in Realm
     
+    private func updateNotifications(period: Period) {
+        if period == queryLastPeriod() {
+            NotificationManager.removeAllScheduledNotifications()
+            NotificationManager.scheduleNotifications()
+        }
+    }
+    
+    private func removeNotifications(deletedPeriod: Period) {
+        if deletedPeriod == queryLastPeriod() {
+            NotificationManager.removeAllScheduledNotifications()
+        }
+    }
+    
     /// Add period to Realm
     func addPeriod(_ period: Period) {
+        
         do {
             try realm.write {
                 realm.add(period)
+                updateNotifications(period: period)
             }
         } catch let error as NSError {
             print(error.debugDescription)
@@ -159,6 +175,7 @@ class RealmManager {
         do {
             try realm.write {
                 period.startDate = date
+                updateNotifications(period: period)
             }
         } catch let error as NSError {
             print(error.debugDescription)
@@ -181,6 +198,7 @@ class RealmManager {
         do {
             try realm.write {
                 realm.delete(period)
+                removeNotifications(deletedPeriod: period)
             }
         } catch let error as NSError {
             print(error.debugDescription)

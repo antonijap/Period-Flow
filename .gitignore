@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/swift
 
 ### Swift ###
@@ -24,4 +23,3 @@ DerivedData/
 ## Other
 *.moved-aside
 *.xcuserstate
-
