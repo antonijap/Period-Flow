@@ -10,6 +10,8 @@ import UIKit
 import ActionSheetPicker_3_0
 import SwiftDate
 import UserNotifications
+import SwiftyStoreKit
+import StoreKit
 
 class SettingsViewController: UIViewController {
     
@@ -19,9 +21,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var analysisStack: UIStackView!
     @IBOutlet weak var timeStack: UIStackView!
     @IBOutlet weak var notificationButtonsStack: UIStackView!
-    
-    @IBOutlet weak var purchaseStack: UIStackView!
-    
+
+    @IBOutlet weak var purchaseBackground: UIView!
+
     @IBOutlet weak var averageCycleDurationLabel: UILabel!
     @IBOutlet weak var averagePeriodDurationLabel: UILabel!
     
@@ -33,17 +35,20 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var ninePM: CustomButton!
     @IBOutlet weak var removeNotificationButton: HollowButton!
     
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var cycleDurationButton: CustomButton!
+    @IBOutlet weak var saveButton: FullButton!
+    
+    @IBOutlet weak var buyButton: UIButton!
     
     // MARK: - Properties
-    
-    var purchaseManager: PurchaseManager?
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        purchaseBackground.layer.cornerRadius = 4
         setupPurchaseManager()
     }
     
@@ -55,13 +60,15 @@ class SettingsViewController: UIViewController {
         checkForNotifications()
         setUpAnalytics()
         
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
+            print(notifications)
+        }
+        
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.checkIfPurchased), name: Notification.Name("UpdateUI"), object: nil)
         
         print("PRO Pack purchased: \(DefaultsManager.isProPackUnlocked())")
         
-        print(DefaultsManager.getNotificationTime() ?? 9999)
-        print(DefaultsManager.getNotificationDays() ?? 9999)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -78,45 +85,84 @@ class SettingsViewController: UIViewController {
     }
     
     func checkIfPurchased() {
-        if DefaultsManager.isProPackUnlocked() {
-            // True
-            // Show analysis and notifications
-            print(DefaultsManager.isProPackUnlocked())
-            notificationStack.isUserInteractionEnabled = true
-            notificationStack.alpha = 1
-            
-            timeStack.isUserInteractionEnabled = true
-            timeStack.alpha = 1
-            
-            notificationButtonsStack.isUserInteractionEnabled = true
-            notificationButtonsStack.alpha = 1
-            
-            configureAnalysisVisibility()
-        } else {
-            // False
-            
-            notificationStack.isUserInteractionEnabled = false
-            notificationStack.alpha = 0.5
-            
-            timeStack.isUserInteractionEnabled = false
-            timeStack.alpha = 0.5
-            
-            notificationButtonsStack.isUserInteractionEnabled = false
-            notificationButtonsStack.alpha = 0.5
-            
-            configureAnalysisVisibility()
+        DispatchQueue.main.async() {
+            if DefaultsManager.isProPackUnlocked() {
+                // True
+                // Show analysis and notifications
+                print(DefaultsManager.isProPackUnlocked())
+                self.notificationStack.isUserInteractionEnabled = true
+                self.notificationStack.alpha = 1
+                
+                self.timeStack.isUserInteractionEnabled = true
+                self.timeStack.alpha = 1
+                
+                self.notificationButtonsStack.isUserInteractionEnabled = true
+                self.notificationButtonsStack.alpha = 1
+                
+                // Remove Buy button
+                self.buyButton.isHidden = true
+                
+                self.configureAnalysisVisibility()
+            } else {
+                // False
+                
+                self.notificationStack.isUserInteractionEnabled = false
+                self.notificationStack.alpha = 0.5
+                
+                self.timeStack.isUserInteractionEnabled = false
+                self.timeStack.alpha = 0.5
+                
+                self.notificationButtonsStack.isUserInteractionEnabled = false
+                self.notificationButtonsStack.alpha = 0.5
+                
+                self.configureAnalysisVisibility()
+                
+                self.buyButton.isHidden = false
+            }
         }
     }
     
     func setupPurchaseManager() {
-        purchaseManager = PurchaseManager()
-        purchaseManager?.requestProducts()
+        
+        SwiftyStoreKit.retrieveProductsInfo([PURCHASE_PROPACK]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                print("Product: \(product.localizedDescription), price: \(priceString)")
+            }
+            else if let invalidProductId = result.invalidProductIDs.first {
+                // Trigger Alert
+                print("Invalid product identifier: \(invalidProductId)")
+//                let alert = UIAlertController(title: "Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)", preferredStyle: UIAlertControllerStyle.alert)
+//                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                print("Error: \(result.error)")
+            }
+        }
     }
     
     /// Triggers the in app purchase for PRO pack product
     func purchaseProPackPressed() {
-        if let product = purchaseManager?.products.first , product.productIdentifier == PURCHASE_PROPACK {
-            purchaseManager?.createPayment(product)
+        
+        SwiftyStoreKit.purchaseProduct(PURCHASE_PROPACK, atomically: true) { result in
+            switch result {
+            case .success(let product):
+                print("Purchase Success: \(product.productId)")
+                DefaultsManager.unlockProPack()
+                self.checkIfPurchased()
+            case .error(let error):
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                case .clientInvalid: print("Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                }
+            }
         }
     }
     
@@ -303,6 +349,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func saveNotificationPressed(_ sender: UIButton) {
+        
+
         // Get Days And Time
         if nineAM.layer.borderColor == Color.borderColor.cgColor, twelveAM.layer.borderColor == Color.borderColor.cgColor, ninePM.layer.borderColor == Color.borderColor.cgColor, threeDaysNotification.layer.borderColor == Color.borderColor.cgColor, fiveDaysNotification.layer.borderColor == Color.borderColor.cgColor, oneDayNotification.layer.borderColor == Color.borderColor.cgColor {
             // Nothing is selected
@@ -312,6 +360,13 @@ class SettingsViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         } else {
+            
+            sender.backgroundColor = UIColor(red:0.55, green:0.90, blue:0.54, alpha:1.00)
+            let when = DispatchTime.now() + 0.4 // change to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                sender.backgroundColor = UIColor(red:0.17, green:0.57, blue:0.87, alpha:1.00)
+            }
             
             scheduleNotification()
             
@@ -331,14 +386,27 @@ class SettingsViewController: UIViewController {
     @IBAction func cycleDurationButtonTapped(_ sender: AnyObject) {
         displayDurationPicker()
     }
+
     
-    @IBAction func purchaseTapped(_ sender: AnyObject) {
+    @IBAction func buyProPack(_ sender: Any) {
         purchaseProPackPressed()
         checkIfPurchased()
     }
     
     @IBAction func restoreButtonTapped(_ sender: AnyObject) {
-        purchaseManager?.restoreTransactions()
+        
+        SwiftyStoreKit.restorePurchases(atomically: true) { results in
+            if results.restoreFailedProducts.count > 0 {
+                print("Restore Failed: \(results.restoreFailedProducts)")
+            }
+            else if results.restoredProducts.count > 0 {
+                print("Restore Success: \(results.restoredProducts)")
+            }
+            else {
+                print("Nothing to Restore")
+            }
+        }
+        
         checkIfPurchased()
     }
     
@@ -362,6 +430,7 @@ extension SettingsViewController {
             if notifsExist {
                 DispatchQueue.main.async() {
                     self.removeNotificationButton.isHidden = false
+                    self.saveButton.setTitle("Update", for: .normal)
                     guard let day = DefaultsManager.getNotificationDays() else {
                         return
                     }
@@ -457,6 +526,7 @@ extension SettingsViewController {
             } else {
                 DispatchQueue.main.async(){
                     self.removeNotificationButton.isHidden = true
+                    self.saveButton.setTitle("Save", for: .normal)
                     
                     self.oneDayNotification.layer.borderColor = Color.borderColor.cgColor
                     self.oneDayNotification.setTitleColor(Color.grey, for: .normal)
@@ -480,4 +550,3 @@ extension SettingsViewController {
         }
     }
 }
-

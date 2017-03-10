@@ -13,6 +13,7 @@ target 'period-flow' do
   pod 'ActionSheetPicker-3.0', '~> 2.1.0'
   pod 'SwiftDate', '~> 4.0'
   pod 'Google/Analytics'
+  pod 'SwiftyStoreKit'
 end
 
 post_install do |installer|

@@ -25,7 +25,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
     
     var dataProvider: CalendarDataProvider?
     var viewManager: CalendarViewManager?
-    var purchaseManager: PurchaseManager?
     
     // MARK: - View Life Cycle
     
@@ -72,7 +71,6 @@ class CalendarViewController: UIViewController, CalendarViewManagerDelegate {
         calendarView.cellInset = CGPoint(x: 2, y: 2)
         calendarView.allowsMultipleSelection = true
         calendarView.scrollEnabled = true
-        calendarView.animationsEnabled = true
         
         let calendar = Calendar.autoupdatingCurrent
         let components = calendar.dateComponents([.month,.day,.year], from: Date())

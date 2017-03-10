@@ -146,8 +146,18 @@ class RealmManager {
     
     private func updateNotifications(period: Period) {
         if period == queryLastPeriod() {
-            NotificationManager.removeAllScheduledNotifications()
-            NotificationManager.scheduleNotifications()
+            print("Inside last period")
+            guard let predictionDate = period.predictionDate else {
+                return
+            }
+            
+            if predictionDate.isInFuture {
+                // Update Scheduled Date
+                NotificationManager.scheduleNotifications()
+            } else {
+                // If Date is in the past just delete notifications
+                NotificationManager.removeAllScheduledNotifications()
+            }
         }
     }
     
@@ -197,8 +207,14 @@ class RealmManager {
     func deletePeriod(_ period: Period) {
         do {
             try realm.write {
-                realm.delete(period)
                 removeNotifications(deletedPeriod: period)
+                realm.delete(period)
+                
+                guard let newLastperiod = queryLastPeriod() else {
+                    return
+                }
+                
+                updateNotifications(period: newLastperiod)
             }
         } catch let error as NSError {
             print(error.debugDescription)

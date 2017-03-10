@@ -52,6 +52,17 @@ class DefaultsManager {
         return storedNumber > totalPeriods ? totalPeriods : storedNumber
     }
     
+    /// Saves Date for Notification Date
+    class func setNotifictionDate(_ date: DateComponents) {
+        UserDefaults.standard.setValue(date, forKey: "NotificationDate")
+    }
+    
+    class func getNotifictionDate() -> DateComponents? {
+        return UserDefaults.standard.value(forKey: "NotificationDate") as? DateComponents
+    }
+    
+    
+    
     /// Checks if PRO Pack in app purchase is unlocked
     class func isProPackUnlocked() -> Bool {
         return UserDefaults.standard.bool(forKey: KEY_PRO_PACK) 

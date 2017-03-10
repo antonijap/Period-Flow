@@ -98,20 +98,20 @@ class CalendarViewManager: NSObject {
 
         if let predictionDate = lastPeriod?.predictionDate, let days = days {
             
-            let daysOrDays = days == 1 ? "DAY" : "DAYS"
+            let daysOrDays = days == 1 ? "Day" : "Days"
             delegate?.daysUntilNextPeriodLabel.text = "\(days)"
             
             switch true {
                 case today.isBefore(date: predictionDate, granularity: .day):
-                    delegate?.counterLabel.text = "\(daysOrDays) UNTIL NEXT PERIOD"
+                    delegate?.counterLabel.text = "\(daysOrDays) Until Next Period"
                 case today.isAfter(date: predictionDate, granularity: .day):
-                    delegate?.counterLabel.text = "\(daysOrDays) LATE"
+                    delegate?.counterLabel.text = "\(daysOrDays) Late"
                 case today.isToday:
-                    delegate?.counterLabel.text = "PERIOD STARTS TODAY"
+                    delegate?.counterLabel.text = "Period Starts Today"
                 default: break
             }
         } else {
-            delegate?.counterLabel.text = "SELECT A DATE TO BEGIN"
+            delegate?.counterLabel.text = "Select A Date To Begin"
             delegate?.daysUntilNextPeriodLabel.text = "?"
         }
     }

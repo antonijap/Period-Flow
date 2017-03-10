@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61B8EBFE748B3B131D7EC38BE35DEF98"
+               BlueprintIdentifier = "5D9039D614468F7CB6539CEA81A70238"
                BuildableName = "Pods_period_flow.framework"
                BlueprintName = "Pods-period-flow"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61B8EBFE748B3B131D7EC38BE35DEF98"
+            BlueprintIdentifier = "5D9039D614468F7CB6539CEA81A70238"
             BuildableName = "Pods_period_flow.framework"
             BlueprintName = "Pods-period-flow"
             ReferencedContainer = "container:Pods.xcodeproj">
